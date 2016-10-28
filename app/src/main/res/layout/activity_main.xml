@@ -19,5 +19,6 @@
 
     <TextView
         style="@style/SingleItemStyle"
-        android:text="CompatInsetToolbar"/>
+        android:onClick="onCompatInsetImageHeaderActivity"
+        android:text="CompatInsetImageHeaderActivity"/>
 </LinearLayout>

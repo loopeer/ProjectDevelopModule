@@ -15,4 +15,8 @@ public class MainActivity extends AppCompatActivity {
     public void onCompatInsetToolbarClick(View view) {
         CompatInsetToolbarActivity.startActivity(this);
     }
+
+    public void onCompatInsetImageHeaderActivity(View view) {
+        CompatInsetImageHeaderActivity.startActivity(this);
+    }
 }

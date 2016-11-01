@@ -1,6 +1,7 @@
 package loopeer.com.compatinset;
 
 
+import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.WindowInsetsCompat;
@@ -32,4 +33,12 @@ public class InsetHelper {
     public static void requestApplyInsets(View view) {
         ViewCompat.requestApplyInsets(view);
     }
+
+    public static Rect clearInset(Rect insets) {
+        insets.top = 0;
+        insets.right = 0;
+        insets.right = 0;
+        return insets;
+    }
+
 }

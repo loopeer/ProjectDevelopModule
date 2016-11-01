@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/img_test"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <loopeer.com.compatinset.SingleInsetHolderView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:insetStatusBarColor="@android:color/transparent"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/inset_holder"
+                    android:layout_gravity="right"
+                    android:layout_margin="10dp"
+                    android:src="@android:drawable/ic_dialog_email"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="4dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="Support libraries allow apps running on older versions of the Android platform to support features made available on newer versions of the platform. For example, an app running on a version of Android lower than 5.0 (API level 21) that relies on framework classes cannot display material-design elements, as that version of the Android framework doesn't support material design. However, if the app incorporates the Support Library's appcompat library, the app has access to many of the features available in API level 21, including support for material design. As a result, your app can deliver a more consistent experience across a broader range of platform versions.
+In some cases, the support library version of a class depends as much as possible on the functionality that the framework provides. In these cases, if an app calls one of the support class's methods, the support library's behavior depends on what version of Android the app is running on. If the framework provides the necessary functionality, the support library calls on the framework to perform the task. If the app is running on an earlier version of Android, and the framework doesn't expose the needed functionality, the support library may try to provide the functionality itself, or may act as a no-op. In either case, the app generally doesn't need to check what version of Android it's running on; instead, the app can rely on the support library to do those checks and choose "/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</ScrollView>

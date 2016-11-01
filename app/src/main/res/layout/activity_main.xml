@@ -21,4 +21,14 @@
         style="@style/SingleItemStyle"
         android:onClick="onCompatInsetImageHeaderActivity"
         android:text="CompatInsetImageHeaderActivity"/>
+
+    <TextView
+        style="@style/SingleItemStyle"
+        android:onClick="onSingleCompatInsetImageHeaderActivity"
+        android:text="SingleCompatInsetImageHeaderActivity"/>
+
+    <TextView
+        style="@style/SingleItemStyle"
+        android:onClick="onCompatSingleInsetToolbarActivity"
+        android:text="CompatSingleInsetToolbarActivity"/>
 </LinearLayout>

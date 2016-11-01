@@ -19,4 +19,12 @@ public class MainActivity extends AppCompatActivity {
     public void onCompatInsetImageHeaderActivity(View view) {
         CompatInsetImageHeaderActivity.startActivity(this);
     }
+
+    public void onSingleCompatInsetImageHeaderActivity(View view) {
+        CompatSingleInsetImageHeaderActivity.startActivity(this);
+    }
+
+    public void onCompatSingleInsetToolbarActivity(View view) {
+        CompatSingleInsetToolbarActivity.startActivity(this);
+    }
 }

@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="window_background">#F1F1F1</color>
+    <color name="text_color_hint">#DBDBDB</color>
 </resources>

@@ -201,41 +201,40 @@ public class DateTimeView extends LinearLayout {
     }
 
     private void updateView(int mode){
-        switch (mode){
-            case DATE_VIEW:
-                mViewTimeColon.setVisibility(GONE);
-                mViewSpace.setVisibility(GONE);
-                mPickerMinute.setVisibility(GONE);
-                mPickerHour.setVisibility(GONE);
-                break;
-            case TIME_VIEW:
-                mViewSpace.setVisibility(GONE);
-                mPickerYear.setVisibility(GONE);
-                mPickerMonth.setVisibility(GONE);
-                mPickerDay.setVisibility(GONE);
-                break;
-            case DATE_TIME_VIEW:
-
-                break;
-        }
+        mShowType = mode;
+        updateView();
     }
 
     private void updateView() {
-        switch (mShowType) {
+        switch (mShowType){
             case DATE_VIEW:
                 mViewTimeColon.setVisibility(GONE);
                 mViewSpace.setVisibility(GONE);
                 mPickerMinute.setVisibility(GONE);
                 mPickerHour.setVisibility(GONE);
+
+                mPickerYear.setVisibility(VISIBLE);
+                mPickerMonth.setVisibility(VISIBLE);
+                mPickerDay.setVisibility(VISIBLE);
                 break;
             case TIME_VIEW:
                 mViewSpace.setVisibility(GONE);
                 mPickerYear.setVisibility(GONE);
                 mPickerMonth.setVisibility(GONE);
                 mPickerDay.setVisibility(GONE);
+
+                mViewTimeColon.setVisibility(VISIBLE);
+                mPickerMinute.setVisibility(VISIBLE);
+                mPickerHour.setVisibility(VISIBLE);
                 break;
             case DATE_TIME_VIEW:
-
+                mViewSpace.setVisibility(VISIBLE);
+                mPickerYear.setVisibility(VISIBLE);
+                mPickerMonth.setVisibility(VISIBLE);
+                mPickerDay.setVisibility(VISIBLE);
+                mViewTimeColon.setVisibility(VISIBLE);
+                mPickerMinute.setVisibility(VISIBLE);
+                mPickerHour.setVisibility(VISIBLE);
                 break;
         }
     }

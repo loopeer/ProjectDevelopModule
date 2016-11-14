@@ -17,11 +17,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile deps.appcompatV7
+    compile deps.supportCoreUi
     compile project(':library:compatinset')
     compile project(':library:bottomdialog')
 }

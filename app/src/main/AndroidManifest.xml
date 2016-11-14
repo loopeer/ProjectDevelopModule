@@ -40,11 +40,18 @@
                 android:value=".MainActivity"/>
         </activity>
 
-
         <activity
             android:name=".CompatSingleInsetToolbarActivity"
             android:theme="@style/AppTheme.SingleNoActionBar"
             android:windowSoftInputMode="adjustPan">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
+
+        <activity
+            android:name=".BottomDialogDateTimeViewActivity"
+            android:label="@string/label_bottom_dialog_date_time">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

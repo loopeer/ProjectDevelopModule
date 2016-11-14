@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ProjectDevelopModule</string>
+
+    <string name="label_bottom_dialog_date_time">BottomDialogDateTimeViewActivity</string>
+
+    <!-- menu -->
+    <string name="menu_action_bottom_date">Date</string>
+    <string name="menu_action_bottom_time">Time</string>
+    <string name="menu_action_bottom_date_time">DateTime</string>
 </resources>

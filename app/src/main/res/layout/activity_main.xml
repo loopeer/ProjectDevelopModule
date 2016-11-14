@@ -30,4 +30,9 @@
         style="@style/SingleItemStyle"
         android:onClick="onCompatSingleInsetToolbarActivity"
         android:text="CompatSingleInsetToolbarActivity"/>
+
+    <TextView
+        style="@style/SingleItemStyle"
+        android:onClick="onBottomDialogDateTimeViewActivity"
+        android:text="BottomDialogDateTimeViewActivity"/>
 </LinearLayout>

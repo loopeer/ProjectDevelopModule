@@ -27,4 +27,8 @@ public class MainActivity extends AppCompatActivity {
     public void onCompatSingleInsetToolbarActivity(View view) {
         CompatSingleInsetToolbarActivity.startActivity(this);
     }
+
+    public void onBottomDialogDateTimeViewActivity(View view) {
+        BottomDialogDateTimeViewActivity.startActivity(this);
+    }
 }

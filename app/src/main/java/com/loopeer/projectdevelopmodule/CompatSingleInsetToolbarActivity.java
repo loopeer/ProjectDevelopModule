@@ -11,6 +11,7 @@ public class CompatSingleInsetToolbarActivity extends AppCompatActivity {
     public static void startActivity(Context context) {
         context.startActivity(new Intent(context, CompatSingleInsetToolbarActivity.class));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

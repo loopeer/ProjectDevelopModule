@@ -100,11 +100,9 @@ values-v21:
 
 ### BottomDialog  
 
-####Screenshot
-====
+####Screenshot  
 ![](/screenshot/bottom_dialog/bottom_dialog_date_time.gif)
-####Installation
-====
+####Installation  
 ```groovy
 dependencies {
     compile 'com.loopeer.library:bottomdialog:0.0.1'

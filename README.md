@@ -1,6 +1,7 @@
 # ProjectDevelopModule
 ## Catalog
 * [CompatInset](#CompatInset)
+* [BottomDialog](#BottomDialog)
 
 ### CompatInset  
 
@@ -95,5 +96,18 @@ values-v21:
     </style>
 </resources>
 
+```   
+
+### BottomDialog  
+
+####Screenshot
+====
+![](/screenshot/bottom_dialog/bottom_dialog_date_time.gif)
+####Installation
+====
+```groovy
+dependencies {
+    compile 'com.loopeer.library:bottomdialog:0.0.1'
+}
 ```
 

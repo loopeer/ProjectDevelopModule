@@ -1,4 +1,4 @@
-package loopeer.com.compatinset;
+package com.loopeer.compatinset;
 
 
 import android.annotation.TargetApi;
@@ -6,20 +6,15 @@ import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
+import android.widget.ViewAnimator;
 
-public class InsetFramelayout extends FrameLayout {
-
-    public InsetFramelayout(Context context) {
+public class InsetViewAnimator extends ViewAnimator {
+    public InsetViewAnimator(Context context) {
         this(context, null);
     }
 
-    public InsetFramelayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public InsetFramelayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public InsetViewAnimator(Context context, AttributeSet attrs) {
+        super(context, attrs);
         InsetHelper.setupForInsets(this);
     }
 

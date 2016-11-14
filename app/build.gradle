@@ -5,7 +5,7 @@ android {
     buildToolsVersion configs.buildToolsVersion
 
     defaultConfig {
-        applicationId "loopeer.com.projectdevelopmodule"
+        applicationId "com.loopeer.projectdevelopmodule"
         minSdkVersion configs.minSdkVersion
         targetSdkVersion configs.targetSdkVersion
         versionCode configs.versionCode

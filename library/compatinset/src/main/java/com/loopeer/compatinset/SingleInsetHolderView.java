@@ -1,19 +1,22 @@
-package loopeer.com.compatinset;
+package com.loopeer.compatinset;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+
 import java.lang.reflect.Field;
 
-public class InsetHolderView extends View {
-    WindowInsetsCompat mLastInsets;
+import loopeer.com.compatinset.R;
+
+public class SingleInsetHolderView extends View {
     static final boolean SHOW_INSET_HOLDER;
     private int mStatusBarColor;
 
@@ -25,15 +28,15 @@ public class InsetHolderView extends View {
         }
     }
 
-    public InsetHolderView(Context context) {
+    public SingleInsetHolderView(Context context) {
         this(context, null);
     }
 
-    public InsetHolderView(Context context, AttributeSet attrs) {
+    public SingleInsetHolderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InsetHolderView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SingleInsetHolderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.InsetHolderView,
@@ -41,32 +44,12 @@ public class InsetHolderView extends View {
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , ContextCompat.getColor(context, android.R.color.transparent));
 
-        ViewCompat.setOnApplyWindowInsetsListener(this,
-                new android.support.v4.view.OnApplyWindowInsetsListener() {
-                    @Override
-                    public WindowInsetsCompat onApplyWindowInsets(View v,
-                                                                  WindowInsetsCompat insets) {
-                        return onWindowInsetChanged(insets);
-                    }
-                });
+        translucentStatus();
     }
 
-    WindowInsetsCompat onWindowInsetChanged(final WindowInsetsCompat insets) {
-        WindowInsetsCompat newInsets = null;
-        if (ViewCompat.getFitsSystemWindows(this)) {
-            newInsets = insets;
-        }
-        if (!ViewUtils.objectEquals(mLastInsets, newInsets)) {
-            mLastInsets = newInsets;
-            requestLayout();
-        }
-        return insets.consumeSystemWindowInsets();
-    }
-
-    @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        InsetHelper.requestApplyInsets(this);
+    private void translucentStatus() {
+        Window window = ((Activity)getContext()).getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
     }
 
     @Override
@@ -78,14 +61,11 @@ public class InsetHolderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(mStatusBarColor);
+        if (SHOW_INSET_HOLDER) canvas.drawColor(mStatusBarColor);
     }
 
     private int getInsetHeight() {
-        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
-            return getStatusBarHeight(getContext());
-        }
-        return SHOW_INSET_HOLDER && mLastInsets != null ? mLastInsets.getSystemWindowInsetTop() : 0;
+        return SHOW_INSET_HOLDER ? getStatusBarHeight(getContext()) : 0;
     }
 
     public static int getStatusBarHeight(Context context){

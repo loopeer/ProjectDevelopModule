@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<loopeer.com.compatinset.InsetScrollView
+<com.loopeer.compatinset.InsetScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="@bool/fits_system_windows">
 
-    <loopeer.com.compatinset.InsetLinearLayout
+    <com.loopeer.compatinset.InsetLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="@bool/fits_system_windows"
         android:orientation="vertical">
 
-        <loopeer.com.compatinset.InsetRelativeLayout
+        <com.loopeer.compatinset.InsetRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="@bool/fits_system_windows">
@@ -23,13 +23,13 @@
                 android:scaleType="centerCrop"
                 android:src="@mipmap/img_test"/>
 
-            <loopeer.com.compatinset.InsetLinearLayout
+            <com.loopeer.compatinset.InsetLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="@bool/fits_system_windows"
                 android:orientation="vertical">
 
-                <loopeer.com.compatinset.InsetHolderView
+                <com.loopeer.compatinset.InsetHolderView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:insetStatusBarColor="@android:color/transparent"
@@ -43,9 +43,9 @@
                     android:layout_gravity="right"
                     android:layout_margin="10dp"
                     android:src="@android:drawable/ic_dialog_email"/>
-            </loopeer.com.compatinset.InsetLinearLayout>
+            </com.loopeer.compatinset.InsetLinearLayout>
 
-        </loopeer.com.compatinset.InsetRelativeLayout>
+        </com.loopeer.compatinset.InsetRelativeLayout>
 
 
         <TextView
@@ -60,6 +60,6 @@ In some cases, the support library version of a class depends as much as possibl
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    </loopeer.com.compatinset.InsetLinearLayout>
+    </com.loopeer.compatinset.InsetLinearLayout>
 
-</loopeer.com.compatinset.InsetScrollView>
+</com.loopeer.compatinset.InsetScrollView>

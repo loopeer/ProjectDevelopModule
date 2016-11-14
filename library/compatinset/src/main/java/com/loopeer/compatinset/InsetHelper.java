@@ -1,4 +1,4 @@
-package loopeer.com.compatinset;
+package com.loopeer.compatinset;
 
 
 import android.graphics.Rect;

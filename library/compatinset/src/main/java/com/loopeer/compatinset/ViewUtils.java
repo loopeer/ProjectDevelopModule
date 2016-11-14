@@ -1,4 +1,4 @@
-package loopeer.com.compatinset;
+package com.loopeer.compatinset;
 
 public class ViewUtils {
 

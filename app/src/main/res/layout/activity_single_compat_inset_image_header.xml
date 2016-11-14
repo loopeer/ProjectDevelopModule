@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <loopeer.com.compatinset.SingleInsetHolderView
+                <com.loopeer.compatinset.SingleInsetHolderView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:insetStatusBarColor="@android:color/transparent"/>

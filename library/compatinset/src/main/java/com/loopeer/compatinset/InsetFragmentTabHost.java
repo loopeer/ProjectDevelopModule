@@ -1,25 +1,21 @@
-package loopeer.com.compatinset;
+package com.loopeer.compatinset;
 
 
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
+import android.support.v4.app.FragmentTabHost;
 import android.util.AttributeSet;
-import android.widget.LinearLayout;
 
-public class InsetLinearLayout extends LinearLayout {
+public class InsetFragmentTabHost extends FragmentTabHost {
 
-    public InsetLinearLayout(Context context) {
+    public InsetFragmentTabHost(Context context) {
         this(context, null);
     }
 
-    public InsetLinearLayout(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public InsetLinearLayout(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+    public InsetFragmentTabHost(Context context, AttributeSet attrs) {
+        super(context, attrs);
         InsetHelper.setupForInsets(this);
     }
 

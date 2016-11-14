@@ -27,8 +27,7 @@ bintray {
         websiteUrl = projectUrl
         issueTrackerUrl = issuesUrl
         vcsUrl = scmUrl
-        licenses = projectLicenses
-        override = true
+        licenses = bintrayprojectLicenses
         publish = true
         publicDownloadNumbers = true
     }

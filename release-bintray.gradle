@@ -24,6 +24,8 @@ ext {
             url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
         }
     }
+
+    bintrayprojectLicenses = ["Apache-2.0"]
 }
 
 // Set up the Android Maven publication (POM etc.)

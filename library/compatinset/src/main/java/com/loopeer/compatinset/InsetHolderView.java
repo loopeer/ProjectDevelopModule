@@ -12,8 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import java.lang.reflect.Field;
 
-import loopeer.com.compatinset.R;
-
 public class InsetHolderView extends View {
     WindowInsetsCompat mLastInsets;
     static final boolean SHOW_INSET_HOLDER;

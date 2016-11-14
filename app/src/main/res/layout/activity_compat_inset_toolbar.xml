@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="@bool/fits_system_windows"
-    android:orientation="vertical"
-    tools:context="loopeer.com.projectdevelopmodule.CompatInsetToolbarActivity">
+    android:orientation="vertical">
 
     <include layout="@layout/view_inset_toolbar"/>
 

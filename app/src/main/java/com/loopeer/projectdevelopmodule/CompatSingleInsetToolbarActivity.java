@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import loopeer.com.projectdevelopmodule.R;
-
 public class CompatSingleInsetToolbarActivity extends AppCompatActivity {
 
     public static void startActivity(Context context) {

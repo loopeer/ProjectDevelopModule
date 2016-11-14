@@ -11,10 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import java.lang.reflect.Field;
-
-import loopeer.com.compatinset.R;
 
 public class SingleInsetHolderView extends View {
     static final boolean SHOW_INSET_HOLDER;

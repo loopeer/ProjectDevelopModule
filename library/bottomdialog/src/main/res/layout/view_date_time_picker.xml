@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Year -->
+    <NumberPicker
+        android:id="@+id/picker_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dip"
+        android:layout_marginStart="1dip"
+        android:layout_weight="2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <!-- Month -->
+    <NumberPicker
+        android:id="@+id/picker_month"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dip"
+        android:layout_marginStart="1dip"
+        android:layout_weight="2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <!-- Day -->
+    <NumberPicker
+        android:id="@+id/picker_day"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dip"
+        android:layout_marginStart="1dip"
+        android:layout_weight="2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <Space
+        android:id="@+id/view_space"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"/>
+
+    <!-- hour -->
+    <NumberPicker
+        android:id="@+id/picker_hour"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <TextView
+        android:id="@+id/view_time_colon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"/>
+
+    <!-- minute -->
+    <NumberPicker
+        android:id="@+id/picker_minute"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+</merge>

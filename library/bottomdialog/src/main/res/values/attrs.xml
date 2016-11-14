@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="InsetHolderView">
-        <attr name="insetStatusBarColor" format="color"/>
+
+    <declare-styleable name="DateTimeView">
+        <attr name="startYearValue" format="integer"/>
+        <attr name="endYearValue" format="integer"/>
+        <attr name="minDateValue" format="string"/>
+        <attr name="maxDateValue" format="string"/>
+        <attr name="showDateTimeView">
+            <flag name="dateView" value="0x0001" />
+            <flag name="timeView" value="0x0004" />
+            <flag name="dateTimeView" value="0x0005" />
+        </attr>
     </declare-styleable>
+
 </resources>

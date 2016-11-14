@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion configs.compileSdkVersion
     buildToolsVersion configs.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.loopeer.projectdevelopmodule"
         minSdkVersion configs.minSdkVersion
         targetSdkVersion configs.targetSdkVersion
         versionCode configs.versionCode
@@ -21,7 +20,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
     compile deps.appcompatV7
-    compile project(':library:compatinset')
-    compile project(':library:bottomdialog')
 }

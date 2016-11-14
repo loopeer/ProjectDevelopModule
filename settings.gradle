@@ -1,1 +1,3 @@
-include ':app',':library:compatinset'
+include ':app',
+        ':library:compatinset',
+        ':library:bottomdialog'

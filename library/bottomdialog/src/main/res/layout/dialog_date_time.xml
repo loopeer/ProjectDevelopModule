@@ -22,7 +22,7 @@
             android:paddingRight="@dimen/bottom_dialog_medium_padding"
             android:paddingTop="@dimen/bottom_dialog_medium_padding"
             android:text="@string/bottom_dialog_common_cancel"
-            android:textColor="@color/color_bottom_dialog_text_color_primary"/>
+            android:textColor="?android:textColorPrimary"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/btn_date_time_sure"
@@ -35,7 +35,7 @@
             android:paddingRight="@dimen/bottom_dialog_medium_padding"
             android:paddingTop="@dimen/bottom_dialog_medium_padding"
             android:text="@string/bottom_dialog_common_sure"
-            android:textColor="@color/color_bottom_dialog_text_color_primary"/>
+            android:textColor="?android:textColorPrimary"/>
     </FrameLayout>
 
     <include layout="@layout/view_divider_dash"/>

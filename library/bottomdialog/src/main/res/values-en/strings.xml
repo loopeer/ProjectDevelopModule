@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BottomDialog</string>
+    <string name="bottom_dialog_common_sure">Sure</string>
+    <string name="bottom_dialog_common_cancel">Cancel</string>
+</resources>

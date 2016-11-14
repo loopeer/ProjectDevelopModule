@@ -20,7 +20,6 @@ import java.util.Calendar;
 
 public class BottomDialogDateTimeViewActivity extends AppCompatActivity {
     private AcitivtyBottomDialogDateTimeBinding mBinding;
-    private BottomDateTimeDialog mBottomDateTimeDialog;
     @DateTimeView.DateTimeMode
     private int mDateTimeMode = DateTimeView.DATE_TIME_VIEW;
 

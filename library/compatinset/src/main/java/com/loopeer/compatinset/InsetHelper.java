@@ -1,11 +1,15 @@
 package com.loopeer.compatinset;
 
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Rect;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.WindowInsetsCompat;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class InsetHelper {
     public static void setupForInsets(final View view) {
@@ -39,6 +43,15 @@ public class InsetHelper {
         insets.right = 0;
         insets.right = 0;
         return insets;
+    }
+
+    public static void translucentStatus(Context context) {
+        if (context instanceof Activity) {
+            Window window = ((Activity) context).getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        } else {
+            throw new ClassCastException("To translucentStatus context must be instanceof of Activity");
+        }
     }
 
 }

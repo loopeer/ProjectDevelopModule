@@ -1,7 +1,6 @@
 package com.loopeer.compatinset;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -9,8 +8,7 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+
 import java.lang.reflect.Field;
 
 public class SingleInsetHolderView extends View {
@@ -41,12 +39,7 @@ public class SingleInsetHolderView extends View {
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , ContextCompat.getColor(context, android.R.color.transparent));
 
-        translucentStatus();
-    }
-
-    private void translucentStatus() {
-        Window window = ((Activity)getContext()).getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        InsetHelper.translucentStatus(context);
     }
 
     @Override

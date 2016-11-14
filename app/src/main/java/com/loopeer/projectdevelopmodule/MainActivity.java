@@ -31,4 +31,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBottomDialogDateTimeViewActivity(View view) {
         BottomDialogDateTimeViewActivity.startActivity(this);
     }
+
+    public void onAddressPickerActivity(View view){
+        AddressPickerActivity.startActivity(this);
+    }
 }

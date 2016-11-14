@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="divider">#DCDCDC</color>
+
+    <string name="common_sure">确定</string>
+    <string name="common_cancel">取消</string>
+
+    <dimen name="xxsmall_padding">4dp</dimen>
+</resources>

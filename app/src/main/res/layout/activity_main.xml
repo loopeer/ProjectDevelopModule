@@ -35,4 +35,10 @@
         style="@style/SingleItemStyle"
         android:onClick="onBottomDialogDateTimeViewActivity"
         android:text="BottomDialogDateTimeViewActivity"/>
+
+    <TextView
+        style="@style/SingleItemStyle"
+        android:onClick="onAddressPickerActivity"
+        android:text="AddressPickerActivity"/>
+
 </LinearLayout>

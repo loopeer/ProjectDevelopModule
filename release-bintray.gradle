@@ -1,0 +1,33 @@
+apply plugin: 'com.android.library'
+
+// Set up everything required for releasing on Bintray
+ext {
+    bintrayRepo = 'com.loopeer.library'
+    bintrayName = "${POM_ARTIFACT_ID}"
+    bintrayDescription = POM_DESCRIPTION
+    projectUrl = 'https://github.com/loopeer/ProjectDevelopModule'
+    issuesUrl = 'https://github.com/loopeer/ProjectDevelopModule/issues'
+    scmUrl = 'https://github.com/loopeer/ProjectDevelopModule.git'
+    scmConnection = 'scm:git:https://github.com/loopeer/ProjectDevelopModule.git'
+    scmDeveloperConnection = 'scm:git:git@github.com/loopeer/ProjectDevelopModule.git'
+
+    publishedGroupId = GROUP
+    libraryName = 'loopeermodule'
+    artifact = 'loopeermodule'
+
+    developerId = 'ToDou'
+    developerName = 'ToDou'
+
+    projectLicenses = {
+        license {
+            name 'The Apache Software License, Version 2.0'
+            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+        }
+    }
+}
+
+// Set up the Android Maven publication (POM etc.)
+apply from: rootProject.file('gradle/android-maven-install.gradle')
+
+// Upload to Bintray
+apply from: rootProject.file('gradle/bintray.gradle')

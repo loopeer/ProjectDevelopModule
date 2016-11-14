@@ -1,0 +1,35 @@
+
+apply plugin: 'com.jfrog.bintray'
+
+
+def getLocalProperties() {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    return properties
+}
+
+def getBintrayUsername() {
+    return getLocalProperties().getProperty("bintray.user")
+}
+
+def getBintrayApiKey() {
+    return getLocalProperties().getProperty("bintray.apikey")
+}
+
+bintray {
+    user = getBintrayUsername()
+    key = getBintrayApiKey()
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = bintrayDescription
+        websiteUrl = projectUrl
+        issueTrackerUrl = issuesUrl
+        vcsUrl = scmUrl
+        licenses = projectLicenses
+        override = true
+        publish = true
+        publicDownloadNumbers = true
+    }
+}

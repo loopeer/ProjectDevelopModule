@@ -11,9 +11,13 @@ import android.widget.NumberPicker;
 
 public class AddressPickerDialog extends DialogFragment {
 
-    private int mCurrentProvince;
-    private int mCurrentCity;
-    private int mCurrentDistrict;
+    private int mCurProvinceIndex;
+    private int mCurCityIndex;
+    private int mCurDistrictIndex;
+    
+    private String mCurProvinceStr;
+    private String mCurCityStr;
+    private String mCurDistrictStr;
 
     private Address mAddress;
 
@@ -45,9 +49,9 @@ public class AddressPickerDialog extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mCurrentProvince = 0;
-        mCurrentCity = 0;
-        mCurrentDistrict = 0;
+        mCurProvinceIndex = 0;
+        mCurCityIndex = 0;
+        mCurDistrictIndex = 0;
 
         mAddress = AddressUtils.getInstance().getAddress();
         mProvinces = AddressUtils.getInstance().getProvinces(mAddress);
@@ -80,8 +84,9 @@ public class AddressPickerDialog extends DialogFragment {
         mProvincePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurrentProvince = newVal;
-                mCurrentCity = 0;
+                mCurProvinceIndex = newVal;
+                mCurProvinceStr = picker.getDisplayedValues()[newVal];
+                mCurCityIndex = 0;
                 updateCityPicker();
                 updateDistrictPicker();
             }
@@ -90,8 +95,9 @@ public class AddressPickerDialog extends DialogFragment {
         mCityPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurrentCity = newVal;
-                mCurrentDistrict = 0;
+                mCurCityIndex = newVal;
+                mCurCityStr = picker.getDisplayedValues()[newVal];
+                mCurDistrictIndex = 0;
                 updateDistrictPicker();
             }
         });
@@ -99,7 +105,8 @@ public class AddressPickerDialog extends DialogFragment {
         mDistrictPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurrentDistrict = newVal;
+                mCurDistrictIndex = newVal;
+                mCurDistrictStr = picker.getDisplayedValues()[newVal];
             }
         });
 
@@ -108,14 +115,16 @@ public class AddressPickerDialog extends DialogFragment {
         builder.setPositiveButton(R.string.common_sure, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mOnPickListener.onConfirm(mCurrentProvince, mCurrentCity, mCurrentDistrict);
+                if(mOnPickListener != null)
+                    mOnPickListener.onConfirm(mCurProvinceStr, mCurCityStr, mCurDistrictStr);
             }
         });
 
         builder.setNegativeButton(R.string.common_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                mOnPickListener.onCancel();
+                if(mOnPickListener != null)
+                 mOnPickListener.onCancel();
             }
         });
 
@@ -127,20 +136,21 @@ public class AddressPickerDialog extends DialogFragment {
         mProvincePicker.setValue(0);
         mProvincePicker.setMaxValue(getMaxValue(mProvinces));
         mProvincePicker.setDisplayedValues(mProvinces);
-        if (mCurrentProvince == 0 || mCurrentProvince == mProvinces.length - 1) {
+        mCurProvinceStr = mProvinces[0];
+        if (mCurProvinceIndex == 0 || mCurProvinceIndex == mProvinces.length - 1) {
             mProvincePicker.setWrapSelectorWheel(false);
         }
     }
 
 
     public  void updateCityPicker() {
-        mCities = AddressUtils.getInstance().getCities(mAddress.cityList.get(mCurrentProvince));
+        mCities = AddressUtils.getInstance().getCities(mAddress.cityList.get(mCurProvinceIndex));
         mCityPicker.setDisplayedValues(null);
         mCityPicker.setValue(0);
         mCityPicker.setMaxValue(getMaxValue(mCities));
         mCityPicker.setDisplayedValues(mCities);
-
-        if (mCurrentCity == 0 || mCurrentCity == mCities.length - 1) {
+        mCurCityStr = mCities[0];
+        if (mCurCityIndex == 0 || mCurCityIndex == mCities.length - 1) {
             mCityPicker.setWrapSelectorWheel(false);
         }
     }
@@ -148,13 +158,13 @@ public class AddressPickerDialog extends DialogFragment {
 
     public  void updateDistrictPicker() {
         mDistricts = AddressUtils.getInstance()
-            .getDistricts(mAddress.cityList.get(mCurrentProvince).c.get(mCurrentCity));
+            .getDistricts(mAddress.cityList.get(mCurProvinceIndex).c.get(mCurCityIndex));
         mDistrictPicker.setDisplayedValues(null);
         mDistrictPicker.setValue(0);
         mDistrictPicker.setMaxValue(getMaxValue(mDistricts));
         mDistrictPicker.setDisplayedValues(mDistricts);
-
-        if (mCurrentDistrict == 0 || mCurrentDistrict == mDistricts.length - 1) {
+        mCurDistrictStr = mDistricts[0];
+        if (mCurDistrictIndex == 0 || mCurDistrictIndex == mDistricts.length - 1) {
             mDistrictPicker.setWrapSelectorWheel(false);
         }
     }
@@ -177,7 +187,7 @@ public class AddressPickerDialog extends DialogFragment {
 
     public interface OnPickListener {
 
-        abstract void onConfirm(int provinceIndex, int cityIndex, int districtIndex);
+        abstract void onConfirm(String province,String city,String district);
 
         abstract void onCancel();
     }

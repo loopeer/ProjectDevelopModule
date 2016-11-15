@@ -34,12 +34,8 @@ public class AddressPickerActivity extends AppCompatActivity{
         final AddressPickerDialog dialog = new AddressPickerDialog();
         dialog.setTitle("please choose your address");
         dialog.setOnPickListener(new AddressPickerDialog.OnPickListener() {
-            @Override public void onConfirm(int provinceIndex, int cityIndex, int districtIndex) {
-                Address address = AddressUtils.getInstance().getAddress();
-                String province = address.cityList.get(provinceIndex).p;
-                String city = address.cityList.get(provinceIndex).c.get(cityIndex).n;
-                String district = address.cityList.get(provinceIndex).c.get(cityIndex).a.get(
-                    districtIndex).s;
+
+            @Override public void onConfirm(String province, String city, String district) {
                 mTextAddress.setText(getString(R.string.address_format,province,city,district));
             }
 

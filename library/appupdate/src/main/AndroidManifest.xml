@@ -1,4 +1,4 @@
-<manifest package="com.loopeer.android.librarys.appupdate"
+<manifest package="loopeer.com.appupdate"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application

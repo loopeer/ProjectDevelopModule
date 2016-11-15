@@ -20,4 +20,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile deps.supportCompat
+    compile deps.supportCoreUi
+    compile deps.supportFragment
+    compile deps.appcompatV7
+    compile deps.design
 }

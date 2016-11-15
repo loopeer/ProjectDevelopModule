@@ -12,9 +12,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
 
-import com.loopeer.android.librarys.appupdate.R;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,6 +25,7 @@ import java.net.URL;
 public class ApkDownloadService extends Service {
     public static final String EXTRA_APK_URL = "extra_apk_url";
     public static final String EXTRA_APP_NAME = "extra_app_name";
+    public static final String EXTRA_DRAWABLE_ID = "extra_drawable_id";
 
     private String url = null;
     private NotificationManager updateNotificationManager = null;
@@ -34,12 +35,15 @@ public class ApkDownloadService extends Service {
     private String appName = null;
     private String fileName = null;
     private String updateDir = null;
+    private int drawableId;
 
-    public static void startDownloadApkService(Context context, String url, String appName) {
+    public static void startDownloadApkService(Context context, String url, String appName,
+                                               @DrawableRes int drawableId) {
         if (TextUtils.isEmpty(url)) return;
         Intent intent = new Intent(context, ApkDownloadService.class);
         intent.putExtra(EXTRA_APK_URL, url);
         intent.putExtra(EXTRA_APP_NAME, appName);
+        intent.putExtra(EXTRA_DRAWABLE_ID, drawableId);
         context.startService(intent);
     }
 
@@ -47,6 +51,8 @@ public class ApkDownloadService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         url = intent.getStringExtra(EXTRA_APK_URL);
         appName = intent.getStringExtra(EXTRA_APP_NAME);
+        drawableId = intent.getIntExtra(EXTRA_DRAWABLE_ID, 0);
+
         if (url != null) {
             fileName = url.substring(url.lastIndexOf("/") + 1);
             updateDir = Environment.getDataDirectory() + "/data/" + this.getPackageName() + "/files/";
@@ -55,7 +61,7 @@ public class ApkDownloadService extends Service {
             updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             mBuilder = new Notification.Builder(this);
             mBuilder.setContentTitle(getApplication().getResources().getString(R.string.download)).setContentText("0%")
-                    .setSmallIcon(R.drawable.ic_launcher);
+                    .setSmallIcon(drawableId);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 updateNotification = mBuilder.build();
             } else {
@@ -105,7 +111,7 @@ public class ApkDownloadService extends Service {
                     PendingIntent pendingIntent = PendingIntent.getActivity(ApkDownloadService.this, 10, nullIntent, 0);
                     mBuilder.setContentTitle(getApplication().getResources().getString(R.string.download_failed))
                             .setContentText(appName)
-                            .setSmallIcon(R.drawable.ic_launcher);
+                            .setSmallIcon(drawableId);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         updateNotification = mBuilder.build();
                     } else {
@@ -158,7 +164,7 @@ public class ApkDownloadService extends Service {
                     mBuilder.setContentIntent(pendingIntent)
                             .setContentTitle(getApplication().getResources().getString(R.string.download))
                             .setContentText((int) totalSize * 100 / updateTotalSize + "%")
-                            .setSmallIcon(R.drawable.ic_launcher);
+                            .setSmallIcon(drawableId);
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         updateNotification = mBuilder.build();
                     } else {

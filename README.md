@@ -1,10 +1,10 @@
 # ProjectDevelopModule
 ## Catalog
-* [CompatInset](# CompatInset)
-* [BottomDialog](# BottomDialog)
+* [CompatInset](#compatInset)
+* [BottomDialog](#bottomDialog)
 
-### CompatInset  
-
+### CompatInset
+===
 One fasion in the library to solve make status bar transparent.Idea from CoordinatorLayout and CollapsingToolbarLayout. 
 
 ||Api16|Api19|Api23|
@@ -98,8 +98,8 @@ values-v21:
 
 ```   
 
-### BottomDialog  
-
+### BottomDialog
+===
 ####Screenshot  
 ![](/screenshot/bottom_dialog/bottom_dialog_date_time.gif)
 ####Installation  

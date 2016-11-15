@@ -5,7 +5,7 @@ import android.view.View;
 
 import java.util.Calendar;
 
-import loopeer.com.bottomdialog.R;
+import loopeer.loopeer.bottomdialog.R;
 
 public class BottomDateTimeDialog extends BottomDialog {
 

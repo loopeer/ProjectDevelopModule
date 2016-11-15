@@ -8,6 +8,7 @@
     <string name="label_compat_single_inset_toolbar">CompatSingleInsetToolbarActivity</string>
     <string name="label_bottom_dialog_date_time">BottomDialogDateTimeViewActivity</string>
     <string name="label_address_picker">AddressPickerActivity</string>
+    <string name="label_test_guide">TestGuideActivity</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>

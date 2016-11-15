@@ -1,4 +1,7 @@
 include ':app',
         ':library:addresspicker',
         ':library:compatinset',
-        ':library:bottomdialog'
+        ':library:bottomdialog',
+        ':library:guideactivity',
+        ':library:appupdate'
+

@@ -3,6 +3,6 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/activity_horizontal_margin"
     android:background="@android:color/white"
     tools:context=".MainActivity"/>

@@ -51,7 +51,7 @@ public class StringPicker extends NumberPicker {
         }
     }
 
-    private void setDividerColor(@ColorRes int resColor) {
+    public void setDividerColor(@ColorRes int resColor) {
         Field[] pickerFields = NumberPicker.class.getDeclaredFields();
         for (Field pf : pickerFields) {
             if (pf.getName().equals("mSelectionDivider")) {

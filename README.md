@@ -1,7 +1,7 @@
 # ProjectDevelopModule
 ## Catalog
-* [CompatInset](#compatInset)
-* [BottomDialog](#bottomDialog)
+* [CompatInset](#compatinset)
+* [BottomDialog](#bottomdialog)
 
 ### CompatInset
 ===

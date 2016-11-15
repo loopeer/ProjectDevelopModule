@@ -2,6 +2,7 @@
 ## Catalog
 * [CompatInset](#compatinset)
 * [BottomDialog](#bottomdialog)
+* [AddressPicker](#addresspicker)
 
 ### CompatInset
 ===
@@ -105,7 +106,18 @@ values-v21:
 ####Installation  
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:bottomdialog:0.0.1'
+    compile 'com.loopeer.library:bottomdialog:0.0.2'
+}
+```
+
+### AddressPicker
+===
+####Screenshot
+
+####Installation
+```groovy
+dependencies {
+    compile 'com.loopeer.library:addresspicker:0.0.2'
 }
 ```
 

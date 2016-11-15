@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.EditText;
@@ -12,13 +13,11 @@ import java.lang.reflect.Field;
 
 public class StringPicker extends NumberPicker {
     public StringPicker(Context context) {
-        super(context);
-        setDividerColor(R.color.divider);
+        this(context,null);
     }
 
     public StringPicker(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setDividerColor(R.color.divider);
+        this(context, attrs,0);
     }
 
     public StringPicker(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -58,7 +57,7 @@ public class StringPicker extends NumberPicker {
                 pf.setAccessible(true);
                 try {
                     //设置分割线的颜色值
-                    pf.set(this, new ColorDrawable(this.getResources().getColor(resColor)));
+                    pf.set(this, new ColorDrawable(ContextCompat.getColor(getContext(),resColor)));
                 } catch (IllegalArgumentException e) {
                     e.printStackTrace();
                 } catch (Resources.NotFoundException e) {

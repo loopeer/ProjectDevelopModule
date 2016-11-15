@@ -1,4 +1,4 @@
-<manifest package="loopeer.com.appupdate"
+<manifest package="loopeer.loopeer.appupdate"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
@@ -7,7 +7,7 @@
         android:supportsRtl="true">
 
         <service
-            android:name=".ApkDownloadService"
+            android:name="loopeer.loopeer.appupdate.ApkDownloadService"
             android:process=":appupdate"/>
 
     </application>

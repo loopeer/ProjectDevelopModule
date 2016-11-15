@@ -1,4 +1,4 @@
-package loopeer.com.projectdevelopmodule;
+package com.loopeer.projectdevelopmodule;
 
 
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
-import loopeer.com.guideactivity.AbsGuideActivity;
+import com.loopeer.guideactivity.AbsGuideActivity;
 
 public class TestGuideActivity extends AbsGuideActivity{
 

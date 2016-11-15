@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
-import loopeer.com.bottomdialog.R;
+import loopeer.loopeer.bottomdialog.R;
 
 public class DateTimeView extends LinearLayout {
 

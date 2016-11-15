@@ -34,7 +34,6 @@ dependencies {
     compile project(':library:compatinset')
     compile project(':library:bottomdialog')
     compile project(':library:addresspicker')
-
     compile project(':library:guideactivity')
     compile project(':library:appupdate')
 }

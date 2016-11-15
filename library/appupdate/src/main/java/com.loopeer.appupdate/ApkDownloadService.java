@@ -1,4 +1,4 @@
-package loopeer.com.appupdate;
+package loopeer.loopeer.appupdate;
 
 import android.app.Notification;
 import android.app.NotificationManager;

@@ -1,4 +1,4 @@
-package loopeer.com.guideactivity;
+package com.loopeer.guideactivity;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

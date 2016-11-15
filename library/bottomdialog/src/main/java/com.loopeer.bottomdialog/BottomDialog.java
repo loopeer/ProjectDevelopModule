@@ -6,7 +6,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import loopeer.com.bottomdialog.R;
+import loopeer.loopeer.bottomdialog.R;
 
 public class BottomDialog extends AppCompatDialog {
 

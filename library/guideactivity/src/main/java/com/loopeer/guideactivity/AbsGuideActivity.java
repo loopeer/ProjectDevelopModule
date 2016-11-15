@@ -1,4 +1,4 @@
-package loopeer.com.guideactivity;
+package com.loopeer.guideactivity;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import loopeer.loopeer.guideactivity.R;
 
 public class AbsGuideActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 

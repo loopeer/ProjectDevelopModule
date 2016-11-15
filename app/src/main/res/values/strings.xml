@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">ProjectDevelopModule</string>
 
+    <!--label-->
+    <string name="label_compat_inset_image_header">CompatInsetImageHeaderActivity</string>
+    <string name="label_compat_inset_toolbar">CompatInsetToolbarActivity</string>
+    <string name="label_compat_single_inset_image_header">CompatSingleInsetImageHeaderActivity</string>
+    <string name="label_compat_single_inset_toolbar">CompatSingleInsetToolbarActivity</string>
     <string name="label_bottom_dialog_date_time">BottomDialogDateTimeViewActivity</string>
     <string name="label_address_picker">AddressPickerActivity</string>
 

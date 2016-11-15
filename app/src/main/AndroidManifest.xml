@@ -8,61 +8,98 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".CompatInsetToolbarActivity"
+            android:name=".sample.CompatInsetToolbarActivity"
+            android:label="@string/label_compat_inset_toolbar"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".CompatInsetImageHeaderActivity"
+            android:name=".sample.CompatInsetImageHeaderActivity"
+            android:label="@string/label_compat_inset_image_header"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".CompatSingleInsetImageHeaderActivity"
+            android:name=".sample.CompatSingleInsetImageHeaderActivity"
+            android:label="@string/label_compat_single_inset_image_header"
             android:theme="@style/AppTheme.SingleNoActionBar"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".CompatSingleInsetToolbarActivity"
+            android:name=".sample.CompatSingleInsetToolbarActivity"
             android:theme="@style/AppTheme.SingleNoActionBar"
+            android:label="@string/label_compat_single_inset_toolbar"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".BottomDialogDateTimeViewActivity"
+            android:name=".sample.BottomDialogDateTimeViewActivity"
             android:label="@string/label_bottom_dialog_date_time">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
 
         <activity
-            android:name=".AddressPickerActivity"
+            android:name=".sample.AddressPickerActivity"
             android:label="@string/label_address_picker">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
         </activity>
     </application>
 

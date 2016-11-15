@@ -1,4 +1,4 @@
-package com.loopeer.projectdevelopmodule;
+package com.loopeer.projectdevelopmodule.sample;
 
 
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.view.View;
 
 import com.loopeer.bottomdialog.BottomDateTimeDialog;
 import com.loopeer.bottomdialog.DateTimeView;
+import com.loopeer.projectdevelopmodule.R;
 import com.loopeer.projectdevelopmodule.databinding.AcitivtyBottomDialogDateTimeBinding;
 
 import java.util.Calendar;

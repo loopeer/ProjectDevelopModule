@@ -1,9 +1,10 @@
-package com.loopeer.projectdevelopmodule;
+package com.loopeer.projectdevelopmodule.sample;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import com.loopeer.projectdevelopmodule.R;
 
 public class CompatInsetImageHeaderActivity extends AppCompatActivity {
 

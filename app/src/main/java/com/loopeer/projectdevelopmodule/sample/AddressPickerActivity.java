@@ -1,15 +1,13 @@
-package com.loopeer.projectdevelopmodule;
+package com.loopeer.projectdevelopmodule.sample;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
-import com.loopeer.addresspicker.Address;
 import com.loopeer.addresspicker.AddressPickerDialog;
-import com.loopeer.addresspicker.AddressUtils;
+import com.loopeer.projectdevelopmodule.R;
 
 public class AddressPickerActivity extends AppCompatActivity{
 

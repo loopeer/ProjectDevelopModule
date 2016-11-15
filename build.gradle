@@ -39,6 +39,7 @@ ext {
     ]
 
     def supportLibraryVersion = '24.2.0'
+    def gsonVersion = '2.7'
 
     deps = [
             supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",
@@ -46,6 +47,7 @@ ext {
             supportFragment: "com.android.support:support-fragment:$supportLibraryVersion",
             appcompatV7    : "com.android.support:appcompat-v7:$supportLibraryVersion",
             design         : "com.android.support:design:$supportLibraryVersion",
-            gridlayoutV7   : "com.android.support:gridlayout-v7:$supportLibraryVersion"
+            gridlayoutV7   : "com.android.support:gridlayout-v7:$supportLibraryVersion",
+            gson           : "com.google.code.gson:gson:$gsonVersion"
     ]
 }

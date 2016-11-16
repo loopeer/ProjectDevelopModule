@@ -15,8 +15,8 @@ One fasion in the library to solve make status bar transparent.Idea from Coordin
 |singleholder With translucent status bar in native system|same to top|same to top|![](/screenshot/inset_image/single_inset_image_23.png)|
 |singleholder With translucent status bar in native system|same to top|same to top|![](/screenshot/inset_image/single_inset_tool_23.png)|  
 
-####Usages
-#####Singleholder With translucent status bar in native system
+#### Usages
+##### Singleholder With translucent status bar in native system
 ```xml
 <LinearLayout
     android:layout_width="match_parent"
@@ -49,7 +49,7 @@ If you want support edittext softinput pop to push layout top. You should add **
         android:value=".MainActivity"/>
 </activity>
 ```
-#####Full transparency status bar
+##### Full transparency status bar
 The parents wrap **InsetHolderView** must be support the inset just as InsetLinearLayout in library.You can new create use the InsetHelper. Don't forget add fitsSystemWindows.
 ```xml
 <loopeer.com.compatinset.InsetLinearLayout
@@ -101,20 +101,21 @@ values-v21:
 
 ### BottomDialog
 ===
-####Screenshot  
+#### Screenshot
 ![](/screenshot/bottom_dialog/bottom_dialog_date_time.gif)
-####Installation  
+#### Installation
 ```groovy
 dependencies {
     compile 'com.loopeer.library:bottomdialog:0.0.2'
 }
 ```
+#### Usages
 
 ### AddressPicker
 ===
-####Screenshot
+#### Screenshot
 
-####Installation
+#### Installation
 ```groovy
 dependencies {
     compile 'com.loopeer.library:addresspicker:0.0.2'

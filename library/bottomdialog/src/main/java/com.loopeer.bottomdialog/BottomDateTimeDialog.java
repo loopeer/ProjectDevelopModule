@@ -1,99 +1,112 @@
 package com.loopeer.bottomdialog;
-
 import android.content.Context;
+import android.support.design.widget.BottomSheetDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import java.util.Calendar;
 
 import loopeer.loopeer.bottomdialog.R;
 
-public class BottomDateTimeDialog extends BottomDialog {
+public class BottomDateTimeDialog {
 
     DateTimeView mDateTimeView;
+    BottomSheetDialog mBottomSheetDialog;
 
     private OnDateSelectListener mOnDateSelectListener;
 
-    public BottomDateTimeDialog(Context context) {
-        this(context, R.style.CustomDialog_Bottom_NumberPicker);
-    }
-
-    public BottomDateTimeDialog(Context context, int theme) {
-        super(context, theme);
-        initView();
-    }
-
-    protected BottomDateTimeDialog(Context context, boolean cancelable, OnCancelListener cancelListener) {
-        super(context, cancelable, cancelListener);
-
-        setCancelable(cancelable);
-        setOnCancelListener(cancelListener);
-    }
-
-    private void initView() {
-        setContentView(R.layout.dialog_date_time);
-        mDateTimeView = (DateTimeView) findViewById(R.id.view_date_time_picker);
-        findViewById(R.id.btn_date_time_cancel)
+    private void applyView(BottomDateTimeDialogParams params) {
+        LayoutInflater inflater = LayoutInflater.from(params.context);
+        mBottomSheetDialog = new BottomSheetDialog(params.context);
+        View contentView = inflater.inflate(R.layout.dialog_date_time, null, false);
+        mBottomSheetDialog.setContentView(contentView);
+        mDateTimeView = (DateTimeView) contentView.findViewById(R.id.view_date_time_picker);
+        contentView.findViewById(R.id.btn_date_time_cancel)
                 .setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                onCancel();
+                                mBottomSheetDialog.dismiss();
                             }
                         });
-        findViewById(R.id.btn_date_time_sure)
+        contentView.findViewById(R.id.btn_date_time_sure)
                 .setOnClickListener(
                         new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                onSure();
+                                mOnDateSelectListener.onDateSelected(mDateTimeView.getCurrentDate());
+                                mBottomSheetDialog.dismiss();
                             }
                         }
                 );
 
-    }
-
-    public BottomDateTimeDialog updateDateTime(Calendar calendar) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(params.updateDateTime);
         mDateTimeView.update(calendar);
-        return this;
-    }
-
-    public BottomDateTimeDialog setDateTimeChangeListener(DateTimeView.OnDateTimeChangedListener listener) {
-        mDateTimeView.setOnDateTimeChangedListener(listener);
-        return this;
-    }
-
-    public BottomDateTimeDialog setMinDate(long date) {
-        mDateTimeView.setMinDate(date);
-        return this;
-    }
-
-    public BottomDateTimeDialog setDateSelectedListener(OnDateSelectListener listener) {
-        mOnDateSelectListener = listener;
-        return this;
-    }
-
-    @Override
-    public void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-    }
-
-    public void onCancel() {
-        dismiss();
-    }
-
-    public void onSure() {
-        mOnDateSelectListener.onDateSelected(mDateTimeView.getCurrentDate());
-        dismiss();
+        mDateTimeView.setOnDateTimeChangedListener(params.dateTimeChangedListener);
+        mDateTimeView.setMinDate(params.minDateTime);
+        mDateTimeView.setDateTimeMode(params.mode);
+        mOnDateSelectListener = params.dateSelectListener;
     }
 
     public interface OnDateSelectListener {
         void onDateSelected(Calendar calendar);
     }
 
+    public static class Builder{
 
-    public BottomDateTimeDialog setDateTimeMode(@DateTimeView.DateTimeMode int mode) {
-        mDateTimeView.setDateTimeMode(mode);
-        return this;
+        BottomDateTimeDialogParams mParams;
+        public Builder(Context context) {
+            mParams = new BottomDateTimeDialogParams();
+            mParams.context = context;
+        }
+
+        public BottomSheetDialog show() {
+            BottomSheetDialog dialog = create();
+            dialog.show();
+            return dialog;
+        }
+
+        public BottomSheetDialog create() {
+            BottomDateTimeDialog dialog = new BottomDateTimeDialog();
+            dialog.applyView(mParams);
+            return dialog.mBottomSheetDialog;
+        }
+
+
+        public Builder updateDateTime(long updateDateTime) {
+            mParams.updateDateTime = updateDateTime;
+            return this;
+        }
+
+        public Builder setMinDateTime(long minDateTime) {
+            mParams.minDateTime = minDateTime;
+            return this;
+        }
+
+        public Builder setDateTimeMode(@DateTimeView.DateTimeMode int mode) {
+            mParams.mode = mode;
+            return this;
+        }
+
+        public Builder setDateTimeChangedListener(DateTimeView.OnDateTimeChangedListener dateTimeChangedListener) {
+            mParams.dateTimeChangedListener = dateTimeChangedListener;
+            return this;
+        }
+
+        public Builder setDateSelectListener(OnDateSelectListener dateSelectListener) {
+            mParams.dateSelectListener = dateSelectListener;
+            return this;
+        }
+    }
+
+    public static class BottomDateTimeDialogParams{
+        Context context;
+        long updateDateTime;
+        long minDateTime;
+        DateTimeView.OnDateTimeChangedListener dateTimeChangedListener;
+        OnDateSelectListener dateSelectListener;
+        @DateTimeView.DateTimeMode int mode;
     }
 }
 

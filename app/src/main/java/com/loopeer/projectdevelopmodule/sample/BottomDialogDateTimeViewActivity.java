@@ -58,9 +58,9 @@ public class BottomDialogDateTimeViewActivity extends AppCompatActivity {
     }
 
     public void onDateTimeItemClick(View view) {
-        new BottomDateTimeDialog(this)
-                .updateDateTime(Calendar.getInstance())
-                .setDateSelectedListener(
+        new BottomDateTimeDialog.Builder(this)
+                .updateDateTime(Calendar.getInstance().getTimeInMillis())
+                .setDateSelectListener(
                         new BottomDateTimeDialog.OnDateSelectListener() {
                             @Override
                             public void onDateSelected(Calendar calendar) {

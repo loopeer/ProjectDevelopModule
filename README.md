@@ -110,6 +110,19 @@ dependencies {
 }
 ```
 #### Usages
+```java
+new BottomDateTimeDialog.Builder(this)
+        .updateDateTime(Calendar.getInstance().getTimeInMillis())
+        .setDateSelectListener(
+                new BottomDateTimeDialog.OnDateSelectListener() {
+                    @Override
+                    public void onDateSelected(Calendar calendar) {
+                        updateDateTimeText(calendar);
+                    }
+                })
+        .setDateTimeMode(mDateTimeMode)
+        .show();
+```
 
 ### AddressPicker
 ===

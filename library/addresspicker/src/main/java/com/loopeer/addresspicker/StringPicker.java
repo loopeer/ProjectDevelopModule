@@ -14,14 +14,12 @@ import java.lang.reflect.Field;
 public class StringPicker extends NumberPicker {
     public StringPicker(Context context) {
         this(context,null);
+
     }
 
+    //used
     public StringPicker(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
-    }
-
-    public StringPicker(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+        super(context,attrs);
         setDividerColor(R.color.divider);
     }
 

@@ -127,11 +127,41 @@ new BottomDateTimeDialog.Builder(this)
 ### AddressPicker
 ===
 #### Screenshot
-
+![](/screenshot/address_picker/address_picker_dialog.gif)
 #### Installation
 ```groovy
 dependencies {
     compile 'com.loopeer.library:addresspicker:0.0.2'
 }
+```
+#### Usages
+```java
+AddressPickerDialog.Builder builder = new AddressPickerDialog.Builder(this);
+builder.setTitle(title)
+            //bottom or alert dialog
+            .setDialogType(mType)
+            //show province | city | district
+            .setAddressMode(mMode)
+            //if you want to show the last address you have picked,just record the params and set them
+            .setProvinceIndex(provinceIndex)
+            .setCityIndex(cityIndex)
+            .setDistrictIndex(districtIndex)
+            .setOnPickerListener(new OnAddressPickListener() {
+                @Override public void onConfirm(AddressPickerView pickerView) {
+                    mTextAddress.setText(getString(
+                        R.string.address_format,pickerView.getProvince(), pickerView.getCity(),
+                        pickerView.getDistrict()));
+                    //record params
+                    provinceIndex = pickerView.getProvinceIndex();
+                    cityIndex = pickerView.getCityIndex();
+                    districtIndex = pickerView.getDistrictIndex();
+                }
+
+
+                @Override public void onCancel() {
+
+                }
+            })
+            .show();
 ```
 

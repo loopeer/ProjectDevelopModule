@@ -31,7 +31,8 @@ public class ClickSpanHelper {
 
                 @Override
                 public void updateDrawState(TextPaint tp) {
-                    tp.setColor(params.color == 0 ? tp.linkColor : ContextCompat.getColor(params.context, params.color));
+                    tp.setColor(params.color == 0 ? tp.linkColor
+                            : ContextCompat.getColor(params.context, params.color));
                     tp.setUnderlineText(params.underline);
                     tp.setFakeBoldText(params.bold);
                     if (params.textPaint != null) tp.set(params.textPaint);
@@ -44,7 +45,8 @@ public class ClickSpanHelper {
         }
 
         if (params.highlightColor != INT_DEFAULT_VALUE) params.textView.setHighlightColor(
-                ContextCompat.getColor(params.context, params.highlightColor)
+                params.highlightColor == 0 ? 0
+                        : ContextCompat.getColor(params.context, params.highlightColor)
         );
         params.textView.setText(contentSpan);
         params.textView.setMovementMethod(LinkMovementMethod.getInstance());

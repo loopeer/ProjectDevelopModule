@@ -17,7 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.CompatInsetToolbarActivity"
             android:label="@string/label_compat_inset_toolbar"
@@ -28,10 +27,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.CompatInsetImageHeaderActivity"
             android:label="@string/label_compat_inset_image_header"
@@ -42,10 +41,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.CompatSingleInsetImageHeaderActivity"
             android:label="@string/label_compat_single_inset_image_header"
@@ -57,10 +56,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.CompatSingleInsetToolbarActivity"
             android:label="@string/label_compat_single_inset_toolbar"
@@ -72,10 +71,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.BottomDialogDateTimeViewActivity"
             android:label="@string/label_bottom_dialog_date_time">
@@ -85,10 +84,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.AddressPickerActivity"
             android:label="@string/label_address_picker">
@@ -98,10 +97,10 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
-
         <activity
             android:name=".sample.TestGuideActivity"
             android:label="@string/label_test_guide"
@@ -109,8 +108,22 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>
+
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".sample.BaseDevelopUtilsActivity"
+            android:label="@string/label_develop_util">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>

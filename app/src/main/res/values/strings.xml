@@ -10,6 +10,7 @@
     <string name="label_address_picker">AddressPickerActivity</string>
     <string name="label_flow_layout">FlowLayoutActivity</string>
     <string name="label_test_guide">TestGuideActivity</string>
+    <string name="label_develop_util">DevelopUtil</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>
@@ -22,4 +23,10 @@
 
     <!--address picker-->
     <string name="address_format">%1$s %2$s %3$s</string>
+
+    <!-- develop util -->
+    <string name="util_click_span_helper_content">Android 7.0 Nougat is here! Get your apps ready for the latest version of Android, with new system behaviors to save battery and memory. Extend your apps with multi-window UI, direct reply notifications and more.多窗口支持</string>
+    <string name="util_click_span_helper_01">Android 7.0 Nougat</string>
+    <string name="util_click_span_helper_02">multi-window UI</string>
+    <string name="util_click_span_helper_03">多窗口</string>
 </resources>

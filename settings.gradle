@@ -4,5 +4,7 @@ include ':app',
         ':library:compatinset',
         ':library:bottomdialog',
         ':library:guideactivity',
-        ':library:appupdate'
+        ':library:appupdate',
+        ':library:developutils'
+
 

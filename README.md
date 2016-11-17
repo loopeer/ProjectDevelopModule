@@ -3,6 +3,7 @@
 * [CompatInset](#compatinset)
 * [BottomDialog](#bottomdialog)
 * [AddressPicker](#addresspicker)
+* [DevelopUtil](#developutil)
 
 ### CompatInset
 ===
@@ -164,4 +165,44 @@ builder.setTitle(title)
             })
             .show();
 ```
+
+### DevelopUtil
+===
+#### Installation
+```groovy
+dependencies {
+    compile 'com.loopeer.library:addresspicker:x.x.x'
+}
+```
+#### Usages
+##### ClickSpanHelper
+![](/screenshot/develop_util/util_click_span_helper.png)
+
+```java
+new ClickSpanHelper.Builder(mBinding.textTestClickSpan
+        , R.string.util_click_span_helper_content)
+        .setHighlightColor(0)
+        .setColor(R.color.colorAccent)
+        .setSpanUnderLine(false)
+        .setSpanBold(false)
+        .addClickSpanParam(R.string.util_click_span_helper_01, widget -> {
+            Toast.makeText(widget.getContext(), "Click 01", Toast.LENGTH_SHORT).show();
+        })
+        .addClickSpanParam(R.string.util_click_span_helper_02, widget -> {
+            Toast.makeText(widget.getContext(), "Click 02", Toast.LENGTH_SHORT).show();
+        })
+        .addClickSpanParam(R.string.util_click_span_helper_03, new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Toast.makeText(widget.getContext(), "Click 03", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                ds.setUnderlineText(true);
+                ds.setColor(ContextCompat.getColor(BaseDevelopUtilsActivity.this, R.color.colorPrimary));
+            }
+        }).build();
+```
+
 

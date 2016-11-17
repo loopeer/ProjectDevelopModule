@@ -1,194 +1,126 @@
 package com.loopeer.addresspicker;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.annotation.IntDef;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.NumberPicker;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.util.Calendar;
 
-public class AddressPickerDialog extends DialogFragment {
+public class AddressPickerDialog {
 
-    private int mCurProvinceIndex;
-    private int mCurCityIndex;
-    private int mCurDistrictIndex;
-    
-    private String mCurProvinceStr;
-    private String mCurCityStr;
-    private String mCurDistrictStr;
+    private AddressPickerDelegate mDelegate;
 
-    private Address mAddress;
-
-    private String[] mProvinces;
-    private String[] mCities;
-    private String[] mDistricts;
-
-    private StringPicker mProvincePicker;
-    private StringPicker mCityPicker;
-    private StringPicker mDistrictPicker;
-    private String mTitle;
-
-    private OnPickListener mOnPickListener;
-
-    private boolean mShowDistrict = true;
+    public final static int ALERT = 0;
+    public final static int BOTTOM = 1;
 
 
-    public void setTitle(String mTitle) {
-        this.mTitle = mTitle;
+    @SuppressLint("UniqueConstants")
+    @Retention(RetentionPolicy.RUNTIME)
+    @IntDef(value = {
+        ALERT, BOTTOM
+    })
+    public @interface DialogType {
     }
 
 
-    public void setShowDistrict(boolean showDistrict) {
-        mShowDistrict = showDistrict;
+    private void applyView(final AddressPickerParams params) {
+        mDelegate = params.type == ALERT
+                    ? new AlertDialogDelegate(params)
+                    : new BottomDialogDelegate(params);
+        mDelegate.setTitle(params.title);
+        mDelegate.setAddressMode(params.mode);
+        mDelegate.setProvince(params.provinceIndex);
+        mDelegate.setCity(params.cityIndex);
+        mDelegate.setDistrict(params.districtIndex);
     }
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public static class Builder {
+        private AddressPickerParams mParams;
 
-        mCurProvinceIndex = 0;
-        mCurCityIndex = 0;
-        mCurDistrictIndex = 0;
+        public Builder(Context context) {
+            mParams = new AddressPickerParams();
+            mParams.context = context;
+            mParams.provinceIndex = 0;
+            mParams.cityIndex = 0;
+            mParams.districtIndex = 0;
+            mParams.type = ALERT;
+            mParams.mode = AddressPickerView.PROVINCE_CITY;
+        }
 
-        mAddress = AddressUtils.getInstance().getAddress();
-        mProvinces = AddressUtils.getInstance().getProvinces(mAddress);
-    }
+        public AddressPickerDelegate show(){
+            AddressPickerDelegate delegate = create();
+            delegate.show();
+            return delegate;
+        }
 
+        public AddressPickerDelegate create(){
+            AddressPickerDialog dialog = new AddressPickerDialog();
+            dialog.applyView(mParams);
+            return dialog.mDelegate;
+        }
 
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle(mTitle);
-
-        View v = View.inflate(getContext(), R.layout.view_address_picker, null);
-        mProvincePicker = (StringPicker) v.findViewById(R.id.picker_province);
-        mCityPicker = (StringPicker) v.findViewById(R.id.picker_city);
-        mDistrictPicker = (StringPicker) v.findViewById(R.id.picker_district);
-        mDistrictPicker.setVisibility(mShowDistrict ? View.VISIBLE : View.GONE);
-
-        mProvincePicker.setMinValue(0);
-        mCityPicker.setMinValue(0);
-        mDistrictPicker.setMaxValue(0);
-
-        mProvincePicker.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-        mCityPicker.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-        mDistrictPicker.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
-
-        updateProvincePicker();
-        updateCityPicker();
-        updateDistrictPicker();
-
-        mProvincePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurProvinceIndex = newVal;
-                mCurProvinceStr = picker.getDisplayedValues()[newVal];
-                mCurCityIndex = 0;
-                updateCityPicker();
-                updateDistrictPicker();
+        public Builder setTitle(String title) {
+            if (mParams.type == ALERT) {
+                mParams.title = title;
             }
-        });
-
-        mCityPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurCityIndex = newVal;
-                mCurCityStr = picker.getDisplayedValues()[newVal];
-                mCurDistrictIndex = 0;
-                updateDistrictPicker();
-            }
-        });
-
-        mDistrictPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                mCurDistrictIndex = newVal;
-                mCurDistrictStr = picker.getDisplayedValues()[newVal];
-            }
-        });
-
-        builder.setView(v);
-
-        builder.setPositiveButton(R.string.common_sure, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(mOnPickListener != null)
-                    mOnPickListener.onConfirm(mCurProvinceStr, mCurCityStr, mCurDistrictStr);
-            }
-        });
-
-        builder.setNegativeButton(R.string.common_cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(mOnPickListener != null)
-                 mOnPickListener.onCancel();
-            }
-        });
-
-        return builder.create();
-    }
+            return this;
+        }
 
 
-    public  void updateProvincePicker() {
-        mProvincePicker.setValue(0);
-        mProvincePicker.setMaxValue(getMaxValue(mProvinces));
-        mProvincePicker.setDisplayedValues(mProvinces);
-        mCurProvinceStr = mProvinces[0];
-        if (mCurProvinceIndex == 0 || mCurProvinceIndex == mProvinces.length - 1) {
-            mProvincePicker.setWrapSelectorWheel(false);
+        public Builder setProvinceIndex(int index) {
+            mParams.provinceIndex = index;
+            return this;
+        }
+
+
+        public Builder setCityIndex(int index) {
+            mParams.cityIndex = index;
+            return this;
+        }
+
+
+        public Builder setDistrictIndex(int index) {
+            mParams.districtIndex = index;
+            return this;
+        }
+
+
+        public Builder setOnPickerListener(OnAddressPickListener listener) {
+            mParams.listener = listener;
+            return this;
+        }
+
+
+        public Builder setDialogType(@DialogType int type) {
+            mParams.type = type;
+            return this;
+        }
+
+
+        public Builder setAddressMode(@AddressPickerView.AddressMode int mode) {
+            mParams.mode = mode;
+            return this;
         }
     }
 
 
-    public  void updateCityPicker() {
-        mCities = AddressUtils.getInstance().getCities(mAddress.cityList.get(mCurProvinceIndex));
-        mCityPicker.setDisplayedValues(null);
-        mCityPicker.setValue(0);
-        mCityPicker.setMaxValue(getMaxValue(mCities));
-        mCityPicker.setDisplayedValues(mCities);
-        mCurCityStr = mCities[0];
-        if (mCurCityIndex == 0 || mCurCityIndex == mCities.length - 1) {
-            mCityPicker.setWrapSelectorWheel(false);
-        }
+    public static class AddressPickerParams {
+
+        public Context context;
+        public String title;
+        public int provinceIndex;
+        public int cityIndex;
+        public int districtIndex;
+        public OnAddressPickListener listener;
+        public @DialogType int type;
+        public @AddressPickerView.AddressMode int mode;
     }
 
-
-    public  void updateDistrictPicker() {
-        mDistricts = AddressUtils.getInstance()
-            .getDistricts(mAddress.cityList.get(mCurProvinceIndex).c.get(mCurCityIndex));
-        mDistrictPicker.setDisplayedValues(null);
-        mDistrictPicker.setValue(0);
-        mDistrictPicker.setMaxValue(getMaxValue(mDistricts));
-        mDistrictPicker.setDisplayedValues(mDistricts);
-        mCurDistrictStr = mDistricts[0];
-        if (mCurDistrictIndex == 0 || mCurDistrictIndex == mDistricts.length - 1) {
-            mDistrictPicker.setWrapSelectorWheel(false);
-        }
-    }
-
-
-    private int getMaxValue(String[] str) {
-        return str == null ? 0 : str.length - 1;
-    }
-
-
-    public OnPickListener getOnPickListener() {
-        return mOnPickListener;
-    }
-
-
-    public void setOnPickListener(OnPickListener onPickListener) {
-        mOnPickListener = onPickListener;
-    }
-
-
-    public interface OnPickListener {
-
-        abstract void onConfirm(String province,String city,String district);
-
-        abstract void onCancel();
-    }
 }

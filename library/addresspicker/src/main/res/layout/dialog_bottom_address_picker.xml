@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="@dimen/bottom_dialog_medium_padding"
+            android:paddingLeft="@dimen/bottom_dialog_medium_padding"
+            android:paddingRight="@dimen/bottom_dialog_medium_padding"
+            android:paddingTop="@dimen/bottom_dialog_medium_padding"
+            android:text="@string/common_cancel"
+            android:textColor="?android:textColorPrimary"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/btn_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="?selectableItemBackground"
+            android:paddingBottom="@dimen/bottom_dialog_medium_padding"
+            android:paddingLeft="@dimen/bottom_dialog_medium_padding"
+            android:paddingRight="@dimen/bottom_dialog_medium_padding"
+            android:paddingTop="@dimen/bottom_dialog_medium_padding"
+            android:text="@string/common_sure"
+            android:textColor="?android:textColorPrimary"/>
+    </FrameLayout>
+
+    <include layout="@layout/view_divider_dash"/>
+
+    <com.loopeer.addresspicker.AddressPickerView
+        android:id="@+id/view_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bottom_dialog_medium_padding"/>
+
+</LinearLayout>

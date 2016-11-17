@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- menu group -->
+    <group android:id="@+id/group_setting">
+        <item android:id="@+id/menu_province"
+            android:title="@string/menu_action_province" />
+        <item android:id="@+id/menu_city"
+            android:title="@string/menu_action_province_city" />
+        <item android:id="@+id/menu_district"
+            android:title="@string/menu_action_province_city_district" />
+    </group>
+</menu>

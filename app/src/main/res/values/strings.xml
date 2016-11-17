@@ -16,6 +16,10 @@
     <string name="menu_action_bottom_time">Time</string>
     <string name="menu_action_bottom_date_time">DateTime</string>
 
+    <string name="menu_action_province">Province</string>
+    <string name="menu_action_province_city">Province City</string>
+    <string name="menu_action_province_city_district">Province City District</string>
+
     <!--address picker-->
     <string name="address_format">%1$s %2$s %3$s</string>
 </resources>

@@ -4,4 +4,8 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="item_height">44dp</dimen>
+
+    <!--FlowLayout-->
+    <dimen name="desc_text_size">12sp</dimen>
+
 </resources>

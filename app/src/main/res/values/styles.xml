@@ -21,4 +21,12 @@
         <item name="android:layout_height">@dimen/item_height</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+
+    <!--FlowLayout-->
+    <style name="FlowDescStyle">
+        <item name="android:textColor">@color/selector_text_color</item>
+        <item name="android:textSize">@dimen/desc_text_size</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+    </style>
+
 </resources>

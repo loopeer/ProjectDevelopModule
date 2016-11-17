@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.loopeer.projectdevelopmodule">
+          package="com.loopeer.projectdevelopmodule">
 
     <application
         android:allowBackup="true"
@@ -63,8 +63,8 @@
 
         <activity
             android:name=".sample.CompatSingleInsetToolbarActivity"
-            android:theme="@style/AppTheme.SingleNoActionBar"
             android:label="@string/label_compat_single_inset_toolbar"
+            android:theme="@style/AppTheme.SingleNoActionBar"
             android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -114,6 +114,20 @@
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".flowlayout.FlowLayoutActivity"
+            android:label="@string/label_flow_layout">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

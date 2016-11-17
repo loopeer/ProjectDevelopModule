@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlowLayout">
+        <attr name="flowMode">
+            <enum name="scrollable" value="0"/>
+            <enum name="fixed" value="1"/>
+        </attr>
+        <attr name="flowLineHidePosition">
+            <enum name="none" value="0"/>
+            <enum name="both" value="1"/>
+            <enum name="start" value="2"/>
+            <enum name="end" value="3"/>
+        </attr>
+        <attr name="flowWidgetColor" format="color"/>
+        <attr name="flowLineColor" format="color"/>
+        <attr name="flowShowLine" format="boolean"/>
+        <attr name="flowWidgetPadding" format="dimension"/>
+        <attr name="flowWidgetSize" format="dimension"/>
+        <attr name="flowLineHeight" format="dimension"/>
+        <attr name="flowContentTextSize" format="dimension"/>
+        <attr name="flowContentTextColor" format="color"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayoutDescText">
+        <attr name="android:textSize"/>
+        <attr name="android:textColor"/>
+        <attr name="android:paddingTop"/>
+    </declare-styleable>
+</resources>

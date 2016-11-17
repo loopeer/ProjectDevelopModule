@@ -6,4 +6,11 @@
 
     <color name="window_background">#F1F1F1</color>
     <color name="text_color_hint">#DBDBDB</color>
+
+    <!--FlowLayout-->
+    <color name="selectColor">@color/colorPrimary</color>
+    <color name="unSelectColor">#EEEEEE</color>
+    <color name="textSelectColor">@color/colorPrimary</color>
+    <color name="textUnSelectColor">#999999</color>
+
 </resources>

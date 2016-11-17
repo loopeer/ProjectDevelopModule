@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.loopeer.flowlayout.FlowLayout
+        android:id="@+id/layout_flow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:flowContentTextColor="@android:color/white"
+        app:flowContentTextSize="16sp"
+        app:flowLineColor="@color/selector_color"
+        app:flowLineHeight="2dp"
+        app:flowLineHidePosition="both"
+        app:flowMode="scrollable"
+        app:flowShowLine="true"
+        app:flowWidgetColor="@color/selector_color"
+        app:flowWidgetPadding="12dp"
+        app:flowWidgetSize="30dp"/>
+
+    <com.loopeer.flowlayout.FlowLayout
+        android:id="@+id/layout_flow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:flowContentTextColor="@android:color/white"
+        app:flowLineColor="@color/selector_color"
+        app:flowLineHeight="2dp"
+        app:flowLineHidePosition="both"
+        app:flowMode="fixed"
+        app:flowShowLine="true"
+        app:flowWidgetColor="@color/selector_color"
+        app:flowWidgetPadding="12dp"
+        app:flowWidgetSize="30dp"/>
+
+
+</LinearLayout>

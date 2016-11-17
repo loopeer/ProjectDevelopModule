@@ -171,7 +171,7 @@ builder.setTitle(title)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:addresspicker:x.x.x'
+    compile 'com.loopeer.library:developutil:x.x.x'
 }
 ```
 #### Usages

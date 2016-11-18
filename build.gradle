@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.3.0-alpha1'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
 
@@ -39,7 +39,7 @@ ext {
             versionName            : '1.0.0',
     ]
 
-    def supportLibraryVersion = '24.2.0'
+    def supportLibraryVersion = '25.0.1'
     def gsonVersion = '2.7'
 
     deps = [

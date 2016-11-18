@@ -5,6 +5,7 @@ include ':app',
         ':library:bottomdialog',
         ':library:guideactivity',
         ':library:appupdate',
-        ':library:developutils'
+        ':library:developutils',
+        ':library:databindpack'
 
 

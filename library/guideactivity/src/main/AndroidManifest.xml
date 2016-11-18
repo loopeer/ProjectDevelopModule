@@ -1,4 +1,4 @@
-<manifest package="loopeer.loopeer.guideactivity"
+<manifest package="com.loopeer.guideactivity"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application android:allowBackup="true"

@@ -137,8 +137,8 @@ dependencies {
 ```
 #### Usages
 ```java
-AddressPickerDialog.Builder builder = new AddressPickerDialog.Builder(this);
-builder.setTitle(title)
+new AddressPickerDialog.Builder(this)
+            .setTitle(title)
             //bottom or alert dialog
             .setDialogType(mType)
             //show province | city | district

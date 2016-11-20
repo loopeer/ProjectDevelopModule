@@ -7,7 +7,7 @@
         android:supportsRtl="true">
 
         <service
-            android:name="loopeer.loopeer.appupdate.ApkDownloadService"
+            android:name="com.loopeer.appupdate.ApkDownloadService"
             android:process=":appupdate"/>
 
     </application>

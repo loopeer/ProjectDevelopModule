@@ -1,4 +1,4 @@
-package loopeer.loopeer.appupdate;
+package com.loopeer.appupdate;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -14,7 +14,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.DrawableRes;
 import android.text.TextUtils;
-
 
 import java.io.File;
 import java.io.FileOutputStream;

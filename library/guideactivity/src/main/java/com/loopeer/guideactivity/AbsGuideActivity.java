@@ -17,8 +17,6 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import loopeer.loopeer.guideactivity.R;
-
 public class AbsGuideActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
 
     public ViewPager mViewPager;

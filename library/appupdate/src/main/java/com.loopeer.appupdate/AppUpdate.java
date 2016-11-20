@@ -1,11 +1,10 @@
-package loopeer.loopeer.appupdate;
+package com.loopeer.appupdate;
 
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.DrawableRes;
-
 
 public class AppUpdate {
 

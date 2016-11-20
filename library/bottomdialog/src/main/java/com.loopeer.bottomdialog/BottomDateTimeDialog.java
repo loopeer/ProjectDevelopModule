@@ -6,8 +6,6 @@ import android.view.View;
 
 import java.util.Calendar;
 
-import loopeer.loopeer.bottomdialog.R;
-
 public class BottomDateTimeDialog {
 
     DateTimeView mDateTimeView;

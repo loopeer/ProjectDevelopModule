@@ -20,8 +20,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
-import loopeer.loopeer.bottomdialog.R;
-
 public class DateTimeView extends LinearLayout {
 
     private static final int DEFAULT_START_YEAR = 1900;

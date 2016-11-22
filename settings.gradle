@@ -6,6 +6,7 @@ include ':app',
         ':library:guideactivity',
         ':library:appupdate',
         ':library:developutils',
-        ':library:databindpack'
+        ':library:databindpack',
+        ':library:imageswitcher'
 
 

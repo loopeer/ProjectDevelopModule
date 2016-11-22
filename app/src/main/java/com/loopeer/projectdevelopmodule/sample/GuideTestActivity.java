@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 import com.loopeer.guideactivity.AbsGuideActivity;
 import com.loopeer.projectdevelopmodule.R;
 
-public class TestGuideActivity extends AbsGuideActivity{
+public class GuideTestActivity extends AbsGuideActivity{
 
     private Button mBtnEnter;
 

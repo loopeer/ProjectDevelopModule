@@ -41,6 +41,7 @@ ext {
 
     def supportLibraryVersion = '25.0.1'
     def gsonVersion = '2.7'
+    def frescoVersion='0.14.1'
 
     deps = [
             supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",
@@ -49,6 +50,8 @@ ext {
             appcompatV7    : "com.android.support:appcompat-v7:$supportLibraryVersion",
             design         : "com.android.support:design:$supportLibraryVersion",
             gridlayoutV7   : "com.android.support:gridlayout-v7:$supportLibraryVersion",
-            gson           : "com.google.code.gson:gson:$gsonVersion"
+            gson           : "com.google.code.gson:gson:$gsonVersion",
+            fresco         : "com.facebook.fresco:fresco:$frescoVersion",
+            frescoOkhttp   : "com.facebook.fresco:imagepipeline-okhttp:$frescoVersion"
     ]
 }

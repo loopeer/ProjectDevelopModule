@@ -9,8 +9,9 @@
     <string name="label_bottom_dialog_date_time">BottomDialogDateTimeViewActivity</string>
     <string name="label_address_picker">AddressPickerActivity</string>
     <string name="label_flow_layout">FlowLayoutActivity</string>
-    <string name="label_test_guide">TestGuideActivity</string>
+    <string name="label_test_guide">GuideTestActivity</string>
     <string name="label_develop_util">DevelopUtil</string>
+    <string name="label_image_switcher">ImageSwitcherTestActivity</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>

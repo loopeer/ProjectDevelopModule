@@ -44,4 +44,5 @@ dependencies {
     compile project(':library:appupdate')
     compile project(':library:flowlayout')
     compile project(':library:developutils')
+    compile project(':library:imageswitcher')
 }

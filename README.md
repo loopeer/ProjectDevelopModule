@@ -4,10 +4,11 @@
 * [BottomDialog](#bottomdialog)
 * [AddressPicker](#addresspicker)
 * [DevelopUtil](#developutil)
+* [ImageSwitcher](#imageswitcher)
 
 ### CompatInset
 ===
-One fasion in the library to solve make status bar transparent.Idea from CoordinatorLayout and CollapsingToolbarLayout. 
+One fasion in the library to solve make status bar transparent.Idea from CoordinatorLayout and CollapsingToolbarLayout.
 
 ||Api16|Api19|Api23|
 |---|---|---|---|
@@ -206,3 +207,11 @@ new ClickSpanHelper.Builder(mBinding.textTestClickSpan
 ```
 
 
+### ImageSwitcher
+
+<img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>
+
+#### Usages
+```java
+NavigatorImage.startImageSwitchActivity(this,  Arrays.asList(sImages), 3, R.mipmap.ic_image_default);
+```

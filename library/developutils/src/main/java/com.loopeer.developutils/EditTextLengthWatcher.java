@@ -6,14 +6,14 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class EditTextWatcher implements TextWatcher {
+public class EditTextLengthWatcher implements TextWatcher {
 
     private EditText editText;
     private int length;
     private CharSequence toastString;
     private Context context;
 
-    public EditTextWatcher(EditText editText, int length, CharSequence toastString) {
+    public EditTextLengthWatcher(EditText editText, int length, CharSequence toastString) {
         this.editText = editText;
         this.length = length;
         this.toastString = toastString;

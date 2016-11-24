@@ -6,6 +6,7 @@
 * [DevelopUtil](#developutil)
     * [ClickSpanHelper](#clickspanhelper)
     * [DoubleClickHelper](#doubleclickhelper)
+    * [BankNoSpaceWatcher](#banknospacewatcher)
 * [ImageSwitcher](#imageswitcher)
 
 ### CompatInset
@@ -213,7 +214,7 @@ new DoubleClickHelper.Builder(targetView)
 ```
 ##### BankNoSpaceWatcher
 One TextWatcher to format the bank card no to add space auto.
-![](/screenshot/develop_util/util_bank_no_space_watcher.png)
+![](/screenshot/develop_util/util_bank_no_space_watcher.gif)
 
 ```java
 new BankNoSpaceWatcher().applyTo(edittext);

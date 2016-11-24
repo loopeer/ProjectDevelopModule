@@ -213,7 +213,7 @@ new DoubleClickHelper.Builder(targetView)
         .build();
 ```
 ##### BankNoSpaceWatcher
-One TextWatcher to format the bank card no to add space auto.
+One TextWatcher to format the bank card no to add space auto.  
 ![](/screenshot/develop_util/util_bank_no_space_watcher.gif)
 
 ```java

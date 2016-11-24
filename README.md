@@ -211,7 +211,13 @@ new DoubleClickHelper.Builder(targetView)
         .setSingleClickListener(event -> singleClickEvent())
         .build();
 ```
+##### BankNoSpaceWatcher
+One TextWatcher to format the bank card no to add space auto.
+![](/screenshot/develop_util/util_bank_no_space_watcher.png)
 
+```java
+new BankNoSpaceWatcher().applyTo(edittext);
+```
 ### ImageSwitcher
 ===
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>

@@ -9,6 +9,7 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.Toast;
 
+import com.loopeer.developutils.BankNoSpaceWatcher;
 import com.loopeer.developutils.ClickSpanHelper;
 import com.loopeer.developutils.DoubleClickHelper;
 import com.loopeer.projectdevelopmodule.R;
@@ -24,6 +25,7 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
 
         setUpClickSpan();
         setUpDoubleClick();
+        setUpBankNoSpaceWatcher();
     }
 
     private void setUpClickSpan() {
@@ -61,4 +63,9 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
                         , "Single Click", Toast.LENGTH_SHORT).show())
                 .build();
     }
+
+    private void setUpBankNoSpaceWatcher() {
+        new BankNoSpaceWatcher().applyTo(mBinding.editBankCardNo);
+    }
+
 }

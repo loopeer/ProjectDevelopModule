@@ -1,60 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <LinearLayout
-        android:id="@+id/activity_base_develop_utils"
+    <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        tools:context="com.loopeer.projectdevelopmodule.sample.BaseDevelopUtilsActivity">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            style="@style/LargeItemStyle"
-            android:background="@android:color/white"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            tools:context="com.loopeer.projectdevelopmodule.sample.BaseDevelopUtilsActivity">
 
-            <TextView
-                style="@style/SingleTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Click Span Text Test"/>
+            <LinearLayout
+                style="@style/LargeItemStyle"
+                android:background="@android:color/white"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/text_test_click_span"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/small_padding"
-                android:text="@string/util_click_span_helper_content"/>
+                <TextView
+                    style="@style/SingleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Click Span Text Test"/>
+
+                <TextView
+                    android:id="@+id/text_test_click_span"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_padding"
+                    android:text="@string/util_click_span_helper_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LargeItemStyle"
+                android:id="@+id/item_double_click"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SingleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Double Click Test"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/small_padding"
+                    android:text="Click me"
+                    android:textSize="30dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LargeItemStyle"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SingleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BankNoSpaceWatcher"/>
+
+                <EditText
+                    android:id="@+id/edit_bank_card_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:layout_marginTop="@dimen/small_padding"
+                    android:hint="Please input bank card no"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            style="@style/LargeItemStyle"
-            android:id="@+id/item_double_click"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@android:color/white"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/SingleTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Double Click Test"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="@dimen/small_padding"
-                android:text="Click me"
-                android:textSize="30dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </layout>

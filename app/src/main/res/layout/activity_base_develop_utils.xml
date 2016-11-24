@@ -33,6 +33,28 @@
                 android:text="@string/util_click_span_helper_content"/>
         </LinearLayout>
 
+        <LinearLayout
+            style="@style/LargeItemStyle"
+            android:id="@+id/item_double_click"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/SingleTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Double Click Test"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/small_padding"
+                android:text="Click me"
+                android:textSize="30dp"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </layout>

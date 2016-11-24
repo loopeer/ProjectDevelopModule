@@ -6,10 +6,12 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
 import com.loopeer.developutils.ClickSpanHelper;
+import com.loopeer.developutils.DoubleClickHelper;
 import com.loopeer.projectdevelopmodule.R;
 import com.loopeer.projectdevelopmodule.databinding.ActivityBaseDevelopUtilsBinding;
 
@@ -22,6 +24,7 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_base_develop_utils);
 
         setUpClickSpan();
+        setUpDoubleClick();
     }
 
     private void setUpClickSpan() {
@@ -51,4 +54,20 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
                 }).build();
     }
 
+    private void setUpDoubleClick() {
+        new DoubleClickHelper.Builder(mBinding.itemDoubleClick)
+                .setDoubleClickListener(new DoubleClickHelper.DoubleClickListener() {
+                    @Override
+                    public void onDoubleClick(MotionEvent e) {
+                        Toast.makeText(BaseDevelopUtilsActivity.this, "Double Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setSingleClickListener(new DoubleClickHelper.SingleClickListener() {
+                    @Override
+                    public void onClick(MotionEvent event) {
+                        Toast.makeText(BaseDevelopUtilsActivity.this, "Single Click", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .build();
+    }
 }

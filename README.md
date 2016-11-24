@@ -4,6 +4,8 @@
 * [BottomDialog](#bottomdialog)
 * [AddressPicker](#addresspicker)
 * [DevelopUtil](#developutil)
+    * [ClickSpanHelper](#clickspanhelper)
+    * [DoubleClickHelper](#doubleclickhelper)
 * [ImageSwitcher](#imageswitcher)
 
 ### CompatInset

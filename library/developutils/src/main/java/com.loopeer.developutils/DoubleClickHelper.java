@@ -1,10 +1,8 @@
 package com.loopeer.developutils;
 
-import android.content.Context;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
 
 public class DoubleClickHelper {
 
@@ -23,9 +21,6 @@ public class DoubleClickHelper {
 
         private DoubleClickListener mDoubleClickListener;
         private SingleClickListener mSingleClickListener;
-
-        public GestureListener() {
-        }
 
         public GestureListener(DoubleClickListener doubleClickListener, SingleClickListener singleClickListener) {
             mDoubleClickListener = doubleClickListener;

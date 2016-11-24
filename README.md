@@ -181,21 +181,17 @@ dependencies {
 
 ```java
 new ClickSpanHelper.Builder(mBinding.textTestClickSpan
-        , R.string.util_click_span_helper_content)
+        , R.string.contentString)
         .setHighlightColor(0)
         .setColor(R.color.colorAccent)
         .setSpanUnderLine(false)
         .setSpanBold(false)
-        .addClickSpanParam(R.string.util_click_span_helper_01, widget -> {
-            Toast.makeText(widget.getContext(), "Click 01", Toast.LENGTH_SHORT).show();
-        })
-        .addClickSpanParam(R.string.util_click_span_helper_02, widget -> {
-            Toast.makeText(widget.getContext(), "Click 02", Toast.LENGTH_SHORT).show();
-        })
-        .addClickSpanParam(R.string.util_click_span_helper_03, new ClickableSpan() {
+        .addClickSpanParam(R.string.first_click_string, widget -> method1())
+        .addClickSpanParam(R.string.second_click_string, widget -> method2())
+        .addClickSpanParam(R.string.third_click_string, new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                Toast.makeText(widget.getContext(), "Click 03", Toast.LENGTH_SHORT).show();
+                method3();
             }
 
             @Override
@@ -205,10 +201,17 @@ new ClickSpanHelper.Builder(mBinding.textTestClickSpan
             }
         }).build();
 ```
-
+##### DoubleClickHelper
+Add Double click event for view with single click.
+```java
+new DoubleClickHelper.Builder(targetView)
+        .setDoubleClickListener(e -> doubleClickEvent())
+        .setSingleClickListener(event -> singleClickEvent())
+        .build();
+```
 
 ### ImageSwitcher
-
+===
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>
 
 #### Usages

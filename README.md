@@ -7,6 +7,7 @@
     * [ClickSpanHelper](#clickspanhelper)
     * [DoubleClickHelper](#doubleclickhelper)
     * [BankNoSpaceWatcher](#banknospacewatcher)
+    * [CaptchaHelper](#captchahelper)
 * [ImageSwitcher](#imageswitcher)
 
 ### CompatInset

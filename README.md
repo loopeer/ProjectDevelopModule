@@ -237,6 +237,11 @@ mBinding.textPhoneCaptcha.setOnClickListener(v -> {
     mCaptchaHelper.start();// assume the this is one request callback.Then to start count down
 });
 ```
+Builder method:
+* setSendText
+* setTimeRemainText(string res with one integer param)
+* setTimeFuture(seconds)
+
 When go out of activity(onDestroy) or fragment(onDestroyView) you should cancel the CountDownTimer.
 ```java
 mCaptchaHelper.cancel();

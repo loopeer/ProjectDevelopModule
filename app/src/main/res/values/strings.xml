@@ -12,6 +12,7 @@
     <string name="label_test_guide">GuideTestActivity</string>
     <string name="label_develop_util">DevelopUtil</string>
     <string name="label_image_switcher">ImageSwitcherTestActivity</string>
+    <string name="label_validator">FormValidator</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>

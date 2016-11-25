@@ -2,7 +2,7 @@ package com.loopeer.databindpack.validator;
 
 import android.databinding.Bindable;
 
-import loopeer.loopeer.databindpack.BR;
+import com.loopeer.databindpack.BR;
 
 public abstract class ObservableValidator extends ObservableModel implements IValidator,IFormValidator {
 
@@ -24,7 +24,7 @@ public abstract class ObservableValidator extends ObservableModel implements IVa
     public void notifyEnable(){
         enable = checkEnable();
         notifyPropertyChanged(BR.enable);
-        mEnableListener.onEnableChange(enable);
+        if (mEnableListener != null) mEnableListener.onEnableChange(enable);
     }
 
     @Override public boolean isEdited() {
@@ -63,6 +63,7 @@ public abstract class ObservableValidator extends ObservableModel implements IVa
         result = 31 * result + Float.floatToIntBits(f); //float
         result = 31 * result + Double.doubleToLongBits(f); //double
         //Arrays.hashCode
+        //String.hashCode
         //object.hashCode*/
         return result;
     }

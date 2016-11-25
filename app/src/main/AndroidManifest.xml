@@ -145,12 +145,23 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".sample.FormValidatorActivity">
-        </activity>
-
         <activity
             android:name=".sample.ImageSwitcherTestActivity"
             android:label="@string/label_image_switcher">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".sample.FormValidatorActivity"
+            android:label="@string/label_validator">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

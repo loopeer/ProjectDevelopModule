@@ -238,9 +238,9 @@ mBinding.textPhoneCaptcha.setOnClickListener(v -> {
 });
 ```
 Builder method:
-* setSendText
-* setTimeRemainText(string res with one integer param)
-* setTimeFuture(seconds)
+* setSendText(has default)
+* setTimeRemainText(string res with one integer param,has default)
+* setTimeFuture(seconds default 60)
 
 When go out of activity(onDestroy) or fragment(onDestroyView) you should cancel the CountDownTimer.
 ```java

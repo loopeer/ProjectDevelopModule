@@ -9,6 +9,8 @@ public final class ValidatorUtils {
 
     public static final String REGEX_ID_CARD = "(^\\d{15}$)|(\\d{17}(?:\\d|x|X)$)";
 
+    private static final String REGEX_PLATE_NUMBER = "^[\\u4e00-\\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$";
+
     private ValidatorUtils(){}
 
     public static boolean isPhone(String phone){
@@ -26,5 +28,9 @@ public final class ValidatorUtils {
      */
     public static boolean isIDCard(String IDCard){
         return IDCard.trim().matches(REGEX_ID_CARD);
+    }
+
+    public static boolean isPlateNumber(String plateNo){
+        return plateNo.matches(REGEX_PLATE_NUMBER);
     }
 }

@@ -204,6 +204,7 @@ new ClickSpanHelper.Builder(mBinding.textTestClickSpan
             }
         }).build();
 ```
+
 ##### DoubleClickHelper
 Add Double click event for view with single click.
 ```java
@@ -212,6 +213,7 @@ new DoubleClickHelper.Builder(targetView)
         .setSingleClickListener(event -> singleClickEvent())
         .build();
 ```
+
 ##### BankNoSpaceWatcher
 One TextWatcher to format the bank card no to add space auto.  
 ![](/screenshot/develop_util/util_bank_no_space_watcher.gif)
@@ -219,6 +221,26 @@ One TextWatcher to format the bank card no to add space auto.
 ```java
 new BankNoSpaceWatcher().applyTo(edittext);
 ```
+
+##### CaptchaHelper
+Wraping CountDownTimer and TextView to let add captcha easy.
+
+![](/screenshot/develop_util/util_captcha_helper.gif)
+
+```java
+mCaptchaHelper = new CaptchaHelper.Builder(mBinding.textPhoneCaptcha)
+        .setTimeFuture(10)
+        .build();
+
+mBinding.textPhoneCaptcha.setOnClickListener(v -> {
+    mCaptchaHelper.start();// assume the this is one request callback.Then to start count down
+});
+```
+When go out of activity(onDestroy) or fragment(onDestroyView) you should cancel the CountDownTimer.
+```java
+mCaptchaHelper.cancel();
+```
+
 ### ImageSwitcher
 ===
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>

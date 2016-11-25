@@ -83,6 +83,28 @@
                     android:hint="Please input bank card no"/>
             </LinearLayout>
 
+            <LinearLayout
+                style="@style/LargeItemStyle"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/SingleTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CaptchaHelper"/>
+
+                <TextView
+                    android:id="@+id/text_phone_captcha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_color_phone_captcha"
+                    android:text="@string/developutils_phone_captcha_send"
+                    android:padding="@dimen/activity_vertical_margin"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

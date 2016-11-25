@@ -17,7 +17,7 @@ public class BankNoSpaceWatcher implements TextWatcher {
     private StringBuffer buffer = new StringBuffer();
     int konggeNumberB = 0;
 
-    public void applyTo(EditText editText) {
+    public void apply(EditText editText) {
         mEditText = editText;
         mEditText.addTextChangedListener(this);
     }

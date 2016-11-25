@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.loopeer.developutils.BankNoSpaceWatcher;
+import com.loopeer.developutils.CaptchaHelper;
 import com.loopeer.developutils.ClickSpanHelper;
 import com.loopeer.developutils.DoubleClickHelper;
 import com.loopeer.projectdevelopmodule.R;
@@ -18,6 +19,8 @@ import com.loopeer.projectdevelopmodule.databinding.ActivityBaseDevelopUtilsBind
 public class BaseDevelopUtilsActivity extends AppCompatActivity {
 
     ActivityBaseDevelopUtilsBinding mBinding;
+    CaptchaHelper mCaptchaHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +29,7 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
         setUpClickSpan();
         setUpDoubleClick();
         setUpBankNoSpaceWatcher();
+        setUpPhoneCaptcha();
     }
 
     private void setUpClickSpan() {
@@ -65,7 +69,21 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
     }
 
     private void setUpBankNoSpaceWatcher() {
-        new BankNoSpaceWatcher().applyTo(mBinding.editBankCardNo);
+        new BankNoSpaceWatcher().apply(mBinding.editBankCardNo);
     }
 
+    private void setUpPhoneCaptcha() {
+        mCaptchaHelper = new CaptchaHelper.Builder(mBinding.textPhoneCaptcha)
+                .setTimeFuture(10)
+                .build();
+        mBinding.textPhoneCaptcha.setOnClickListener(v -> {
+            mCaptchaHelper.start();
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCaptchaHelper.cancel();
+    }
 }

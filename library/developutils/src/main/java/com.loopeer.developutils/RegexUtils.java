@@ -14,23 +14,27 @@ public final class RegexUtils {
     private RegexUtils(){}
 
     public static boolean isPhone(String phone){
+        if (phone == null) return false;
         return phone.trim().matches(REGEX_PHONE);
     }
 
     public static boolean isEmail(String email){
+        if (email == null) return false;
         return email.trim().matches(REGEX_EMAIL);
     }
 
     /**
      * the regex actually is not correct , but is enough for most situation
-     * @param IDCard ID Card number
+     * @param idCard ID Card number
      * @return true if the ID Card number is legal;
      */
-    public static boolean isIDCard(String IDCard){
-        return IDCard.trim().matches(REGEX_ID_CARD);
+    public static boolean isIDCard(String idCard){
+        if (idCard == null) return false;
+        return idCard.trim().matches(REGEX_ID_CARD);
     }
 
     public static boolean isPlateNumber(String plateNo){
+        if (plateNo == null) return false;
         return plateNo.matches(REGEX_PLATE_NUMBER);
     }
 }

@@ -27,3 +27,13 @@ dependencies {
     compile deps.appcompatV7
     compile deps.design
 }
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+artifacts {
+    archives sourcesJar
+}
+
+apply from: rootProject.file('release.gradle')

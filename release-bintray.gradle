@@ -33,3 +33,7 @@ apply from: rootProject.file('gradle/android-maven-install.gradle')
 
 // Upload to Bintray
 apply from: rootProject.file('gradle/bintray.gradle')
+
+afterEvaluate { project ->
+    println "1111" + project.properties
+}

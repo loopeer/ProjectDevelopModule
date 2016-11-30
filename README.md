@@ -13,7 +13,12 @@
 ### CompatInset
 ===
 One fasion in the library to solve make status bar transparent.Idea from CoordinatorLayout and CollapsingToolbarLayout.
-
+#### Installation
+```groovy
+dependencies {
+    compile 'com.loopeer.library:compatinset:0.0.3'
+}
+```
 ||Api16|Api19|Api23|
 |---|---|---|---|
 |Full transparency status bar|![](/screenshot/inset_image/inset_tool_16.png)|![](/screenshot/inset_image/inset_tool_19.png)|![Full transparency status bar](/screenshot/inset_image/inset_tool_23.png)|
@@ -112,7 +117,7 @@ values-v21:
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:bottomdialog:0.0.2'
+    compile 'com.loopeer.library:bottomdialog:0.0.3'
 }
 ```
 #### Usages
@@ -137,7 +142,7 @@ new BottomDateTimeDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:addresspicker:0.0.2'
+    compile 'com.loopeer.library:addresspicker:0.0.3'
 }
 ```
 #### Usages
@@ -176,7 +181,7 @@ new AddressPickerDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:developutil:x.x.x'
+    compile 'com.loopeer.library:developutil:0.0.3'
 }
 ```
 #### Usages
@@ -249,6 +254,12 @@ mCaptchaHelper.cancel();
 
 ### ImageSwitcher
 ===
+
+```groovy
+dependencies {
+    compile 'com.loopeer.library:imageswitcher:0.0.3'
+}
+```
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>
 
 #### Usages

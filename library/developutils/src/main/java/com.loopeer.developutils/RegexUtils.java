@@ -1,6 +1,6 @@
 package com.loopeer.developutils;
 
-public final class ValidatorUtils {
+public final class RegexUtils {
 
     public static final String REGEX_PHONE = "^1[0-9]{10}$";
 
@@ -11,7 +11,7 @@ public final class ValidatorUtils {
 
     private static final String REGEX_PLATE_NUMBER = "^[\\u4e00-\\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$";
 
-    private ValidatorUtils(){}
+    private RegexUtils(){}
 
     public static boolean isPhone(String phone){
         return phone.trim().matches(REGEX_PHONE);

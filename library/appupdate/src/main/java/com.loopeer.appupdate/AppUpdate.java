@@ -8,7 +8,7 @@ import android.support.annotation.DrawableRes;
 
 public class AppUpdate {
 
-    public static void init(final Context context, String message, String description,
+    public static void apply(final Context context, String message, String description,
                             final String url, final String appName,final  @DrawableRes int drawableId) {
         new AlertDialog.Builder(context)
                 .setTitle(message)

@@ -9,6 +9,7 @@
     * [BankNoSpaceWatcher](#banknospacewatcher)
     * [CaptchaHelper](#captchahelper)
 * [ImageSwitcher](#imageswitcher)
+* [AppUpdate](#appupdate)
 
 ### CompatInset
 ===
@@ -225,7 +226,7 @@ One TextWatcher to format the bank card no to add space auto.
 ![](/screenshot/develop_util/util_bank_no_space_watcher.gif)
 
 ```java
-new BankNoSpaceWatcher().applyTo(edittext);
+new BankNoSpaceWatcher().apply(edittext);
 ```
 
 ##### CaptchaHelper
@@ -265,4 +266,23 @@ dependencies {
 #### Usages
 ```java
 NavigatorImage.startImageSwitchActivity(this,  Arrays.asList(sImages), 3, R.mipmap.ic_image_default);
+```
+
+### AppUpdate
+===
+Apk Update helper with apk version check and download apk service.
+```groovy
+dependencies {
+    compile 'com.loopeer.library:appupdate:0.0.3'
+}
+```
+
+#### Usages
+```java
+AppUpdate.apply(this
+    , title
+    , description
+    , url
+    , getString(R.string.app_name)
+    , R.drawable.ic_launcher);
 ```

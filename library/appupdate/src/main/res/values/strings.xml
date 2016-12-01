@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">AppUpdate</string>
     <string name="download_failed">Download failed please try again</string>
     <string name="download">Loading…</string>
     <string name="update_cancel">Cancel</string>

@@ -286,3 +286,13 @@ AppUpdate.apply(this
     , getString(R.string.app_name)
     , R.drawable.ic_launcher);
 ```
+
+
+### SpringViewGroup
+===
+
+<img src="/screenshot/spring_viewgroup/more_item_anim.gif" width = "310"/>
+<img src="/screenshot/spring_viewgroup/less_item_anim.gif" width = "310"/>
+
+#### Usages
+```SpringRecyclerView```   ```SpringScrollView```

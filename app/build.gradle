@@ -46,4 +46,5 @@ dependencies {
     compile project(':library:developutils')
     compile project(':library:imageswitcher')
     compile project(':library:databindpack')
+    compile project(':library:springviewgroup')
 }

@@ -31,23 +31,24 @@ task clean(type: Delete) {
 
 ext {
     configs = [
-            compileSdkVersion      : 24,
-            buildToolsVersion      : '25.0.0',
-            minSdkVersion          : 14,
-            targetSdkVersion       : 24,
-            versionCode            : 1,
-            versionName            : '1.0.0',
+            compileSdkVersion: 24,
+            buildToolsVersion: '25.0.0',
+            minSdkVersion    : 14,
+            targetSdkVersion : 24,
+            versionCode      : 1,
+            versionName      : '1.0.0',
     ]
 
     def supportLibraryVersion = '25.0.1'
     def gsonVersion = '2.7'
-    def frescoVersion='0.14.1'
+    def frescoVersion = '0.14.1'
 
     deps = [
             supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",
             supportCoreUi  : "com.android.support:support-core-ui:$supportLibraryVersion",
             supportFragment: "com.android.support:support-fragment:$supportLibraryVersion",
             appcompatV7    : "com.android.support:appcompat-v7:$supportLibraryVersion",
+            recyclerView   : "com.android.support:recyclerview-v7:$supportLibraryVersion",
             design         : "com.android.support:design:$supportLibraryVersion",
             gridlayoutV7   : "com.android.support:gridlayout-v7:$supportLibraryVersion",
             gson           : "com.google.code.gson:gson:$gsonVersion",

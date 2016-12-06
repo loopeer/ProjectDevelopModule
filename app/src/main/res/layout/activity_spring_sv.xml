@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.loopeer.springviewgroup.SpringScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@mipmap/image_girl"
+            android:scaleType="centerCrop"/>
+
+        <include
+            android:id="@+id/item_one"
+            layout="@layout/list_item_spring_recyclerview"/>
+
+        <include layout="@layout/list_item_spring_recyclerview"/>
+
+        <include layout="@layout/list_item_spring_recyclerview"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp"/>
+
+        <include layout="@layout/list_item_spring_recyclerview"/>
+
+        <include layout="@layout/list_item_spring_recyclerview"/>
+
+        <include
+            android:id="@+id/item_two"
+            layout="@layout/list_item_spring_recyclerview"/>
+
+    </LinearLayout>
+
+
+</com.loopeer.springviewgroup.SpringScrollView>

@@ -172,6 +172,23 @@
                 <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".sample.SpringViewGroupActivity"
+            android:label="@string/label_spring_viewgroup">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".sample.SpringRVActivity"/>
+        <activity android:name=".sample.SpringSVActivity"/>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@
     <string name="label_develop_util">DevelopUtil</string>
     <string name="label_image_switcher">ImageSwitcherTestActivity</string>
     <string name="label_validator">FormValidator</string>
+    <string name="label_spring_viewgroup">SpringViewGroupActivity</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>

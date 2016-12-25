@@ -35,7 +35,7 @@ dependencies {
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <loopeer.com.compatinset.SingleInsetHolderView
+    <com.loopeer.compatinset.SingleInsetHolderView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:insetStatusBarColor="@android:color/transparent"/>
@@ -64,13 +64,13 @@ If you want support edittext softinput pop to push layout top. You should add **
 ##### Full transparency status bar
 The parents wrap **InsetHolderView** must be support the inset just as InsetLinearLayout in library.You can new create use the InsetHelper. Don't forget add fitsSystemWindows.
 ```xml
-<loopeer.com.compatinset.InsetLinearLayout
+<com.loopeer.compatinset.InsetLinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="@bool/fits_system_windows"
     android:orientation="vertical">
 
-    <loopeer.com.compatinset.InsetHolderView
+    <com.loopeer.compatinset.InsetHolderView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:insetStatusBarColor="@android:color/transparent"
@@ -84,7 +84,7 @@ The parents wrap **InsetHolderView** must be support the inset just as InsetLine
         android:layout_gravity="right"
         android:layout_margin="10dp"
         android:src="@android:drawable/ic_dialog_email"/>
-</loopeer.com.compatinset.InsetLinearLayout>
+</com.loopeer.compatinset.InsetLinearLayout>
 ```
 Then set up **AppTheme.NoActionBar** theme
 values-v19:

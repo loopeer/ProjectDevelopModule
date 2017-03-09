@@ -300,10 +300,10 @@ AppUpdate.apply(this
 ### Databindpack and FormItemView
 ===
 #### Databindpack
-Databindpack provide a fast way to build large form,which is inspired by the two-way binding.
-Feature:
-1.since the ui and data are bind in two-way. there is no need to use setXXX and getXXX Method of TextView.And also the TextWatcher is no need to set. 
-2.a easy way to check whether the data is modified.
+Databindpack provide a fast way to build large form,which is inspired by the two-way binding.    
+**Feature**:    
+1.since the ui and data are bind in two-way. there is no need to use setXXX and getXXX Method of TextView.And also the TextWatcher is no need to set.     
+2.a easy way to check whether the data is modified.    
 #### FormItemView
-FormItemView contains two easy custom view —— FormEditItem / FormTextItem to help us build form more efficiently. both view provide databinding adpater.
+FormItemView contains two easy custom view —— FormEditItem / FormTextItem to help us build form more efficiently. both view provide databinding adpater.    
 for more detail,please see the FormValidatorActivity and FormItemViewActivity.

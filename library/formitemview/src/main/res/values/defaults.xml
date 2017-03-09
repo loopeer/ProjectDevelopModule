@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="form_item_default_desc_text_color">@color/text_color_secondary</color>
+    <color name="form_item_default_content_text_color">@color/text_color_primary</color>
+    <color name="form_item_default_content_text_hint_color">@color/text_color_hint</color>
+    <drawable name="form_item_default_drawable_right">@drawable/ic_arrow_right_grey</drawable>
+</resources>

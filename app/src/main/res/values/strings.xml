@@ -14,6 +14,7 @@
     <string name="label_image_switcher">ImageSwitcherTestActivity</string>
     <string name="label_validator">FormValidator</string>
     <string name="label_spring_viewgroup">SpringViewGroupActivity</string>
+    <string name="label_form_item_view">FormItemViewActivity</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>
@@ -32,4 +33,15 @@
     <string name="util_click_span_helper_01">Android 7.0 Nougat</string>
     <string name="util_click_span_helper_02">multi-window UI</string>
     <string name="util_click_span_helper_03">多窗口</string>
+
+    <string name="info_personal_name">姓名</string>
+    <string name="info_personal_phone_number">手机号码</string>
+    <string name="info_personal_marital_state">婚姻状况</string>
+    <string name="info_personal_work_info">工作信息</string>
+
+
+    <string name="info_personal_name_hint">请输入姓名</string>
+    <string name="info_personal_phone_number_hint">请输入手机号</string>
+    <string name="info_personal_marital_state_hint">请选择婚姻状况</string>
+
 </resources>

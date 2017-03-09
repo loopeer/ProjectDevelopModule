@@ -8,6 +8,8 @@ include ':app',
         ':library:developutils',
         ':library:databindpack',
         ':library:imageswitcher',
-        ':library:springviewgroup'
+        ':library:springviewgroup',
+        ':library:formitemview'
+
 
 

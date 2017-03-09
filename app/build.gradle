@@ -47,4 +47,6 @@ dependencies {
     compile project(':library:imageswitcher')
     compile project(':library:databindpack')
     compile project(':library:springviewgroup')
+    compile project(':library:formitemview')
+
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <import type="com.loopeer.projectdevelopmodule.R"/>
+
+        <variable
+            name="validator"
+            type="com.loopeer.projectdevelopmodule.validator.PersonInfoValidator"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:showDividers="middle"
+        android:layout_margin="@dimen/medium_padding"
+        android:background="@android:color/white"
+        android:divider="@drawable/divider_inset"
+        android:orientation="vertical">
+
+        <com.loopeer.formitemview.FormEditItem
+            style="@style/FormItemViewStyle.FormEditItem"
+            app:contentText="@={validator.name}"
+            app:descText="@string/info_personal_name"
+            app:contentHint="@string/info_personal_name_hint"/>
+
+        <com.loopeer.formitemview.FormEditItem
+            style="@style/FormItemViewStyle.FormEditItem"
+            app:contentText="@={validator.phone}"
+            app:contentMaxLength="11"
+            app:descText="@string/info_personal_phone_number"
+            app:contentHint="@string/info_personal_phone_number_hint"/>
+
+        <com.loopeer.formitemview.FormTextItem
+            style="@style/FormItemViewStyle.FormTextItem"
+            android:onClick="onMarriageStatusClick"
+            app:contentGravity="right|center_vertical"
+            app:contentText="@={validator.status}"
+            app:descText="@string/info_personal_marital_state"/>
+
+        <com.loopeer.formitemview.FormTextItem
+            style="@style/FormItemViewStyle.FormTextItem"
+            android:onClick="onWorkInfoClick"
+            app:contentGravity="right|center_vertical"
+            app:contentTextColor="@color/text_color_hint"
+            app:imageRightVisible="@{validator.hasWorkInfo ?  View.GONE:View.VISIBLE}"
+            app:contentDrawableRight="@{validator.hasWorkInfo ? R.drawable.ic_authorize :0}"
+            app:descText="@string/info_personal_work_info"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/xlarge_padding"
+            android:background="@drawable/btn_common"
+            android:text="提交"
+            android:onClick="onBtnClick"
+            android:enabled="@{validator.enable}"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+</layout>

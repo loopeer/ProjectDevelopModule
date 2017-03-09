@@ -28,7 +28,7 @@ public abstract class ObservableValidator extends ObservableModel implements IVa
     }
 
     @Override public boolean isEdited() {
-        return oldHash == hashCode();
+        return oldHash != hashCode();
     }
 
     @Bindable

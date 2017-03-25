@@ -2,7 +2,9 @@
 <manifest package="com.loopeer.projectdevelopmodule"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".SampleApp"
@@ -173,8 +175,6 @@
             </intent-filter>
         </activity>
 
-      c
-
         <activity android:name=".sample.SpringRVActivity"/>
         <activity android:name=".sample.SpringSVActivity"/>
 
@@ -184,6 +184,20 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
+
+            <intent-filter>
+                <action android:name="android.intent.action.RUN"/>
+
+                <category android:name="com.loopeer.projectdevelopmodule.sample.SAMPLE"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".sample.BottomImagePickerViewActivity"
+            android:label="@string/label_bottom_image_picker_view">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".sample.BottomImagePickerViewActivity"/>
 
             <intent-filter>
                 <action android:name="android.intent.action.RUN"/>

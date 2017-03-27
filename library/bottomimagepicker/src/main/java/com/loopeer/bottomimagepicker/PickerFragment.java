@@ -1,5 +1,6 @@
 package com.loopeer.bottomimagepicker;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,9 +18,11 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import java.io.File;
 import java.util.ArrayList;
@@ -29,12 +32,15 @@ public class PickerFragment extends Fragment {
 
     private static final String IMAGE_LIST = "image_list";
 
+    public static final int IMAGE_SIZE_UNIT = 10;
+    public static final int DECORATION_SIZE_UNIT = 1;
+    public static final int IMAGE_COUNT = 5;
+    public static final int DECORATION_COUNT = 6;
+
     private RecyclerView mRecyclerView;
     private ImageAdapter mImageAdapter;
-    private GridLayoutManager mGridLayoutManager;
-    private RecyclerView.ItemDecoration mHorizontalItemDecoration;
-    private RecyclerView.ItemDecoration mVerticalItemDecoration;
     private List<Image> mImages;
+    private int mUnit;
 
     public static PickerFragment newInstance(List<Image> images) {
         Bundle bundle = new Bundle();
@@ -47,13 +53,9 @@ public class PickerFragment extends Fragment {
     @Override public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mImages = getArguments().getParcelableArrayList(IMAGE_LIST);
-        mImageAdapter = new ImageAdapter(mImages);
-        mGridLayoutManager = new GridLayoutManager(getContext(), 5, GridLayoutManager.HORIZONTAL,
-            false);
-        mHorizontalItemDecoration = new DividerItemDecoration(getContext(),
-            DividerItemDecoration.HORIZONTAL);
-        mVerticalItemDecoration = new DividerItemDecoration(getContext(),
-            DividerItemDecoration.VERTICAL);
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        mUnit = getUnitSize(wm);
+        mImageAdapter = new ImageAdapter(mImages, mUnit * IMAGE_SIZE_UNIT);
     }
 
     @Nullable @Override
@@ -66,9 +68,18 @@ public class PickerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_picker);
         mRecyclerView.setAdapter(mImageAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        //mRecyclerView.addItemDecoration(mHorizontalItemDecoration);
-        //mRecyclerView.addItemDecoration(mVerticalItemDecoration);
+        //weak reference
+        mRecyclerView.setLayoutManager(
+            new GridLayoutManager(getContext(), 5, GridLayoutManager.VERTICAL, false));
+        mRecyclerView.addItemDecoration(
+            new GridLayoutItemDecoration(mUnit * DECORATION_SIZE_UNIT, IMAGE_COUNT));
+        mRecyclerView.setPadding(mUnit * DECORATION_SIZE_UNIT,0,0,mUnit * DECORATION_SIZE_UNIT);
+    }
+
+    public static int getUnitSize(WindowManager wm) {
+        Display display = wm.getDefaultDisplay();
+        int screenWidth = display.getWidth();
+        return screenWidth / (DECORATION_COUNT + IMAGE_COUNT * IMAGE_SIZE_UNIT);
     }
 
 }

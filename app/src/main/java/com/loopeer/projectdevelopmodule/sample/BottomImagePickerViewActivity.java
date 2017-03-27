@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import com.loopeer.bottomimagepicker.BottomImagePickerView;
 import com.loopeer.developutils.PermissionUtils;
 import com.loopeer.projectdevelopmodule.R;
 
@@ -22,11 +24,20 @@ public class BottomImagePickerViewActivity extends AppCompatActivity {
     public static final int REQUEST_WRITE_EXTERNAL_STORAGE = 1;
     public static final int REQUEST_READ_EXTERNAL_STORAGE = 2;
 
+    private BottomImagePickerView mBottomImagePickerView;
+
     @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //check before layout set
         checkPermission();
         setContentView(R.layout.activity_bottom_image_picker_view);
+        mBottomImagePickerView = (BottomImagePickerView) findViewById(R.id.pick_view);
+        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(mBottomImagePickerView);
+        mBottomImagePickerView.post(new Runnable() {
+            @Override public void run() {
+                bottomSheetBehavior.setPeekHeight(mBottomImagePickerView.getPeekHeight());
+            }
+        });
     }
 
     private void checkPermission() {

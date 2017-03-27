@@ -17,12 +17,12 @@
     </LinearLayout>
 
     <com.loopeer.bottomimagepicker.BottomImagePickerView
+        android:id="@+id/pick_view"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:background="@android:color/black"
         android:layout_alignParentBottom="true"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="128dp"
         app:layout_behavior="@string/bottom_sheet_behavior"
         android:orientation="vertical"/>
 

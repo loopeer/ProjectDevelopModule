@@ -13,8 +13,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class BottomImagePickerView extends LinearLayout{
     private static final int LOADER_ID_FOLDER = 10001 ;
 
     private TabLayout mTabLayout;
-    private ViewPager mViewPager;
+    private SlideCustomViewPager mViewPager;
 
     private List<String> mTitles;
     private List<PickerFragment> mFragments;
@@ -52,7 +54,7 @@ public class BottomImagePickerView extends LinearLayout{
         View view = LayoutInflater.from(getContext())
             .inflate(R.layout.view_bottom_image_picker, this, true);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
-        mViewPager = (ViewPager) view.findViewById(R.id.view_pager);
+        mViewPager = (SlideCustomViewPager) view.findViewById(R.id.view_pager);
 
         mTitles = new ArrayList<>();
         mFragments = new ArrayList<>();
@@ -61,13 +63,13 @@ public class BottomImagePickerView extends LinearLayout{
         mFragmentAdapter = new PickerFragmentAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(mFragmentAdapter);
-        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setOffscreenPageLimit(1);
         mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.setSlideEnable(true);
 
         getSupportLoaderManager().initLoader(LOADER_ID_FOLDER, null, mLoaderManager);
 
     }
-
 
     public void setData(List<ImageFolder> folders) {
         mTitles.clear();
@@ -109,6 +111,11 @@ public class BottomImagePickerView extends LinearLayout{
         return null;
     }
 
+    public int getPeekHeight(){
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        return PickerFragment.getUnitSize(wm) * PickerFragment.IMAGE_SIZE_UNIT + mTabLayout.getHeight();
+    }
+
     private class PickerFragmentAdapter extends FragmentPagerAdapter {
 
         public PickerFragmentAdapter(FragmentManager fm) {
@@ -127,5 +134,6 @@ public class BottomImagePickerView extends LinearLayout{
             return mTitles == null ? null : mTitles.get(position);
         }
     }
+
 
 }

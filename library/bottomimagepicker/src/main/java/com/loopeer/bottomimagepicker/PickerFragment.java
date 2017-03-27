@@ -73,7 +73,7 @@ public class PickerFragment extends Fragment {
             new GridLayoutManager(getContext(), 5, GridLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(
             new GridLayoutItemDecoration(mUnit * DECORATION_SIZE_UNIT, IMAGE_COUNT));
-        mRecyclerView.setPadding(mUnit * DECORATION_SIZE_UNIT,0,0,mUnit * DECORATION_SIZE_UNIT);
+        mRecyclerView.setPadding(mUnit * DECORATION_SIZE_UNIT, 0, 0, mUnit * DECORATION_SIZE_UNIT);
     }
 
     public static int getUnitSize(WindowManager wm) {
@@ -82,4 +82,8 @@ public class PickerFragment extends Fragment {
         return screenWidth / (DECORATION_COUNT + IMAGE_COUNT * IMAGE_SIZE_UNIT);
     }
 
+    public void setImages(List<Image> images) {
+        mImages = images;
+        mImageAdapter.setImages(images);
+    }
 }

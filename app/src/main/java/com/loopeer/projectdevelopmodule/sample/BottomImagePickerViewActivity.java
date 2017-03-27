@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 import com.loopeer.bottomimagepicker.BottomImagePickerView;
 import com.loopeer.developutils.PermissionUtils;
@@ -32,10 +34,18 @@ public class BottomImagePickerViewActivity extends AppCompatActivity {
         checkPermission();
         setContentView(R.layout.activity_bottom_image_picker_view);
         mBottomImagePickerView = (BottomImagePickerView) findViewById(R.id.pick_view);
-        BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(mBottomImagePickerView);
-        mBottomImagePickerView.post(new Runnable() {
-            @Override public void run() {
-                bottomSheetBehavior.setPeekHeight(mBottomImagePickerView.getPeekHeight());
+
+        BottomSheetBehavior behavior  = BottomSheetBehavior.from(mBottomImagePickerView);
+
+        mBottomImagePickerView.post(() -> behavior.setPeekHeight(mBottomImagePickerView.getPeekHeight()));
+
+        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                Log.e("TAG", "onStateChanged" + " state = " + newState);
+            }
+
+            @Override public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                Log.e("TAG", "onSlide");
             }
         });
     }

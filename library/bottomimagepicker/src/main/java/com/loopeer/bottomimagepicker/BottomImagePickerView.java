@@ -4,32 +4,35 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BottomImagePickerView extends LinearLayout{
+public class BottomImagePickerView extends LinearLayout {
 
-    private static final int LOADER_ID_FOLDER = 10001 ;
+    private static final int LOADER_ID_FOLDER = 10001;
 
+    private ImageView mIcon;
     private TabLayout mTabLayout;
     private SlideCustomViewPager mViewPager;
 
     private List<String> mTitles;
     private List<PickerFragment> mFragments;
+
     private PickerFragmentAdapter mFragmentAdapter;
 
     private LoaderManagerImpl mLoaderManager;
@@ -51,8 +54,11 @@ public class BottomImagePickerView extends LinearLayout{
     }
 
     private void init() {
+        setOrientation(VERTICAL);
+        setGravity(Gravity.CENTER);
         View view = LayoutInflater.from(getContext())
             .inflate(R.layout.view_bottom_image_picker, this, true);
+        mIcon = (ImageView) view.findViewById(R.id.icon);
         mTabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         mViewPager = (SlideCustomViewPager) view.findViewById(R.id.view_pager);
 
@@ -63,7 +69,7 @@ public class BottomImagePickerView extends LinearLayout{
         mFragmentAdapter = new PickerFragmentAdapter(getSupportFragmentManager());
 
         mViewPager.setAdapter(mFragmentAdapter);
-        mViewPager.setOffscreenPageLimit(1);
+        mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setSlideEnable(true);
 
@@ -111,12 +117,13 @@ public class BottomImagePickerView extends LinearLayout{
         return null;
     }
 
-    public int getPeekHeight(){
+    public int getPeekHeight() {
         WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        return PickerFragment.getUnitSize(wm) * PickerFragment.IMAGE_SIZE_UNIT + mTabLayout.getHeight();
+        return PickerFragment.getUnitSize(wm) * PickerFragment.IMAGE_SIZE_UNIT +
+            mTabLayout.getHeight() + mIcon.getHeight();
     }
 
-    private class PickerFragmentAdapter extends FragmentPagerAdapter {
+    private class PickerFragmentAdapter extends FragmentStatePagerAdapter {
 
         public PickerFragmentAdapter(FragmentManager fm) {
             super(fm);
@@ -127,13 +134,12 @@ public class BottomImagePickerView extends LinearLayout{
         }
 
         @Override public int getCount() {
-            return mFragments == null ? 0 : mFragments.size();
+            return mTitles == null ? 0 : mTitles.size();
         }
 
         @Override public CharSequence getPageTitle(int position) {
             return mTitles == null ? null : mTitles.get(position);
         }
     }
-
 
 }

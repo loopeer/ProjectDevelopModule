@@ -23,7 +23,7 @@
         android:background="@android:color/black"
         android:layout_alignParentBottom="true"
         app:behavior_hideable="false"
-        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:layout_behavior="@string/picker_bottom_sheet_behavior"
         android:orientation="vertical"/>
 
 </android.support.design.widget.CoordinatorLayout>

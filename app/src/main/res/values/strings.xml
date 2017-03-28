@@ -44,5 +44,6 @@
     <string name="info_personal_name_hint">请输入姓名</string>
     <string name="info_personal_phone_number_hint">请输入手机号</string>
     <string name="info_personal_marital_state_hint">请选择婚姻状况</string>
+    <string name="picker_bottom_sheet_behavior">com.loopeer.bottomimagepicker.PickerBottomBehavior</string>
 
 </resources>

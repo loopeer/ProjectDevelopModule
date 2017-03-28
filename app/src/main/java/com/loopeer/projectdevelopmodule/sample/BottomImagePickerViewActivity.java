@@ -5,13 +5,13 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import com.loopeer.bottomimagepicker.BottomImagePickerView;
+import com.loopeer.bottomimagepicker.PickerBottomBehavior;
 import com.loopeer.developutils.PermissionUtils;
 import com.loopeer.projectdevelopmodule.R;
 
@@ -35,11 +35,11 @@ public class BottomImagePickerViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottom_image_picker_view);
         mBottomImagePickerView = (BottomImagePickerView) findViewById(R.id.pick_view);
 
-        BottomSheetBehavior behavior  = BottomSheetBehavior.from(mBottomImagePickerView);
+        PickerBottomBehavior behavior  = PickerBottomBehavior.from(mBottomImagePickerView);
 
         mBottomImagePickerView.post(() -> behavior.setPeekHeight(mBottomImagePickerView.getPeekHeight()));
 
-        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+        behavior.setBottomSheetCallback(new PickerBottomBehavior.BottomSheetCallback() {
             @Override public void onStateChanged(@NonNull View bottomSheet, int newState) {
                 Log.e("TAG", "onStateChanged" + " state = " + newState);
             }

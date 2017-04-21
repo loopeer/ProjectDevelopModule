@@ -8,10 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -74,6 +71,14 @@ public class BottomImagePickerView extends LinearLayout {
 
     }
 
+    public SlideCustomViewPager getViewPager() {
+        return mViewPager;
+    }
+
+    public PickerFragmentAdapter getFragmentAdapter() {
+        return mFragmentAdapter;
+    }
+
     public void setData(List<ImageFolder> folders) {
         mTitles.clear();
         for (int i = 0; i < folders.size(); i++) {
@@ -82,6 +87,7 @@ public class BottomImagePickerView extends LinearLayout {
         }
         mFragmentAdapter.updateImageFolders(folders);
     }
+
 
     private LoaderManager getSupportLoaderManager() {
         Activity activity = getActivity();
@@ -118,12 +124,20 @@ public class BottomImagePickerView extends LinearLayout {
             mTabLayout.getHeight() + mIcon.getHeight();
     }
 
-    private class PickerFragmentAdapter extends FragmentStatePagerAdapter {
+    public View getCurrentRecyclerView(int position) {
+        return getFragmentAdapter().getFragment(position).getView().findViewById(R.id.recycler_picker);
+    }
+
+    public class PickerFragmentAdapter extends PickerFragmentStatePagerAdapter {
         List<ImageFolder> mImageFolders = new ArrayList<>();
 
         public PickerFragmentAdapter(FragmentManager fm) {
             super(fm);
             mImageFolders = new ArrayList<>();
+        }
+
+        public Fragment getFragment(int position) {
+            return mFragments.get(position);
         }
 
         public void updateImageFolders(List<ImageFolder> imageFolders) {
@@ -133,7 +147,7 @@ public class BottomImagePickerView extends LinearLayout {
         }
 
         @Override public Fragment getItem(int position) {
-            return PickerFragment.newInstance(mImageFolders.get(position).images);
+            return PickerFragment.newInstance(mImageFolders.get(position).images, position);
         }
 
         @Override public int getCount() {
@@ -144,5 +158,4 @@ public class BottomImagePickerView extends LinearLayout {
             return mTitles == null ? null : mTitles.get(position);
         }
     }
-
 }

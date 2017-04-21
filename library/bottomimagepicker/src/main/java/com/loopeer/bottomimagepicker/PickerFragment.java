@@ -28,11 +28,13 @@ public class PickerFragment extends Fragment {
     private ImageAdapter mImageAdapter;
     private List<Image> mImages;
     private int mUnit;
+    private int mPosition;
 
-    public static PickerFragment newInstance(List<Image> images) {
+    public static PickerFragment newInstance(List<Image> images, int position) {
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList(IMAGE_LIST, (ArrayList<? extends Parcelable>) images);
         PickerFragment fragment = new PickerFragment();
+        fragment.mPosition = position;
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -54,6 +56,7 @@ public class PickerFragment extends Fragment {
     @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_picker);
+        mRecyclerView.setTag(mPosition + " : ");
         mRecyclerView.setAdapter(mImageAdapter);
         //weak reference
         mRecyclerView.setLayoutManager(

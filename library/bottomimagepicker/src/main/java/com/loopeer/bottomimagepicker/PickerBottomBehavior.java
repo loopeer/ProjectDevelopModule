@@ -254,8 +254,13 @@ public class PickerBottomBehavior<V extends View> extends CoordinatorLayout.Beha
             mViewDragHelper = ViewDragHelper.create(parent, mDragCallback);
         }
         mViewRef = new WeakReference<>(child);
-        mNestedScrollingChildRef = new WeakReference<>(findScrollingChild(child));
+        if (mNestedScrollingChildRef == null) mNestedScrollingChildRef = new WeakReference<>(findScrollingChild(child));
         return true;
+    }
+
+    public void updateNestScrollChild(View view) {
+        mNestedScrollingChildRef = new WeakReference<>(view);
+
     }
 
     @Override
@@ -303,15 +308,12 @@ public class PickerBottomBehavior<V extends View> extends CoordinatorLayout.Beha
         // it is not the top most view of its parent. This is not necessary when the touch event is
         // happening over the scrolling content as nested scrolling logic handles that case.
         View scroll = mNestedScrollingChildRef.get();
-
-        boolean intercept = action == MotionEvent.ACTION_MOVE &&
+        return action == MotionEvent.ACTION_MOVE &&
                 scroll != null &&
                 !mIgnoreEvents &&
                 mState != STATE_DRAGGING &&
                 !parent.isPointInChildBounds(scroll, (int) event.getX(), (int) event.getY()) &&
                 Math.abs(mInitialY - event.getY()) > (mViewDragHelper.getTouchSlop()*4);
-        int i = 0;
-        return intercept;
     }
 
     @Override

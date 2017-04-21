@@ -39,9 +39,9 @@ ext {
             versionName      : '1.0.0',
     ]
 
-    def supportLibraryVersion = '25.0.1'
-    def gsonVersion = '2.7'
-    def frescoVersion = '0.14.1'
+    def supportLibraryVersion = '25.2.0'
+    def gsonVersion = '2.8.0'
+    def frescoVersion = '1.3.0'
 
     deps = [
             supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",

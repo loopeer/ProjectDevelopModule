@@ -31,7 +31,6 @@ public class BottomImagePickerView extends LinearLayout {
     private SlideCustomViewPager mViewPager;
 
     private List<String> mTitles;
-    private List<PickerFragment> mFragments;
 
     private PickerFragmentAdapter mFragmentAdapter;
 
@@ -63,8 +62,6 @@ public class BottomImagePickerView extends LinearLayout {
         mViewPager = (SlideCustomViewPager) view.findViewById(R.id.view_pager);
 
         mTitles = new ArrayList<>();
-        mFragments = new ArrayList<>();
-
         mLoaderManager = new LoaderManagerImpl(this);
         mFragmentAdapter = new PickerFragmentAdapter(getSupportFragmentManager());
 
@@ -79,13 +76,11 @@ public class BottomImagePickerView extends LinearLayout {
 
     public void setData(List<ImageFolder> folders) {
         mTitles.clear();
-        mFragments.clear();
         for (int i = 0; i < folders.size(); i++) {
             ImageFolder folder = folders.get(i);
             mTitles.add(folder.name);
-            mFragments.add(PickerFragment.newInstance(folder.images));
         }
-        mFragmentAdapter.notifyDataSetChanged();
+        mFragmentAdapter.updateImageFolders(folders);
     }
 
     private LoaderManager getSupportLoaderManager() {
@@ -124,13 +119,21 @@ public class BottomImagePickerView extends LinearLayout {
     }
 
     private class PickerFragmentAdapter extends FragmentStatePagerAdapter {
+        List<ImageFolder> mImageFolders = new ArrayList<>();
 
         public PickerFragmentAdapter(FragmentManager fm) {
             super(fm);
+            mImageFolders = new ArrayList<>();
+        }
+
+        public void updateImageFolders(List<ImageFolder> imageFolders) {
+            mImageFolders.clear();
+            mImageFolders.addAll(imageFolders);
+            notifyDataSetChanged();
         }
 
         @Override public Fragment getItem(int position) {
-            return mFragments == null ? null : mFragments.get(position);
+            return PickerFragment.newInstance(mImageFolders.get(position).images);
         }
 
         @Override public int getCount() {

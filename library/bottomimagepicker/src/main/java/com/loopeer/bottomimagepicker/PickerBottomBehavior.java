@@ -260,7 +260,6 @@ public class PickerBottomBehavior<V extends View> extends CoordinatorLayout.Beha
 
     public void updateNestScrollChild(View view) {
         mNestedScrollingChildRef = new WeakReference<>(view);
-
     }
 
     @Override

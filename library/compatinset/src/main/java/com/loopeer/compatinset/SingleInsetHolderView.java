@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 public class SingleInsetHolderView extends View {
     static final boolean SHOW_INSET_HOLDER;
     private int mStatusBarColor;
+    private int mStatusBarDarkColor;
 
     static {
         if (Build.VERSION.SDK_INT >= 19) {
@@ -38,7 +39,8 @@ public class SingleInsetHolderView extends View {
                 defStyleAttr, R.style.Widget_CompatInset_InsetHolderView);
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , ContextCompat.getColor(context, android.R.color.transparent));
-
+        mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
+                , ContextCompat.getColor(context,  -1));
         InsetHelper.translucentStatus(context);
     }
 
@@ -51,7 +53,11 @@ public class SingleInsetHolderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (SHOW_INSET_HOLDER) canvas.drawColor(mStatusBarColor);
+        int color = mStatusBarColor;
+        if (mStatusBarDarkColor != -1 && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            color = mStatusBarDarkColor;
+        }
+        if (SHOW_INSET_HOLDER) canvas.drawColor(color);
     }
 
     private int getInsetHeight() {

@@ -16,6 +16,7 @@ public class InsetHolderView extends View {
     WindowInsetsCompat mLastInsets;
     static final boolean SHOW_INSET_HOLDER;
     private int mStatusBarColor;
+    private int mStatusBarDarkColor;
 
     static {
         if (Build.VERSION.SDK_INT >= 19) {
@@ -40,6 +41,9 @@ public class InsetHolderView extends View {
                 defStyleAttr, R.style.Widget_CompatInset_InsetHolderView);
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , ContextCompat.getColor(context, android.R.color.transparent));
+
+        mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
+                , ContextCompat.getColor(context,  -1));
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
                 new android.support.v4.view.OnApplyWindowInsetsListener() {
@@ -78,7 +82,12 @@ public class InsetHolderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawColor(mStatusBarColor);
+
+        int color = mStatusBarColor;
+        if (mStatusBarDarkColor != -1 && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            color = mStatusBarDarkColor;
+        }
+        canvas.drawColor(color);
     }
 
     private int getInsetHeight() {

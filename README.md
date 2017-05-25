@@ -17,13 +17,13 @@ One fasion in the library to solve make status bar transparent.Idea from Coordin
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:compatinset:0.0.4'
+    compile 'com.loopeer.library:compatinset:0.0.5-beta7'
 }
 ```
 ||Api16|Api19|Api23|
 |---|---|---|---|
 |Full transparency status bar|![](/screenshot/inset_image/inset_tool_16.png)|![](/screenshot/inset_image/inset_tool_19.png)|![Full transparency status bar](/screenshot/inset_image/inset_tool_23.png)|
-|singleholder With translucent status bar in native system|![](/screenshot/inset_image/inset_image_16.png)|![](/screenshot/inset_image/inset_image_19.png)|![](/screenshot/inset_image/inset_image_23.png)|
+|Full transparency status bar|![](/screenshot/inset_image/inset_image_16.png)|![](/screenshot/inset_image/inset_image_19.png)|![](/screenshot/inset_image/inset_image_23.png)|
 |singleholder With translucent status bar in native system|same to top|same to top|![](/screenshot/inset_image/single_inset_image_23.png)|
 |singleholder With translucent status bar in native system|same to top|same to top|![](/screenshot/inset_image/single_inset_tool_23.png)|  
 
@@ -118,7 +118,7 @@ values-v21:
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:bottomdialog:0.0.4'
+    compile 'com.loopeer.library:bottomdialog:0.0.5-beta7'
 }
 ```
 #### Usages
@@ -143,7 +143,7 @@ new BottomDateTimeDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:addresspicker:0.0.4'
+    compile 'com.loopeer.library:addresspicker:0.0.5-beta7'
 }
 ```
 #### Usages
@@ -182,7 +182,7 @@ new AddressPickerDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:developutil:0.0.4'
+    compile 'com.loopeer.library:developutil:0.0.5-beta7'
 }
 ```
 #### Usages
@@ -258,7 +258,7 @@ mCaptchaHelper.cancel();
 
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:imageswitcher:0.0.4'
+    compile 'com.loopeer.library:imageswitcher:0.0.5-beta7'
 }
 ```
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>
@@ -273,7 +273,7 @@ NavigatorImage.startImageSwitchActivity(this,  Arrays.asList(sImages), 3, R.mipm
 Apk Update helper with apk version check and download apk service.
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:appupdate:0.0.4'
+    compile 'com.loopeer.library:appupdate:0.0.5-beta7'
 }
 ```
 

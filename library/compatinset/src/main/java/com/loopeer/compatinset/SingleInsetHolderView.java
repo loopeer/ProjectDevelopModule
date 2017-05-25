@@ -1,6 +1,7 @@
 package com.loopeer.compatinset;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -8,6 +9,8 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.loopeer.compatinset.statusbar.StatusBarFontHelper;
 
 import java.lang.reflect.Field;
 
@@ -39,8 +42,21 @@ public class SingleInsetHolderView extends View {
                 defStyleAttr, R.style.Widget_CompatInset_InsetHolderView);
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , ContextCompat.getColor(context, android.R.color.transparent));
-        mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
-                , ContextCompat.getColor(context,  -1));
+        mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarDarkColor
+                , -1);
+        int style = a.getInt(R.styleable.InsetHolderView_insetStatusBarStyle
+                , 0);
+        if (style == 1) {
+            StatusBarFontHelper.setStatusBarMode(((Activity) context), false);
+        } else if (style == 2) {
+            StatusBarFontHelper.setStatusBarMode(((Activity) context), true);
+        }
+
+        if (mStatusBarDarkColor != -1 && style == 0) {
+            int result = StatusBarFontHelper.setStatusBarMode(((Activity) context), false);
+            if (result < 1)
+                mStatusBarColor = mStatusBarDarkColor;
+        }
         InsetHelper.translucentStatus(context);
     }
 
@@ -53,11 +69,7 @@ public class SingleInsetHolderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        int color = mStatusBarColor;
-        if (mStatusBarDarkColor != -1 && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            color = mStatusBarDarkColor;
-        }
-        if (SHOW_INSET_HOLDER) canvas.drawColor(color);
+        if (SHOW_INSET_HOLDER) canvas.drawColor(mStatusBarColor);
     }
 
     private int getInsetHeight() {

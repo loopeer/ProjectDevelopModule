@@ -1,6 +1,7 @@
 package com.loopeer.compatinset;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -10,6 +11,9 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.WindowInsetsCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.loopeer.compatinset.statusbar.StatusBarFontHelper;
+
 import java.lang.reflect.Field;
 
 public class InsetHolderView extends View {
@@ -43,8 +47,20 @@ public class InsetHolderView extends View {
                 , ContextCompat.getColor(context, android.R.color.transparent));
 
         mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
-                , ContextCompat.getColor(context,  -1));
+                , -1);
+        int style = a.getInt(R.styleable.InsetHolderView_insetStatusBarStyle
+                , 0);
+        if (style == 1) {
+            StatusBarFontHelper.setStatusBarMode(((Activity) context), false);
+        } else if (style == 2) {
+            StatusBarFontHelper.setStatusBarMode(((Activity) context), true);
+        }
 
+        if (mStatusBarDarkColor != -1 && style == 0) {
+            int result = StatusBarFontHelper.setStatusBarMode(((Activity) context), false);
+            if (result < 1)
+                mStatusBarColor = mStatusBarDarkColor;
+        }
         ViewCompat.setOnApplyWindowInsetsListener(this,
                 new android.support.v4.view.OnApplyWindowInsetsListener() {
                     @Override
@@ -82,12 +98,7 @@ public class InsetHolderView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        int color = mStatusBarColor;
-        if (mStatusBarDarkColor != -1 && Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            color = mStatusBarDarkColor;
-        }
-        canvas.drawColor(color);
+        canvas.drawColor(mStatusBarColor);
     }
 
     private int getInsetHeight() {
@@ -97,7 +108,7 @@ public class InsetHolderView extends View {
         return SHOW_INSET_HOLDER && mLastInsets != null ? mLastInsets.getSystemWindowInsetTop() : 0;
     }
 
-    public static int getStatusBarHeight(Context context){
+    public static int getStatusBarHeight(Context context) {
         Class<?> c;
         Object obj;
         Field field;

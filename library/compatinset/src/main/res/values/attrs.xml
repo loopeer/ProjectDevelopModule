@@ -3,5 +3,9 @@
     <declare-styleable name="InsetHolderView">
         <attr name="insetStatusBarColor" format="color"/>
         <attr name="insetStatusBarDarkColor" format="color"/>
+        <attr name="insetStatusBarStyle">
+            <flag name="light" value="1" />
+            <flag name="dark" value="2" />
+        </attr>
     </declare-styleable>
 </resources>

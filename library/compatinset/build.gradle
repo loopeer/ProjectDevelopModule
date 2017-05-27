@@ -40,3 +40,4 @@ artifacts {
 }
 
 apply from: rootProject.file('release.gradle')
+

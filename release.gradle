@@ -1,5 +1,6 @@
 // Common Android tasks for all releases that generate Javadocs, sources, etc.
 apply from: rootProject.file('gradle/android-tasks.gradle')
 
-// Upload to Bintray
-apply from: project.rootProject.file('release-bintray.gradle')
+if (UPLOAD_LIST.contains("$POM_ARTIFACT_ID")) {
+    apply from: project.rootProject.file('release-bintray.gradle')
+}

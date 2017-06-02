@@ -39,15 +39,15 @@ public class FormTextItem extends AbstractFormItemView {
             defStyleAttr, 0);
 
         setDescText(a.getString(R.styleable.FormTextItem_descText));
-        setDescTextColor(a.getColor(R.styleable.FormEditItem_descTextColor,
+        setDescTextColor(a.getColor(R.styleable.FormTextItem_descTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_desc_text_color)));
         setDescTextDrawableLeft(a.getDrawable(R.styleable.FormTextItem_descDrawableLeft));
 
         setContentText(a.getString(R.styleable.FormTextItem_contentText));
-        setContentTextColor(a.getColor(R.styleable.FormEditItem_contentTextColor,
+        setContentTextColor(a.getColor(R.styleable.FormTextItem_contentTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_content_text_color)));
         setContentTextSize(a.getDimensionPixelSize(R.styleable.FormTextItem_contentTextSize, context.getResources().getDimensionPixelSize(R.dimen.text_size_large)));
-        setContentHint(a.getString(R.styleable.FormEditItem_contentHint));
+        setContentHint(a.getString(R.styleable.FormTextItem_contentHint));
         setDescMinWidth(a.getDimensionPixelSize(R.styleable.FormTextItem_descTextMinWidth,80));
 
         Drawable contentDrawableRight = a.getDrawable(

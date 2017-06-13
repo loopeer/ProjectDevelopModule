@@ -7,5 +7,6 @@
             <flag name="light" value="1" />
             <flag name="dark" value="2" />
         </attr>
+        <attr name="softCompat" format="boolean"/>
     </declare-styleable>
 </resources>

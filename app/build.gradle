@@ -34,19 +34,18 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile deps.appcompatV7
-//    compile deps.supportCoreUi
-    compile project(':library:compatinset')
-    compile project(':library:bottomdialog')
-    compile project(':library:addresspicker')
-    compile project(':library:guideactivity')
-    compile project(':library:appupdate')
-    compile project(':library:flowlayout')
-    compile project(':library:developutils')
-    compile project(':library:imageswitcher')
-    compile project(':library:databindpack')
-    compile project(':library:springviewgroup')
-    compile project(':library:formitemview')
-    compile project(':library:bottomimagepicker')
+    api deps.appcompatV7
+    implementation project(':library:compatinset')
+    implementation project(':library:bottomdialog')
+    implementation project(':library:addresspicker')
+    implementation project(':library:guideactivity')
+    implementation project(':library:appupdate')
+    implementation project(':library:flowlayout')
+    implementation project(':library:developutils')
+    implementation project(':library:imageswitcher')
+    implementation project(':library:databindpack')
+    implementation project(':library:springviewgroup')
+    implementation project(':library:formitemview')
+    implementation project(':library:bottomimagepicker')
 
 }

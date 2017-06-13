@@ -25,7 +25,8 @@
         <activity
             android:name=".sample.CompatInsetToolbarActivity"
             android:label="@string/label_compat_inset_toolbar"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

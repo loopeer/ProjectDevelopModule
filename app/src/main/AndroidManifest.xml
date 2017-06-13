@@ -70,7 +70,7 @@
             android:name=".sample.CompatSingleInsetToolbarActivity"
             android:label="@string/label_compat_single_inset_toolbar"
             android:theme="@style/AppTheme.SingleNoActionBar"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

@@ -50,31 +50,29 @@ dependencies {
         android:src="@android:drawable/ic_dialog_email"/>
 </LinearLayout>
 ```
-If you want support edittext softinput pop to push layout top. You should add **android:windowSoftInputMode="adjustPan"**
+If you want support edittext softinput pop to push layout top. You should add **android:windowSoftInputMode="adjustResize"**. Add for the EditText parent such as Relative,Frame,Coord Layout **app:softCompat="true"**. For the LinearLayout,add that in the linearlayout's parent **ScrollView**
 ```xml
 <activity
     android:name=".CompatSingleInsetToolbarActivity"
     android:theme="@style/AppTheme.SingleNoActionBar"
-    android:windowSoftInputMode="adjustPan">
+    android:windowSoftInputMode="adjustResize">
     <meta-data
         android:name="android.support.PARENT_ACTIVITY"
         android:value=".MainActivity"/>
 </activity>
 ```
 ##### Full transparency status bar
-The parents wrap **InsetHolderView** must be support the inset just as InsetLinearLayout in library.You can new create use the InsetHelper. Don't forget add fitsSystemWindows.
+The parents wrap **InsetHolderView** must be support the inset just as InsetLinearLayout in library.You can new create use the InsetHelper.
 ```xml
 <com.loopeer.compatinset.InsetLinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fitsSystemWindows="@bool/fits_system_windows"
     android:orientation="vertical">
 
     <com.loopeer.compatinset.InsetHolderView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:insetStatusBarColor="@android:color/transparent"
-        android:fitsSystemWindows="@bool/fits_system_windows"/>
+        app:insetStatusBarColor="@android:color/transparent"/>
 
     <ImageView
         android:layout_width="24dp"

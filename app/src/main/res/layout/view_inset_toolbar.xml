@@ -4,8 +4,7 @@
 
     <com.loopeer.compatinset.InsetHolderView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fitsSystemWindows="@bool/fits_system_windows"/>
+        android:layout_height="wrap_content"/>
 
     <android.support.v7.widget.Toolbar style="@style/Toolbar"/>
 

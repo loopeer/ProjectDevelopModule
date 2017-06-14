@@ -4,26 +4,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="@bool/fits_system_windows"
     app:softCompat="true">
 
     <com.loopeer.compatinset.InsetScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="@bool/fits_system_windows"
         android:paddingBottom="56dp"
         android:clipToPadding="false">
 
         <com.loopeer.compatinset.InsetLinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="@bool/fits_system_windows"
             android:orientation="vertical">
 
             <com.loopeer.compatinset.InsetRelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fitsSystemWindows="@bool/fits_system_windows">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -34,13 +30,11 @@
                 <com.loopeer.compatinset.InsetLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fitsSystemWindows="@bool/fits_system_windows"
                     android:orientation="vertical">
 
                     <com.loopeer.compatinset.InsetHolderView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fitsSystemWindows="@bool/fits_system_windows"
                         app:insetStatusBarColor="@android:color/transparent"/>
 
                     <ImageView

@@ -22,6 +22,12 @@ public class InsetFramelayout extends FrameLayout {
     public InsetFramelayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         InsetHelper.setupForInsets(this);
+
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.InsetHolderView,
+                defStyleAttr, R.style.Widget_CompatInset_InsetHolderView);
+        boolean softCompat = a.getBoolean(R.styleable.InsetHolderView_softCompat
+                , false);
+        if (softCompat) SoftInputHelper.applySoftCompat(this);
     }
 
     @Override

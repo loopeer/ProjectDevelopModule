@@ -16,6 +16,8 @@ import com.loopeer.compatinset.statusbar.StatusBarFontHelper;
 
 import java.lang.reflect.Field;
 
+import static com.loopeer.compatinset.InsetHelper.setCompatFitSystemWindows;
+
 public class InsetHolderView extends View {
     WindowInsetsCompat mLastInsets;
     static final boolean SHOW_INSET_HOLDER;
@@ -40,7 +42,7 @@ public class InsetHolderView extends View {
 
     public InsetHolderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
+        setCompatFitSystemWindows(this);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.InsetHolderView,
                 defStyleAttr, R.style.Widget_CompatInset_InsetHolderView);
         mStatusBarColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor

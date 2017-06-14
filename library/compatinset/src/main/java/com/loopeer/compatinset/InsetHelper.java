@@ -13,7 +13,8 @@ import android.view.WindowManager;
 
 public class InsetHelper {
     public static void setupForInsets(final View view) {
-        if (Build.VERSION.SDK_INT < 21) {
+        setCompatFitSystemWindows(view);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             return;
         }
         if (ViewCompat.getFitsSystemWindows(view)) {
@@ -32,6 +33,10 @@ public class InsetHelper {
         } else {
             ViewCompat.setOnApplyWindowInsetsListener(view, null);
         }
+    }
+
+    public static void setCompatFitSystemWindows(View view) {
+        view.setFitsSystemWindows(true);
     }
 
     public static void requestApplyInsets(View view) {

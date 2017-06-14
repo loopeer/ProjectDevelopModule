@@ -40,11 +40,13 @@ public class SoftInputHelper {
                 heightDifference -= naviBarHeight;
                 ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mView.getLayoutParams();
                 if (layoutParams.bottomMargin == heightDifference) return;
-                layoutParams.setMargins(0, 0, 0, heightDifference);
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                    layoutParams.height = rect.bottom - mView.getTop();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    layoutParams.setMargins(0, 0, 0, heightDifference);
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+                        layoutParams.height = rect.bottom - mView.getTop();
+                    }
+                    mView.requestLayout();
                 }
-                mView.requestLayout();
             }
         });
     }

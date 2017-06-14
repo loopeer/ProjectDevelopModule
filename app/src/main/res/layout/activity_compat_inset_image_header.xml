@@ -1,64 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.loopeer.compatinset.InsetScrollView
+<com.loopeer.compatinset.InsetRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="@bool/fits_system_windows">
+    android:fitsSystemWindows="@bool/fits_system_windows"
+    app:softCompat="true">
 
-    <com.loopeer.compatinset.InsetLinearLayout
+    <com.loopeer.compatinset.InsetScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:fitsSystemWindows="@bool/fits_system_windows"
-        android:orientation="vertical">
+        android:paddingBottom="56dp"
+        android:clipToPadding="false">
 
-        <com.loopeer.compatinset.InsetRelativeLayout
-            android:layout_width="wrap_content"
+        <com.loopeer.compatinset.InsetLinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="@bool/fits_system_windows">
+            android:fitsSystemWindows="@bool/fits_system_windows"
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/img_test"/>
-
-            <com.loopeer.compatinset.InsetLinearLayout
-                android:layout_width="match_parent"
+            <com.loopeer.compatinset.InsetRelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="@bool/fits_system_windows"
-                android:orientation="vertical">
-
-                <com.loopeer.compatinset.InsetHolderView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:insetStatusBarColor="@android:color/transparent"
-                    android:fitsSystemWindows="@bool/fits_system_windows"/>
+                android:fitsSystemWindows="@bool/fits_system_windows">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/inset_holder"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:src="@android:drawable/ic_dialog_email"/>
-            </com.loopeer.compatinset.InsetLinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/img_test"/>
 
-        </com.loopeer.compatinset.InsetRelativeLayout>
+                <com.loopeer.compatinset.InsetLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="@bool/fits_system_windows"
+                    android:orientation="vertical">
+
+                    <com.loopeer.compatinset.InsetHolderView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fitsSystemWindows="@bool/fits_system_windows"
+                        app:insetStatusBarColor="@android:color/transparent"/>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/inset_holder"
+                        android:layout_gravity="right"
+                        android:layout_margin="10dp"
+                        android:src="@android:drawable/ic_dialog_email"/>
+                </com.loopeer.compatinset.InsetLinearLayout>
+
+            </com.loopeer.compatinset.InsetRelativeLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="4dp"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:text="@string/inset_test_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:text="@string/inset_test_content"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        </com.loopeer.compatinset.InsetLinearLayout>
 
-    </com.loopeer.compatinset.InsetLinearLayout>
+    </com.loopeer.compatinset.InsetScrollView>
 
-</com.loopeer.compatinset.InsetScrollView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        android:minHeight="56dp"
+        android:paddingLeft="@dimen/large_padding"
+        android:paddingRight="@dimen/large_padding"/>
+</com.loopeer.compatinset.InsetRelativeLayout>

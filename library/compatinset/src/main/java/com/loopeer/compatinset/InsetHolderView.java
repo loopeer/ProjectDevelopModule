@@ -125,4 +125,14 @@ public class InsetHolderView extends View {
         }
         return statusBarHeight;
     }
+
+    public void setStatusBarColor(int statusBarColor) {
+        mStatusBarColor = statusBarColor;
+        invalidate();
+    }
+
+    public void setStatusBarDarkColor(int statusBarDarkColor) {
+        mStatusBarDarkColor = statusBarDarkColor;
+        invalidate();
+    }
 }

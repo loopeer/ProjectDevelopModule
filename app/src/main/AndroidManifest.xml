@@ -40,7 +40,8 @@
         <activity
             android:name=".sample.CompatInsetImageHeaderActivity"
             android:label="@string/label_compat_inset_image_header"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
@@ -54,8 +55,7 @@
         <activity
             android:name=".sample.CompatSingleInsetImageHeaderActivity"
             android:label="@string/label_compat_single_inset_image_header"
-            android:theme="@style/AppTheme.SingleNoActionBar"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/AppTheme.SingleNoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>

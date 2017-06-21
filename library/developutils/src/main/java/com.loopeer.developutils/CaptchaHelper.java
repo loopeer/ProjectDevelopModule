@@ -4,15 +4,18 @@ package com.loopeer.developutils;
 import android.content.Context;
 import android.os.CountDownTimer;
 import android.support.annotation.StringRes;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class CaptchaHelper {
     private CountDownTimer mCountDownTimer;
     private Context mContext;
     private TextView mCaptchaTextView;
+    private EditText mInputEditText;
 
-    CaptchaHelper(TextView textView) {
+    CaptchaHelper(TextView textView, EditText editText) {
         mCaptchaTextView = textView;
+        mInputEditText = editText;
         mContext = mCaptchaTextView.getContext();
     }
 
@@ -26,7 +29,7 @@ public class CaptchaHelper {
 
             @Override
             public void onFinish() {
-                mCaptchaTextView.setEnabled(true);
+                mCaptchaTextView.setEnabled(mInputEditText.getText().toString().trim().length() == 11);
                 mCaptchaTextView.setText(mContext.getString(params.sendStringRes));
             }
         };
@@ -41,13 +44,14 @@ public class CaptchaHelper {
         mCountDownTimer.cancel();
     }
 
-    public static class Builder{
+    public static class Builder {
 
         Params mParams;
 
-        public Builder(TextView textView) {
+        public Builder(TextView textView, EditText editText) {
             mParams = new Params();
             mParams.view = textView;
+            mParams.inputView = editText;
         }
 
         public Builder setSendText(@StringRes int text) {
@@ -66,7 +70,7 @@ public class CaptchaHelper {
         }
 
         public CaptchaHelper build() {
-            CaptchaHelper captchaHelper = new CaptchaHelper(mParams.view);
+            CaptchaHelper captchaHelper = new CaptchaHelper(mParams.view, mParams.inputView);
             if (mParams.sendStringRes == 0)
                 mParams.sendStringRes = R.string.developutils_phone_captcha_send;
             if (mParams.timeRemainStringRes == 0)
@@ -81,6 +85,7 @@ public class CaptchaHelper {
 
     static class Params {
         TextView view;
+        EditText inputView;
         int sendStringRes;
         int timeRemainStringRes;
         int timeSeconds;

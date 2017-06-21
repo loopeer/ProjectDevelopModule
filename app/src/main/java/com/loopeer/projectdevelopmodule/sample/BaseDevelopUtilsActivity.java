@@ -73,7 +73,7 @@ public class BaseDevelopUtilsActivity extends AppCompatActivity {
     }
 
     private void setUpPhoneCaptcha() {
-        mCaptchaHelper = new CaptchaHelper.Builder(mBinding.textPhoneCaptcha)
+        mCaptchaHelper = new CaptchaHelper.Builder(mBinding.textPhoneCaptcha, mBinding.textInputPhone)
                 .setTimeFuture(10)
                 .build();
         mBinding.textPhoneCaptcha.setOnClickListener(v -> {

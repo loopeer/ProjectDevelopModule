@@ -10,13 +10,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
-            android:orientation="vertical"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
             tools:context="com.loopeer.projectdevelopmodule.sample.BaseDevelopUtilsActivity">
 
             <LinearLayout
@@ -39,8 +39,8 @@
             </LinearLayout>
 
             <LinearLayout
-                style="@style/LargeItemStyle"
                 android:id="@+id/item_double_click"
+                style="@style/LargeItemStyle"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@android:color/white"
                 android:orientation="vertical">
@@ -54,8 +54,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="@dimen/small_padding"
+                    android:gravity="center"
                     android:text="Click me"
                     android:textSize="30dp"/>
             </LinearLayout>
@@ -76,11 +76,11 @@
                     android:id="@+id/edit_bank_card_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_padding"
+                    android:hint="Please input bank card no"
                     android:inputType="number"
                     android:maxLength="25"
-                    android:maxLines="1"
-                    android:layout_marginTop="@dimen/small_padding"
-                    android:hint="Please input bank card no"/>
+                    android:maxLines="1"/>
             </LinearLayout>
 
             <LinearLayout
@@ -95,13 +95,24 @@
                     android:layout_height="wrap_content"
                     android:text="CaptchaHelper"/>
 
+                <EditText
+                    android:id="@+id/text_input_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入电话"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:padding="@dimen/activity_vertical_margin"/>
+
                 <TextView
                     android:id="@+id/text_phone_captcha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_color_phone_captcha"
-                    android:text="@string/developutils_phone_captcha_send"
                     android:padding="@dimen/activity_vertical_margin"
+                    android:text="@string/developutils_phone_captcha_send"
+                    android:textColor="@color/text_color_phone_captcha"
                     />
             </LinearLayout>
 

@@ -54,7 +54,7 @@ public class ApkDownloadService extends Service {
 
         if (url != null) {
             fileName = url.substring(url.lastIndexOf("/") + 1);
-            updateDir = Environment.getDataDirectory() + "/data/" + this.getPackageName() + "/files/";
+            updateDir = getApplicationContext().getCacheDir() + "/files/";
             Intent nullIntent = new Intent();
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nullIntent, 0);
             updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -148,8 +148,7 @@ public class ApkDownloadService extends Service {
                 throw new Exception("fail!");
             }
             is = httpConnection.getInputStream();
-           /* fos = new FileOutputStream(saveFile, false);*/
-            fos = openFileOutput(fileName, MODE_WORLD_READABLE);
+            fos = getApplicationContext().openFileOutput(fileName, MODE_PRIVATE);
 
             byte buffer[] = new byte[4096];
             int readsize = 0;

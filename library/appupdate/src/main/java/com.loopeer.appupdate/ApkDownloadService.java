@@ -48,6 +48,7 @@ public class ApkDownloadService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (intent == null) return super.onStartCommand(intent, 0, 0);
         url = intent.getStringExtra(EXTRA_APK_URL);
         appName = intent.getStringExtra(EXTRA_APP_NAME);
         drawableId = intent.getIntExtra(EXTRA_DRAWABLE_ID, 0);

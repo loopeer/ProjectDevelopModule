@@ -40,14 +40,6 @@ public class MainActivity extends AppCompatActivity {
         list.setLayoutManager(new LinearLayoutManager(this));
         list.setAdapter(new ResolveInfoAdapter(this, getAllSampleActivities()));
         list.addItemDecoration(new DividerItemDecoration(new ColorDrawable(0xFFDCDCDC)));
-
-
-        AppUpdate.apply(this
-                , "message"
-                , "描述"
-                , "https://pro-app-qn.fir.im/aebe6a0c49d3cc9bec50e2f44559e7d2d2b56566.apk?attname=app-loopeer-release.apk_2.1.1.apk&e=1498097801&token=LOvmia8oXF4xnLh0IdH05XMYpH6ENHNpARlmPc-T:NYbyH9LFuJAArm3rnIn6l79KS5Q="
-                , getString(R.string.app_name)
-                , R.mipmap.ic_launcher);
     }
 
     private List<ResolveInfo> getAllSampleActivities() {

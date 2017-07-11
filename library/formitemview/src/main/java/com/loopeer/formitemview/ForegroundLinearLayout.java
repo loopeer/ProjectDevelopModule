@@ -33,6 +33,10 @@ public class ForegroundLinearLayout extends LinearLayout {
     private final Rect mSelfBounds = new Rect();
     private final Rect mOverlayBounds = new Rect();
 
+    private int mForegroundGravity = Gravity.FILL;
+
+    protected boolean mForegroundInPadding = true;
+
     boolean mForegroundBoundsChanged = false;
 
     public ForegroundLinearLayout(Context context) {
@@ -48,12 +52,52 @@ public class ForegroundLinearLayout extends LinearLayout {
         super(context, attrs, defStyle);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ForegroundLinearLayout,
-            defStyle, 0);
+                defStyle, 0);
+
         final Drawable d = a.getDrawable(R.styleable.ForegroundLinearLayout_android_foreground);
         if (d != null) {
             setForeground(d);
         }
+
         a.recycle();
+    }
+
+    /**
+     * Describes how the foreground is positioned.
+     *
+     * @return foreground gravity.
+     * @see #setForegroundGravity(int)
+     */
+    public int getForegroundGravity() {
+        return mForegroundGravity;
+    }
+
+    /**
+     * Describes how the foreground is positioned. Defaults to START and TOP.
+     *
+     * @param foregroundGravity See {@link Gravity}
+     * @see #getForegroundGravity()
+     */
+    public void setForegroundGravity(int foregroundGravity) {
+        if (mForegroundGravity != foregroundGravity) {
+            if ((foregroundGravity & Gravity.RELATIVE_HORIZONTAL_GRAVITY_MASK) == 0) {
+                foregroundGravity |= Gravity.START;
+            }
+
+            if ((foregroundGravity & Gravity.VERTICAL_GRAVITY_MASK) == 0) {
+                foregroundGravity |= Gravity.TOP;
+            }
+
+            mForegroundGravity = foregroundGravity;
+
+
+            if (mForegroundGravity == Gravity.FILL && mForeground != null) {
+                Rect padding = new Rect();
+                mForeground.getPadding(padding);
+            }
+
+            requestLayout();
+        }
     }
 
     @Override
@@ -97,6 +141,10 @@ public class ForegroundLinearLayout extends LinearLayout {
                 drawable.setCallback(this);
                 if (drawable.isStateful()) {
                     drawable.setState(getDrawableState());
+                }
+                if (mForegroundGravity == Gravity.FILL) {
+                    Rect padding = new Rect();
+                    drawable.getPadding(padding);
                 }
             } else {
                 setWillNotDraw(true);
@@ -144,8 +192,15 @@ public class ForegroundLinearLayout extends LinearLayout {
                 final int w = getRight() - getLeft();
                 final int h = getBottom() - getTop();
 
-                selfBounds.set(getPaddingLeft(), getPaddingTop(),
-                        w - getPaddingRight(), h - getPaddingBottom());
+                if (mForegroundInPadding) {
+                    selfBounds.set(0, 0, w, h);
+                } else {
+                    selfBounds.set(getPaddingLeft(), getPaddingTop(),
+                            w - getPaddingRight(), h - getPaddingBottom());
+                }
+
+                Gravity.apply(mForegroundGravity, foreground.getIntrinsicWidth(),
+                        foreground.getIntrinsicHeight(), selfBounds, overlayBounds);
                 foreground.setBounds(overlayBounds);
             }
 
@@ -162,5 +217,4 @@ public class ForegroundLinearLayout extends LinearLayout {
                 mForeground.setHotspot(x, y);
             }
         }
-    }
-}
+    }}

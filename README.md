@@ -17,7 +17,7 @@ One fasion in the library to solve make status bar transparent.Idea from Coordin
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:compatinset:0.0.5-beta12'
+    compile 'com.loopeer.library:compatinset:0.0.5-beta14'
 }
 ```
 ||Api16|Api19|Api23|
@@ -116,7 +116,7 @@ values-v21:
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:bottomdialog:0.0.5-beta12'
+    compile 'com.loopeer.library:bottomdialog:0.0.5-beta14'
 }
 ```
 #### Usages
@@ -141,7 +141,7 @@ new BottomDateTimeDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:addresspicker:0.0.5-beta12'
+    compile 'com.loopeer.library:addresspicker:0.0.5-beta14'
 }
 ```
 #### Usages
@@ -180,7 +180,7 @@ new AddressPickerDialog.Builder(this)
 #### Installation
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:developutil:0.0.5-beta12'
+    compile 'com.loopeer.library:developutil:0.0.5-beta14'
 }
 ```
 #### Usages
@@ -256,7 +256,7 @@ mCaptchaHelper.cancel();
 
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:imageswitcher:0.0.5-beta12'
+    compile 'com.loopeer.library:imageswitcher:0.0.5-beta14'
 }
 ```
 <img src="/screenshot/image_switcher/image_switcher.gif" width = "310"/>
@@ -271,7 +271,7 @@ NavigatorImage.startImageSwitchActivity(this,  Arrays.asList(sImages), 3, R.mipm
 Apk Update helper with apk version check and download apk service.
 ```groovy
 dependencies {
-    compile 'com.loopeer.library:appupdate:0.0.5-beta12'
+    compile 'com.loopeer.library:appupdate:0.0.5-beta14'
 }
 ```
 

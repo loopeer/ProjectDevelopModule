@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.DrawableRes;
+import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
 import java.io.File;
@@ -99,9 +100,18 @@ public class ApkDownloadService extends Service {
             switch (msg.what) {
                 case 0:
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setDataAndType(Uri.fromFile(new File(updateDir, fileName)), "application/vnd.android.package-archive");
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // without this flag android returned a intent error!
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    Uri apkUri;
+                    // Android 7.0 以上不支持 file://协议 需要通过 FileProvider 访问 sd卡 下面的文件，所以 Uri 需要通过 FileProvider 构造，协议为 content://
+                    if (Build.VERSION.SDK_INT >= 24) {
+                        apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.loopeer.projectdevelopmodule.fileProvider", new File(updateDir, fileName));
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    } else {
+                        apkUri = Uri.fromFile(new File(updateDir, fileName));
+                    }
+                    intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
                     startActivity(intent);
+
                     updateNotificationManager.cancel(101);
                     stopSelf();
                     break;

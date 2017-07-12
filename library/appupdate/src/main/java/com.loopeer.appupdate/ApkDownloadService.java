@@ -25,6 +25,7 @@ public class ApkDownloadService extends Service {
     public static final String EXTRA_APK_URL = "extra_apk_url";
     public static final String EXTRA_APP_NAME = "extra_app_name";
     public static final String EXTRA_DRAWABLE_ID = "extra_drawable_id";
+    public static final String EXTRA_FILE_PROVIDER_AUTHORITIES = "extra_file_provider_authorities";
 
     private String url = null;
     private NotificationManager updateNotificationManager = null;
@@ -34,15 +35,17 @@ public class ApkDownloadService extends Service {
     private String appName = null;
     private String fileName = null;
     private String updateDir = null;
+    private String fileProviderAuthorities = null;
     private int drawableId;
 
     public static void startDownloadApkService(Context context, String url, String appName,
-                                               @DrawableRes int drawableId) {
+                                               @DrawableRes int drawableId, String authorities) {
         if (TextUtils.isEmpty(url)) return;
         Intent intent = new Intent(context, ApkDownloadService.class);
         intent.putExtra(EXTRA_APK_URL, url);
         intent.putExtra(EXTRA_APP_NAME, appName);
         intent.putExtra(EXTRA_DRAWABLE_ID, drawableId);
+        intent.putExtra(EXTRA_FILE_PROVIDER_AUTHORITIES, authorities);
         context.startService(intent);
     }
 
@@ -52,6 +55,7 @@ public class ApkDownloadService extends Service {
         url = intent.getStringExtra(EXTRA_APK_URL);
         appName = intent.getStringExtra(EXTRA_APP_NAME);
         drawableId = intent.getIntExtra(EXTRA_DRAWABLE_ID, 0);
+        fileProviderAuthorities = intent.getStringExtra(EXTRA_FILE_PROVIDER_AUTHORITIES);
 
         if (url != null) {
             fileName = url.substring(url.lastIndexOf("/") + 1);
@@ -104,7 +108,7 @@ public class ApkDownloadService extends Service {
                     Uri apkUri;
                     // Android 7.0 以上不支持 file://协议 需要通过 FileProvider 访问 sd卡 下面的文件，所以 Uri 需要通过 FileProvider 构造，协议为 content://
                     if (versionAboveN()) {
-                        apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.loopeer.projectdevelopmodule.fileProvider", new File(updateDir, fileName));
+                        apkUri = FileProvider.getUriForFile(getApplicationContext(), fileProviderAuthorities, new File(updateDir, fileName));
                         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     } else {
                         apkUri = Uri.fromFile(new File(updateDir, fileName));

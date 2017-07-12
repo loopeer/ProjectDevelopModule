@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -56,7 +55,7 @@ public class ApkDownloadService extends Service {
 
         if (url != null) {
             fileName = url.substring(url.lastIndexOf("/") + 1);
-            updateDir = Environment.getDataDirectory() + "/data/" + this.getPackageName() + "/files/";
+            updateDir = getApplicationContext().getFilesDir().toString();
             Intent nullIntent = new Intent();
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nullIntent, 0);
             updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -104,7 +103,7 @@ public class ApkDownloadService extends Service {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     Uri apkUri;
                     // Android 7.0 以上不支持 file://协议 需要通过 FileProvider 访问 sd卡 下面的文件，所以 Uri 需要通过 FileProvider 构造，协议为 content://
-                    if (Build.VERSION.SDK_INT >= 24) {
+                    if (versionAboveN()) {
                         apkUri = FileProvider.getUriForFile(getApplicationContext(), "com.loopeer.projectdevelopmodule.fileProvider", new File(updateDir, fileName));
                         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     } else {
@@ -136,6 +135,10 @@ public class ApkDownloadService extends Service {
         }
     };
 
+    private boolean versionAboveN() {
+        return Build.VERSION.SDK_INT >= 24;
+    }
+
     public long downloadUpdateFile(String downloadUrl) throws Exception {
         int downloadCount = 0;
         int currentSize = 0;
@@ -159,7 +162,7 @@ public class ApkDownloadService extends Service {
                 throw new Exception("fail!");
             }
             is = httpConnection.getInputStream();
-            fos = getApplicationContext().openFileOutput(fileName, MODE_WORLD_READABLE);
+            fos = getApplicationContext().openFileOutput(fileName, versionAboveN() ? MODE_PRIVATE : MODE_WORLD_READABLE);
 
             byte buffer[] = new byte[4096];
             int readsize = 0;

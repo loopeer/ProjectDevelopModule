@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -55,7 +56,7 @@ public class ApkDownloadService extends Service {
 
         if (url != null) {
             fileName = url.substring(url.lastIndexOf("/") + 1);
-            updateDir = getApplicationContext().getFilesDir().toString();
+            updateDir = Environment.getDataDirectory() + "/data/" + this.getPackageName() + "/files/";
             Intent nullIntent = new Intent();
             PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nullIntent, 0);
             updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -158,7 +159,7 @@ public class ApkDownloadService extends Service {
                 throw new Exception("fail!");
             }
             is = httpConnection.getInputStream();
-            fos = getApplicationContext().openFileOutput(fileName, MODE_PRIVATE);
+            fos = getApplicationContext().openFileOutput(fileName, MODE_WORLD_READABLE);
 
             byte buffer[] = new byte[4096];
             int readsize = 0;

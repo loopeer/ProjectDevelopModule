@@ -6,15 +6,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true">
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="${APK_DOWNLOAD_FILE_PROVIDER_AUTHORITIES}"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
-        </provider>
+        <!--<provider-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities="包名.apkDownload.fileProvider"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/file_paths"/>-->
+        <!--</provider>-->
 
         <service
             android:name="com.loopeer.appupdate.ApkDownloadService"

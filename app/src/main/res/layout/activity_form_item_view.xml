@@ -24,6 +24,10 @@
 
         <com.loopeer.formitemview.FormEditItem
             style="@style/FormItemViewStyle.FormEditItem"
+            app:contentGravity="start"
+            app:contentTextSize="17sp"
+            app:descTextSize="17sp"
+            app:contentMaxLength="12"
             app:contentText="@={validator.name}"
             app:descText="@string/info_personal_name"
             app:contentHint="@string/info_personal_name_hint"/>

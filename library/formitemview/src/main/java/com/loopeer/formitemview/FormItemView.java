@@ -2,7 +2,6 @@ package com.loopeer.formitemview;
 
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Px;
 import android.support.annotation.StringRes;
@@ -62,4 +61,5 @@ public interface FormItemView {
     //input type
     void setInputType(int type);
 
+    void setDescTextSize(float size);
 }

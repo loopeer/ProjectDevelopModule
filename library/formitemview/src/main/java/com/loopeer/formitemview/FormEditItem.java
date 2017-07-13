@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
@@ -44,7 +45,8 @@ public class FormEditItem extends AbstractFormItemView {
         setDescText(a.getString(R.styleable.FormEditItem_descText));
         setDescTextColor(a.getColor(R.styleable.FormEditItem_descTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_desc_text_color)));
-
+        setDescTextSize(a.getDimensionPixelSize(R.styleable.FormEditItem_descTextSize,
+            getResources().getDimensionPixelSize(R.dimen.small_padding)));
         setContentText(a.getString(R.styleable.FormEditItem_contentText));
         setContentTextColor(a.getColor(R.styleable.FormEditItem_contentTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_content_text_color)));
@@ -52,6 +54,8 @@ public class FormEditItem extends AbstractFormItemView {
         setContentHint(a.getString(R.styleable.FormEditItem_contentHint));
         setContentHintTextColor(a.getColor(R.styleable.FormEditItem_contentHintTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_content_text_hint_color)));
+        setContentTextSize(a.getDimensionPixelSize(R.styleable.FormEditItem_contentTextSize,
+            getResources().getDimensionPixelSize(R.dimen.small_padding)));
 
         Drawable drawable = a.getDrawable(R.styleable.FormEditItem_contentDrawableRight);
         setContentTextDrawableRight(drawable);
@@ -73,6 +77,11 @@ public class FormEditItem extends AbstractFormItemView {
         final int type = a.getInt(R.styleable.FormEditItem_contentInputType, 0);
         if (type != 0) {
             setInputType(type);
+        }
+
+        int index = a.getInt(R.styleable.FormEditItem_contentGravity, Gravity.LEFT|Gravity.CENTER_VERTICAL);
+        if (index >= 0) {
+            mContentText.setGravity(index);
         }
 
         a.recycle();

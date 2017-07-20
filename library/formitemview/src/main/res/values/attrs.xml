@@ -7,6 +7,7 @@
     <attr name="contentTextColor" format="color"/>
     <attr name="contentTextSize" format="dimension"/>
     <attr name="contentHint" format="string"/>
+    <attr name="contentHintTextColor" format="color"/>
     <attr name="contentDrawableRight" format="reference"/>
     <attr name="formEnable" format="boolean"/>
     <attr name="descTextMinWidth" format="dimension"/>
@@ -68,6 +69,7 @@
         <attr name="descTextSize"/>
         <attr name="descTextMinWidth"/>
         <attr name="contentText"/>
+        <attr name="contentHintTextColor"/>
         <attr name="contentHint"/>
         <attr name="contentTextColor"/>
         <attr name="contentTextSize"/>
@@ -99,6 +101,7 @@
         <attr name="contentDrawableRight"/>
         <attr name="descTextMinEms"
               format="integer"/>
+        <attr name="contentHintTextColor"/>
         <attr name="contentHint"/>
         <attr name="contentMaxLength"
               format="integer"/>
@@ -410,8 +413,6 @@
                   value="0x80000000"/>
         </attr>
         <attr name="contentGravity"/>
-        <attr name="contentHintTextColor"
-              format="color"/>
     </declare-styleable>
 
     <attr name="formTextItemStyle"

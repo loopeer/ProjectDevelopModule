@@ -48,6 +48,8 @@ public class FormTextItem extends AbstractFormItemView {
         setContentText(a.getString(R.styleable.FormTextItem_contentText));
         setContentTextColor(a.getColor(R.styleable.FormTextItem_contentTextColor,
             ContextCompat.getColor(context, R.color.form_item_default_content_text_color)));
+        setContentHintTextColor(a.getColor(R.styleable.FormTextItem_contentHintTextColor,
+                ContextCompat.getColor(context, R.color.form_item_default_content_text_hint_color)));
         setContentTextSize(a.getDimensionPixelSize(R.styleable.FormTextItem_contentTextSize,
             getResources().getDimensionPixelSize(R.dimen.text_size_large)));
         setContentHint(a.getString(R.styleable.FormTextItem_contentHint));

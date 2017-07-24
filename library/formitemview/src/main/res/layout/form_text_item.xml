@@ -9,12 +9,12 @@
         android:id="@+id/txtDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minWidth="80dp"
         android:layout_marginRight="10dp"
         android:drawablePadding="@dimen/small_padding"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
+        android:minWidth="80dp"
         android:textColor="#888888"
         tools:text="sss:"/>
 
@@ -24,11 +24,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
+        android:drawablePadding="8dp"
+        android:ellipsize="end"
         android:enabled="true"
         android:gravity="center_vertical|right"
         android:textColor="#353535"
         android:textColorHint="#DCDCDC"
-        android:drawablePadding="8dp"
         android:textSize="16sp"
         tools:text="asdasdasdasdasdasdasdasdasdasdasdasdasd"/>
 

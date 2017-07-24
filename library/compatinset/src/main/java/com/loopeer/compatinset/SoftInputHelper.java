@@ -16,15 +16,17 @@ public class SoftInputHelper {
 
     private Context mContext;
     private View mView;
+    private int mBottomMargin;
 
     public SoftInputHelper(View view) {
         mContext = view.getContext();
         mView = view;
     }
 
-    public static void applySoftCompat(View view) {
+    public static SoftInputHelper applySoftCompat(View view) {
         SoftInputHelper softInputHelper = new SoftInputHelper(view);
         softInputHelper.addListener();
+        return softInputHelper;
     }
 
     private void addListener() {
@@ -39,12 +41,13 @@ public class SoftInputHelper {
                 int naviBarHeight = getNavBarHeight(mContext);
                 heightDifference -= naviBarHeight;
                 ViewGroup.MarginLayoutParams layoutParams = (ViewGroup.MarginLayoutParams) mView.getLayoutParams();
-                if (layoutParams.bottomMargin == heightDifference) return;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (layoutParams.bottomMargin == heightDifference) return;
                     layoutParams.bottomMargin = heightDifference;
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-                        layoutParams.height = rect.bottom - mView.getTop();
-                    }
+                    mView.requestLayout();
+                } else {
+                    if (layoutParams.height == rect.bottom - mView.getTop()) return;
+                    layoutParams.height = rect.bottom - mView.getTop();
                     mView.requestLayout();
                 }
             }

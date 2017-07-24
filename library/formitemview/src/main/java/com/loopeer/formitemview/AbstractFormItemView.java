@@ -19,6 +19,8 @@ import android.widget.TextView;
 import static android.util.TypedValue.COMPLEX_UNIT_PX;
 
 public abstract class AbstractFormItemView extends ForegroundLinearLayout implements FormItemView {
+    protected static final int DEFAULT_MAX_CONTENT_MAX_LINES = 1;
+
     protected TextView mDescText;
     protected TextView mContentText;
     protected ImageView mImageRight;
@@ -149,6 +151,8 @@ public abstract class AbstractFormItemView extends ForegroundLinearLayout implem
     public void setDescTextSize(float size) {
         mDescText.setTextSize(COMPLEX_UNIT_PX, size);
     }
+
+
 }
 
 

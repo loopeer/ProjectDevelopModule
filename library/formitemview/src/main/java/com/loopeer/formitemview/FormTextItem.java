@@ -54,6 +54,8 @@ public class FormTextItem extends AbstractFormItemView {
             getResources().getDimensionPixelSize(R.dimen.text_size_large)));
         setContentHint(a.getString(R.styleable.FormTextItem_contentHint));
         setDescMinWidth(a.getDimensionPixelSize(R.styleable.FormTextItem_descTextMinWidth,80));
+        setContentMaxLines(
+                a.getInt(R.styleable.FormTextItem_contentMaxLines, DEFAULT_MAX_CONTENT_MAX_LINES));
 
         Drawable contentDrawableRight = a.getDrawable(
             R.styleable.FormTextItem_contentDrawableRight);

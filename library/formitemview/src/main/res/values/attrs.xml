@@ -61,6 +61,8 @@
         <flag name="end"
               value="0x00800005"/>
     </attr>
+    <attr name="contentMaxLines"
+          format="integer"/>
 
     <declare-styleable name="FormTextItem">
         <attr name="formEnable"/>
@@ -75,6 +77,7 @@
         <attr name="contentTextSize"/>
         <attr name="drawableRight"
               format="reference"/>
+        <attr name="contentMaxLines"/>
         <attr name="contentDrawableRight"/>
         <attr name="descDrawableLeft"
               format="reference"/>
@@ -105,8 +108,7 @@
         <attr name="contentHint"/>
         <attr name="contentMaxLength"
               format="integer"/>
-        <attr name="contentMaxLines"
-              format="integer"/>
+        <attr name="contentMaxLines"/>
         <attr name="contentInputType">
             <!-- There is no content type.  The text is not editable. -->
             <flag name="none"

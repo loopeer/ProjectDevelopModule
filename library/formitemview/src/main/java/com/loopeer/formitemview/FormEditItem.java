@@ -16,7 +16,6 @@ public class FormEditItem extends AbstractFormItemView {
     private static final int DEFAULT_IME_OPTIONS = EditorInfo.IME_NULL;
     private static final int DEFAULT_MIN_EMS = 4;
     private static final int DEFAULT_MAX_CONTENT_MAX_LENGTH = 10;
-    private static final int DEFAULT_MAX_CONTENT_MAX_LINES = 1;
 
     public interface OnFormClickListener {
         void onFormClick(FormEditItem item);
@@ -65,8 +64,8 @@ public class FormEditItem extends AbstractFormItemView {
         setContentMaxLength(
             a.getInt(R.styleable.FormEditItem_contentMaxLength, DEFAULT_MAX_CONTENT_MAX_LENGTH));
 
-      /*  setMaxLines(
-            a.getInt(R.styleable.FormEditItem_contentMaxLines,DEFAULT_MAX_CONTENT_MAX_LINES));*/
+        setContentMaxLines(
+            a.getInt(R.styleable.FormEditItem_contentMaxLines,DEFAULT_MAX_CONTENT_MAX_LINES));
 
         setFormItemEnabled(a.getBoolean(R.styleable.FormEditItem_formEnable, true));
 
@@ -96,6 +95,8 @@ public class FormEditItem extends AbstractFormItemView {
         });
 
     }
+
+
 
     public void setImeOptions(int imeOptions) {
         mContentText.setImeOptions(imeOptions);

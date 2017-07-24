@@ -50,6 +50,10 @@ public class InsetHolderView extends View {
 
         mStatusBarDarkColor = a.getColor(R.styleable.InsetHolderView_insetStatusBarColor
                 , -1);
+        /**
+         * dark style will change statusbar font or some icon color to black
+         * light style will change statusbar font or some icon color to white
+         * */
         int style = a.getInt(R.styleable.InsetHolderView_insetStatusBarStyle
                 , 0);
         if (style == 1) {
@@ -58,6 +62,12 @@ public class InsetHolderView extends View {
             StatusBarFontHelper.setStatusBarMode(((Activity) context), true);
         }
 
+        /**
+         * mStatusBarColor normal color we used
+         * mStatusBarDarkColor color we set when change the StatusBarFontHelper change color fail return 0
+         * For the light colored mStatusBarColor, we will change the font to black, but for most (MIUI, Meizu) less than 6.0 of the mobile phone
+         * The font color cannot be changed. The default is white. At this moment, we must use a dark colored statusbarcolor in stead of light color
+        * */
         if (mStatusBarDarkColor != -1 && style == 0) {
             int result = StatusBarFontHelper.setStatusBarMode(((Activity) context), false);
             if (result < 1)

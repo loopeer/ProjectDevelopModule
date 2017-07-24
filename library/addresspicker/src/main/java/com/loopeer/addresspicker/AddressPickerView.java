@@ -277,7 +277,7 @@ public class AddressPickerView extends LinearLayout {
 
 
     private int getMaxValue(String[] str) {
-        return str == null ? 0 : str.length - 1;
+        return str == null || str.length == 0 ? 0 : str.length - 1;
     }
 
 }

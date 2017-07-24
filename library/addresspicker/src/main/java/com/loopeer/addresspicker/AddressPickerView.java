@@ -185,6 +185,7 @@ public class AddressPickerView extends LinearLayout {
 
     private void updateCityPicker(int index) {
         mCities = AddressUtils.getInstance().getCities(mAddress.cityList.get(mCurProvinceIndex));
+        if (mCities == null || mCities.length == 0) return;
         mCityPicker.setDisplayedValues(null);
         mCityPicker.setValue(index);
         mCityPicker.setMaxValue(getMaxValue(mCities));
@@ -199,6 +200,7 @@ public class AddressPickerView extends LinearLayout {
     private void updateDistrictPicker(int index) {
         mDistricts = AddressUtils.getInstance()
             .getDistricts(mAddress.cityList.get(mCurProvinceIndex).c.get(mCurCityIndex));
+        if (mDistricts == null || mDistricts.length == 0) return;
         mDistrictPicker.setDisplayedValues(null);
         mDistrictPicker.setValue(index);
         mDistrictPicker.setMaxValue(getMaxValue(mDistricts));
@@ -214,11 +216,21 @@ public class AddressPickerView extends LinearLayout {
         return (mMode & PROVINCE_MASK) == PROVINCE_MASK ? mCurProvinceStr : "";
     }
 
-
     public int getProvinceIndex() {
         return mCurProvinceIndex;
     }
 
+    public Address.Province getProvinceModel() {
+        return mAddress.cityList.get(mCurProvinceIndex);
+    }
+
+    public Address.Province.City getCityModel() {
+        return mAddress.cityList.get(mCurProvinceIndex).c.get(mCurCityIndex);
+    }
+
+    public Address.Province.City.District getDistrictModel() {
+        return mAddress.cityList.get(mCurProvinceIndex).c.get(mCurDistrictIndex).a.get(mCurDistrictIndex);
+    }
 
     public void setProvince(int index) {
         mCurProvinceIndex = index;

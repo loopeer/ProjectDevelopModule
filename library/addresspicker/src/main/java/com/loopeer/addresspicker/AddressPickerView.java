@@ -79,6 +79,12 @@ public class AddressPickerView extends LinearLayout {
         mProvinces = AddressUtils.getInstance().getProvinces(mAddress);
     }
 
+    public void updateAddress(Address address) {
+        mAddress = address;
+        mProvinces = AddressUtils.getInstance().getProvinces(mAddress);
+        initView();
+        updateView();
+    }
 
     private void initView() {
         View v = LayoutInflater.from(getContext())

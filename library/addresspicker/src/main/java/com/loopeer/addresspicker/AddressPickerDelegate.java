@@ -42,4 +42,7 @@ public abstract class AddressPickerDelegate {
         }
     }
 
+    public void setAddress(Address address) {
+        mPicker.updateAddress(address);
+    }
 }

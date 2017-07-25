@@ -31,9 +31,9 @@ public class AddressPickerDialog {
         mDelegate = params.type == ALERT
                     ? new AlertDialogDelegate(params)
                     : new BottomDialogDelegate(params);
-        mDelegate.setAddress(params.address);
         mDelegate.setTitle(params.title);
         mDelegate.setAddressMode(params.mode);
+        mDelegate.setAddress(params.address);
         mDelegate.setProvince(params.provinceIndex);
         mDelegate.setCity(params.cityIndex);
         mDelegate.setDistrict(params.districtIndex);

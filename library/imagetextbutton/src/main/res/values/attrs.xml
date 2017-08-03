@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ImageTextButton">
+        <attr name="img_txt_btn_text" format="string" />
+        <!--按钮文字-->
+        <attr name="img_txt_btn_text_color" format="color" />
+        <!--字体颜色-->
+        <attr name="img_txt_btn_text_size" format="dimension" />
+        <!--按钮字体大小-->
+        <attr name="img_txt_btn_pic" format="reference" />
+        <!--按钮左侧图标-->
+        <attr name="img_txt_btn_padding" format="dimension"/>
+
+    </declare-styleable>
+</resources>

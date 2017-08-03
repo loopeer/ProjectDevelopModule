@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.loopeer.imagetextbutton.ImageTextButton
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/textUnSelectColor"
+        app:img_txt_btn_padding="10dp"
+        app:img_txt_btn_pic="@drawable/ic_example"
+        app:img_txt_btn_text="ImageTextButton"
+        app:img_txt_btn_text_color="@color/colorAccent"
+        app:img_txt_btn_text_size="10dp" />
 </LinearLayout>

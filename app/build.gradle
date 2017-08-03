@@ -48,5 +48,6 @@ dependencies {
     compile project(':library:springviewgroup')
     compile project(':library:formitemview')
     compile project(':library:bottomimagepicker')
+    compile project(':library:imagetextbutton')
 
 }

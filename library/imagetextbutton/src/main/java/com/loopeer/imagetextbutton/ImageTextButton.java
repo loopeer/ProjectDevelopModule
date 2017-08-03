@@ -1,23 +1,17 @@
-package com.example.owen.stud.viewPaint;
+package com.loopeer.imagetextbutton;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.Px;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import com.example.owen.stud.R;
-
-import java.lang.ref.Reference;
+import android.support.v4.content.ContextCompat;
 
 /**
  * Created by owen on 2017/8/2.

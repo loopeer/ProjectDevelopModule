@@ -10,7 +10,8 @@ include ':app',
         ':library:databindpack',
         ':library:imageswitcher',
         ':library:springviewgroup',
-        ':library:formitemview'
+        ':library:formitemview',
+        ':library:imagetextbutton'
 
 
 

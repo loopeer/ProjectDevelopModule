@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 
 // Set up everything required for releasing on Bintray
 ext {
-    bintrayRepo = 'com.loopeer.library'
+    bintrayRepo = 'maven'
     bintrayName = "${POM_ARTIFACT_ID}"
     bintrayDescription = POM_DESCRIPTION
     projectUrl = 'https://github.com/loopeer/ProjectDevelopModule'
@@ -15,8 +15,8 @@ ext {
     libraryName = 'loopeermodule'
     artifact = 'loopeermodule'
 
-    developerId = 'ToDou'
-    developerName = 'ToDou'
+    developerId = 'loopeer'
+    developerName = 'loopeer'
 
     projectLicenses = {
         license {

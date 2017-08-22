@@ -88,6 +88,18 @@ public class DateTimeView extends LinearLayout {
         mPickerDay = (NumberPicker) findViewById(R.id.picker_day);
         mPickerHour = (NumberPicker) findViewById(R.id.picker_hour);
         mPickerMinute = (NumberPicker) findViewById(R.id.picker_minute);
+
+        mPickerYear.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mPickerMonth.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mPickerDay.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mPickerHour.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mPickerMinute.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        NumberPickerUtils.setDividerColor(R.color.color_bottom_dialog_picker_divider, mPickerYear);
+        NumberPickerUtils.setDividerColor(R.color.color_bottom_dialog_picker_divider, mPickerMonth);
+        NumberPickerUtils.setDividerColor(R.color.color_bottom_dialog_picker_divider, mPickerDay);
+        NumberPickerUtils.setDividerColor(R.color.color_bottom_dialog_picker_divider, mPickerHour);
+        NumberPickerUtils.setDividerColor(R.color.color_bottom_dialog_picker_divider, mPickerMinute);
+
         mViewSpace = findViewById(R.id.view_space);
         mViewTimeColon = findViewById(R.id.view_time_colon);
 

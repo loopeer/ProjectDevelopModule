@@ -2,4 +2,6 @@
 <resources>
 
     <color name="color_bottom_dialog_divider">#DCDCDC</color>
+    <color name="color_bottom_dialog_picker_divider">#DCDCDC</color>
+    <color name="color_bottom_dialog_btn">#1C1C1C</color>
 </resources>

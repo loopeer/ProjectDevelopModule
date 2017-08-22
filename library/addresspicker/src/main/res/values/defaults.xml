@@ -6,6 +6,7 @@
     <string name="common_cancel">取消</string>
 
     <dimen name="xxsmall_padding">4dp</dimen>
-    <dimen name="bottom_dialog_medium_padding">12dp</dimen>
+    <dimen name="bottom_dialog_medium_padding">24dp</dimen>
+    <dimen name="bottom_dialog_small_padding">12dp</dimen>
 
 </resources>

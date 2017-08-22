@@ -15,27 +15,25 @@
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/btn_date_time_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?listPreferredItemHeight"
             android:background="?selectableItemBackground"
-            android:paddingBottom="@dimen/bottom_dialog_medium_padding"
+            android:gravity="center_vertical"
             android:paddingLeft="@dimen/bottom_dialog_medium_padding"
             android:paddingRight="@dimen/bottom_dialog_medium_padding"
-            android:paddingTop="@dimen/bottom_dialog_medium_padding"
             android:text="@string/bottom_dialog_common_cancel"
-            android:textColor="?android:textColorPrimary"/>
+            android:textColor="@color/color_bottom_dialog_btn"/>
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/btn_date_time_sure"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?listPreferredItemHeight"
             android:layout_gravity="right"
             android:background="?selectableItemBackground"
-            android:paddingBottom="@dimen/bottom_dialog_medium_padding"
+            android:gravity="center_vertical"
             android:paddingLeft="@dimen/bottom_dialog_medium_padding"
             android:paddingRight="@dimen/bottom_dialog_medium_padding"
-            android:paddingTop="@dimen/bottom_dialog_medium_padding"
             android:text="@string/bottom_dialog_common_sure"
-            android:textColor="?android:textColorPrimary"/>
+            android:textColor="@color/color_bottom_dialog_btn"/>
     </FrameLayout>
 
     <include layout="@layout/view_divider_dash"/>
@@ -44,7 +42,7 @@
         android:id="@+id/view_date_time_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/bottom_dialog_medium_padding"
+        android:padding="@dimen/bottom_dialog_small_padding"
         app:showDateTimeView="dateView|timeView"/>
 
 </LinearLayout>

@@ -11,7 +11,8 @@ include ':app',
         ':library:imageswitcher',
         ':library:springviewgroup',
         ':library:formitemview',
-        ':library:imagetextbutton'
+        ':library:imagetextbutton',
+        ':library:validator2'
 
 
 

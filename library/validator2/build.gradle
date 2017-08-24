@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion configs.compileSdkVersion
@@ -24,8 +26,8 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile deps.supportCoreUi
-    compile deps.appcompatV7
+    implementation deps.appcompatV7
+    implementation deps.kotlinStdlib
 }
 
 task sourcesJar(type: Jar) {

@@ -1,8 +1,6 @@
-package com.example.todou.testkotlinlibrary.validator
+package com.loopeer.validator2
 
 import android.widget.EditText
-import com.example.todou.testkotlinlibrary.TestValidator
-import javax.xml.validation.Validator
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 

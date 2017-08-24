@@ -1,4 +1,4 @@
-package com.example.todou.testkotlinlibrary.validator
+package com.loopeer.validator2
 
 import android.view.View
 

@@ -1,9 +1,8 @@
-package com.example.todou.testkotlinlibrary.validator
+package com.loopeer.validator2
 
 import android.widget.TextView
 import kotlin.properties.ObservableProperty
 import kotlin.reflect.KProperty
-
 
 class TextDelegate(initialValue : String = "", val textView: TextView) : ObservableProperty<String>(initialValue) {
 

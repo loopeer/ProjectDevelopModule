@@ -15,9 +15,6 @@ abstract class ObservableValidator : ObservableModel(), IValidator, IFormValidat
         this.oldHash = hashCode()
     }
 
-    val content: String?
-        get() = null
-
     fun notifyEnable() {
         isEnable = checkEnable()
         getEnableView()?.forEach {
@@ -30,16 +27,22 @@ abstract class ObservableValidator : ObservableModel(), IValidator, IFormValidat
         return null
     }
 
-    override val isEdited: Boolean
-        get() = oldHash != hashCode()
+    override fun isEdited(): Boolean {
+        return oldHash != hashCode()
+    }
 
     abstract override fun checkEnable(): Boolean
 
-    override val isValidated: Boolean
-        get() = false
+    override fun isValidated(): Boolean {
+        return false
+    }
 
-    fun setEnableListener(enableListener: EnableListener) {
-        mEnableListener = enableListener
+    fun setEnableListener(enableListener:(enable: Boolean) -> Unit) {
+        mEnableListener = object : EnableListener{
+            override fun onEnableChange(enable: Boolean) {
+                enableListener.invoke(enable)
+            }
+        }
     }
 
     interface EnableListener {

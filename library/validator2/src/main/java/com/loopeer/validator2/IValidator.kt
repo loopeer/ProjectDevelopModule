@@ -12,5 +12,5 @@ interface IValidator {
      * check whether all items are legal. And show Toast to remind .
      * @return true,the info is legal. false,the info is illegal.
      */
-    val isValidated: Boolean
+    fun isValidated(): Boolean
 }

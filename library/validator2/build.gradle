@@ -28,6 +28,7 @@ dependencies {
 
     implementation deps.appcompatV7
     implementation deps.kotlinStdlib
+    implementation deps.androidExt
 }
 
 task sourcesJar(type: Jar) {

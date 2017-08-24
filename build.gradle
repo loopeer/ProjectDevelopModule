@@ -42,9 +42,10 @@ ext {
             versionName      : '1.0.0',
     ]
 
-    def supportLibraryVersion = '25.2.0'
-    def gsonVersion = '2.8.0'
-    def frescoVersion = '1.3.0'
+    supportLibraryVersion = '25.2.0'
+    gsonVersion = '2.8.0'
+    frescoVersion = '1.3.0'
+    androidExtVersion = '0.0.2'
 
     deps = [
             supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",
@@ -57,6 +58,7 @@ ext {
             gson           : "com.google.code.gson:gson:$gsonVersion",
             fresco         : "com.facebook.fresco:fresco:$frescoVersion",
             kotlinStdlib   : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            androidExt     : "com.loopeer.lib:androidext:$androidExtVersion",
             frescoOkhttp   : "com.facebook.fresco:imagepipeline-okhttp:$frescoVersion"
     ]
 }

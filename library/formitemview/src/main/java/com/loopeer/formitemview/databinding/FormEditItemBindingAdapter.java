@@ -20,8 +20,8 @@ public class FormEditItemBindingAdapter {
     public static void setContentText(FormEditItem view, String content) {
         if (!view.getContentText().equals(content)) {
             view.setContentText(content);
-            if (content != null) {
-                view.setSelection(content.length());
+            if (view.getContentText() != null) {
+                view.setSelection(view.getContentText().length());
             }
         }
     }

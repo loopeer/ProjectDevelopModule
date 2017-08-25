@@ -6,7 +6,7 @@ abstract class ObservableValidator : ObservableModel(), IValidator, IFormValidat
 
     var isEnable: Boolean = false
     internal var oldHash: Int = 0
-    private var mEnableListener: EnableListener? = null
+    private val enableListeners: MutableList<((enable: Boolean) -> Unit)> = mutableListOf()
 
     /**
      * if you want check one item was edited, you should set the old hashCode after first set the value
@@ -20,7 +20,9 @@ abstract class ObservableValidator : ObservableModel(), IValidator, IFormValidat
         getEnableView()?.forEach {
             it.isEnabled = isEnable
         }
-        if (mEnableListener != null) mEnableListener!!.onEnableChange(isEnable)
+        enableListeners.forEach {
+            it.invoke(isEnable)
+        }
     }
 
     open fun getEnableView() : Array<View>? {
@@ -37,16 +39,8 @@ abstract class ObservableValidator : ObservableModel(), IValidator, IFormValidat
         return false
     }
 
-    fun setEnableListener(enableListener:(enable: Boolean) -> Unit) {
-        mEnableListener = object : EnableListener{
-            override fun onEnableChange(enable: Boolean) {
-                enableListener.invoke(enable)
-            }
-        }
-    }
-
-    interface EnableListener {
-        fun onEnableChange(enable: Boolean)
+    fun addEnableListener(enableListener:(enable: Boolean) -> Unit) {
+        enableListeners.add(enableListener)
     }
 
     override fun hashCode(): Int {

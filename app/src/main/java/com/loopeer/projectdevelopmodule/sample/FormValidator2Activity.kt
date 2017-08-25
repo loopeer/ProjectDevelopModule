@@ -17,7 +17,7 @@ class FormValidator2Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_form_validator2)
         validator = NamePhoneValidator2(this)
-        validator.setEnableListener { invalidateOptionsMenu() }
+        validator.addEnableListener { invalidateOptionsMenu() }
         validator.notifyEnable()
     }
 

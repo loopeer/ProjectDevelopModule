@@ -90,7 +90,7 @@ public class FormEditItem extends AbstractFormItemView {
                 mContentText.requestFocus();
                 InputMethodManager iMM = (InputMethodManager) getContext().getSystemService(
                     Context.INPUT_METHOD_SERVICE);
-                iMM.showSoftInput(FormEditItem.this, 0);
+                iMM.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 

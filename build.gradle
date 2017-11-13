@@ -1,13 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.1.4-2'
+    ext.kotlin_version = '1.1.51'
 
     repositories {
         jcenter()
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta2'
+        classpath 'com.android.tools.build:gradle:3.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
@@ -24,6 +26,7 @@ plugins {
 allprojects {
     repositories {
         jcenter()
+        google()
         mavenCentral()
     }
 }
@@ -34,31 +37,33 @@ task clean(type: Delete) {
 
 ext {
     configs = [
-            compileSdkVersion: 25,
-            buildToolsVersion: '25.0.2',
-            minSdkVersion    : 14,
-            targetSdkVersion : 25,
-            versionCode      : 1,
-            versionName      : '1.0.0',
+        compileSdkVersion: 26,
+        buildToolsVersion: '26.0.2',
+        minSdkVersion    : 14,
+        targetSdkVersion : 26,
+        versionCode      : 1,
+        versionName      : '1.0.0',
     ]
 
-    supportLibraryVersion = '25.2.0'
+    supportLibraryVersion = '26.0.2'
     gsonVersion = '2.8.0'
     frescoVersion = '1.3.0'
     androidExtVersion = '0.0.2'
 
     deps = [
-            supportCompat  : "com.android.support:support-compat:$supportLibraryVersion",
-            supportCoreUi  : "com.android.support:support-core-ui:$supportLibraryVersion",
-            supportFragment: "com.android.support:support-fragment:$supportLibraryVersion",
-            appcompatV7    : "com.android.support:appcompat-v7:$supportLibraryVersion",
-            recyclerView   : "com.android.support:recyclerview-v7:$supportLibraryVersion",
-            design         : "com.android.support:design:$supportLibraryVersion",
-            gridlayoutV7   : "com.android.support:gridlayout-v7:$supportLibraryVersion",
-            gson           : "com.google.code.gson:gson:$gsonVersion",
-            fresco         : "com.facebook.fresco:fresco:$frescoVersion",
-            kotlinStdlib   : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
-            androidExt     : "com.loopeer.lib:androidext:$androidExtVersion",
-            frescoOkhttp   : "com.facebook.fresco:imagepipeline-okhttp:$frescoVersion"
+        supportCompat      : "com.android.support:support-compat:$supportLibraryVersion",
+        supportCoreUi      : "com.android.support:support-core-ui:$supportLibraryVersion",
+        supportFragment    : "com.android.support:support-fragment:$supportLibraryVersion",
+        appcompatV7        : "com.android.support:appcompat-v7:$supportLibraryVersion",
+        appcompatV4        : "com.android.support:support-v4:$supportLibraryVersion",
+        appcompatAnnotation: "com.android.support:support-annotations:$supportLibraryVersion",
+        recyclerView       : "com.android.support:recyclerview-v7:$supportLibraryVersion",
+        design             : "com.android.support:design:$supportLibraryVersion",
+        gridlayoutV7       : "com.android.support:gridlayout-v7:$supportLibraryVersion",
+        gson               : "com.google.code.gson:gson:$gsonVersion",
+        fresco             : "com.facebook.fresco:fresco:$frescoVersion",
+        kotlinStdlib       : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+        androidExt         : "com.loopeer.lib:androidext:$androidExtVersion",
+        frescoOkhttp       : "com.facebook.fresco:imagepipeline-okhttp:$frescoVersion"
     ]
 }

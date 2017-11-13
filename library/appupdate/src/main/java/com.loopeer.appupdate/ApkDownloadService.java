@@ -1,6 +1,7 @@
 package com.loopeer.appupdate;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -12,6 +13,9 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 
@@ -27,10 +31,13 @@ public class ApkDownloadService extends Service {
     public static final String EXTRA_DRAWABLE_ID = "extra_drawable_id";
     public static final String EXTRA_FILE_PROVIDER_AUTHORITIES = "extra_file_provider_authorities";
 
+    private static final int APP_NOTIFICATION_ID = 1001;
+    private static final String CHANNEL_ID = "download file";
+
     private String url = null;
     private NotificationManager updateNotificationManager = null;
     private Notification updateNotification = null;
-    private Notification.Builder mBuilder;
+    private NotificationCompat.Builder notifyBuilder;
 
     private String appName = null;
     private String fileName = null;
@@ -46,7 +53,7 @@ public class ApkDownloadService extends Service {
         intent.putExtra(EXTRA_APP_NAME, appName);
         intent.putExtra(EXTRA_DRAWABLE_ID, drawableId);
         intent.putExtra(EXTRA_FILE_PROVIDER_AUTHORITIES, authorities);
-        context.startService(intent);
+        ContextCompat.startForegroundService(context, intent);
     }
 
     @Override
@@ -58,23 +65,30 @@ public class ApkDownloadService extends Service {
         fileProviderAuthorities = intent.getStringExtra(EXTRA_FILE_PROVIDER_AUTHORITIES);
 
         if (url != null) {
+            updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createChannel(updateNotificationManager);
+                notifyBuilder = new NotificationCompat.Builder(this, CHANNEL_ID);
+            } else {
+                notifyBuilder = new NotificationCompat.Builder(this,CHANNEL_ID);
+            }
+
             fileName = url.substring(url.lastIndexOf("/") + 1);
             updateDir = getApplicationContext().getFilesDir().toString();
-            Intent nullIntent = new Intent();
-            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nullIntent, 0);
-            updateNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            mBuilder = new Notification.Builder(this);
-            mBuilder.setContentTitle(getApplication().getResources().getString(R.string.download)).setContentText("0%")
-                    .setSmallIcon(drawableId);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                updateNotification = mBuilder.build();
-            } else {
-                updateNotification = mBuilder.getNotification();
-            }
+
+            notifyBuilder.setContentTitle(getResources().getString(R.string.download))
+                .setContentText("0%")
+                .setSmallIcon(drawableId)
+                .setProgress(100, 0, false);
+            notifyBuilder.setContentIntent(PendingIntent.getActivity(getApplicationContext(),
+                0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT));
+
+            updateNotification = notifyBuilder.build();
             updateNotification.tickerText = getApplication().getResources().getString(R.string.download);
-            updateNotification.flags = Notification.FLAG_AUTO_CANCEL;
-            updateNotification.contentIntent = pendingIntent;
-            updateNotificationManager.notify(101, updateNotification);
+            updateNotification.flags = Notification.FLAG_FOREGROUND_SERVICE;
+            startForeground(APP_NOTIFICATION_ID, updateNotification);
+            updateNotificationManager.notify(APP_NOTIFICATION_ID, updateNotification);
             new Thread(new updateRunnable()).start();
         }
         return super.onStartCommand(intent, 0, 0);
@@ -116,22 +130,19 @@ public class ApkDownloadService extends Service {
                     intent.setDataAndType(apkUri, "application/vnd.android.package-archive");
                     startActivity(intent);
 
-                    updateNotificationManager.cancel(101);
+                    updateNotificationManager.cancel(APP_NOTIFICATION_ID);
                     stopSelf();
                     break;
                 case 1:
-                    Intent nullIntent = new Intent();
-                    PendingIntent pendingIntent = PendingIntent.getActivity(ApkDownloadService.this, 10, nullIntent, 0);
-                    mBuilder.setContentTitle(getApplication().getResources().getString(R.string.download_failed))
-                            .setContentText(appName)
-                            .setSmallIcon(drawableId);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        updateNotification = mBuilder.build();
-                    } else {
-                        updateNotification = mBuilder.getNotification();
-                    }
-                    updateNotification.flags = Notification.FLAG_AUTO_CANCEL;
-                    updateNotificationManager.notify(101, updateNotification);
+                    notifyBuilder.setContentTitle(getApplication().getResources().getString(R.string.download_failed))
+                        .setContentText(appName)
+                        .setSmallIcon(drawableId)
+                        .setContentIntent(PendingIntent.getActivity(ApkDownloadService.this,
+                            10, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT));
+
+                    updateNotification = notifyBuilder.build();
+                    updateNotification.flags = Notification.FLAG_FOREGROUND_SERVICE;
+                    updateNotificationManager.notify(APP_NOTIFICATION_ID, updateNotification);
                     break;
                 default:
                     stopSelf();
@@ -140,14 +151,14 @@ public class ApkDownloadService extends Service {
     };
 
     private boolean versionAboveN() {
-        return Build.VERSION.SDK_INT >= 24;
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
     }
 
     public long downloadUpdateFile(String downloadUrl) throws Exception {
         int downloadCount = 0;
         int currentSize = 0;
-        long totalSize = 0;
-        int updateTotalSize = 0;
+        long downloadedSize = 0;
+        long fileSize = 0;
 
         HttpURLConnection httpConnection = null;
         InputStream is = null;
@@ -161,7 +172,7 @@ public class ApkDownloadService extends Service {
             }
             httpConnection.setConnectTimeout(10000);
             httpConnection.setReadTimeout(20000);
-            updateTotalSize = httpConnection.getContentLength();
+            fileSize = httpConnection.getContentLength();
             if (httpConnection.getResponseCode() == 404) {
                 throw new Exception("fail!");
             }
@@ -172,21 +183,19 @@ public class ApkDownloadService extends Service {
             int readsize = 0;
             while ((readsize = is.read(buffer)) > 0) {
                 fos.write(buffer, 0, readsize);
-                totalSize += readsize;
-                if ((downloadCount == 0) || (int) (totalSize * 100 / updateTotalSize) - 10 > downloadCount) {
+                downloadedSize += readsize;
+                int downloadedPercent = (int) (downloadedSize * 100 / fileSize);
+                if ((downloadCount == 0) || downloadedPercent - 10 > downloadCount) {
                     downloadCount += 10;
-                    Intent nullIntent = new Intent();
-                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, nullIntent, 0);
-                    mBuilder.setContentIntent(pendingIntent)
-                            .setContentTitle(getApplication().getResources().getString(R.string.download))
-                            .setContentText((int) totalSize * 100 / updateTotalSize + "%")
-                            .setSmallIcon(drawableId);
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                        updateNotification = mBuilder.build();
-                    } else {
-                        updateNotification = mBuilder.getNotification();
-                    }
-                    updateNotificationManager.notify(101, updateNotification);
+                    notifyBuilder.setContentTitle(getApplication().getResources().getString(R.string.download))
+                        .setContentText(downloadedPercent + "%")
+                        .setSmallIcon(drawableId)
+                        .setContentIntent(PendingIntent.getActivity(ApkDownloadService.this, 0,
+                            new Intent(), PendingIntent.FLAG_UPDATE_CURRENT))
+                        .setProgress(100, downloadedPercent, false);
+                    updateNotification = notifyBuilder.build();
+                    updateNotification.flags = Notification.FLAG_FOREGROUND_SERVICE;
+                    updateNotificationManager.notify(APP_NOTIFICATION_ID, updateNotification);
                 }
             }
         } finally {
@@ -200,7 +209,25 @@ public class ApkDownloadService extends Service {
                 fos.close();
             }
         }
-        return totalSize;
+        return downloadedSize;
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private void createChannel(NotificationManager manager) {
+        // The id of the channel.
+        String id = CHANNEL_ID;
+        // The user-visible name of the channel.
+        CharSequence name = "download files";
+        // The user-visible description of the channel.
+        String description = "download some necessary files";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel(id, name, importance);
+        // Configure the notification channel.
+        channel.setDescription(description);
+        channel.setShowBadge(false);
+        channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+        manager.createNotificationChannel(channel);
     }
 
     @Override

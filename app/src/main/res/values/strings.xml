@@ -18,6 +18,7 @@
     <string name="label_form_item_view">FormItemViewActivity</string>
     <string name="label_bottom_image_picker_view">BottomImagePickerActivity</string>
     <string name="label_image_text_button">ImageTextButtonActivity</string>
+    <string name="label_app_update">AppUpdate</string>
 
     <!-- menu -->
     <string name="menu_action_bottom_date">Date</string>

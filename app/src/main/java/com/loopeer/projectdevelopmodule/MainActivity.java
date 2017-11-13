@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.loopeer.appupdate.AppUpdate;
-import com.loopeer.compatinset.statusbar.StatusBarFontHelper;
 
 import java.util.List;
 
@@ -90,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
             public ResolveInfoViewHolder(View view) {
                 super(view);
-                this.textView = (TextView) view.findViewById(android.R.id.text1);
+                this.textView = view.findViewById(android.R.id.text1);
                 view.setOnClickListener(this);
             }
 
